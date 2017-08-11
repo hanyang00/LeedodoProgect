@@ -14,11 +14,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(setContentViews());
         ButterKnife.bind(this);
         initView();
         initData();
     }
+
+
 
     protected abstract int setContentViews();
 
@@ -27,7 +30,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract void initData();
-
-
 
 }

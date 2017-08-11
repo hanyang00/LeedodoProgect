@@ -7,4 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="textcolortrue" >#C30707</color>
     <color name="textcolorfalst" >#000000</color>
+    <color name="regular" >#666666</color>
+    <color name="colorLight" >#333333</color>
 </resources>

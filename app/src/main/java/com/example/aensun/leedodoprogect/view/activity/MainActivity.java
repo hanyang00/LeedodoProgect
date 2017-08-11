@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void ctrateFragment(){
+    private void ctrateFragment() {
         homePageFragment = new HomePageFragment();
         nearbyFragment = new NearbyFragment();
         rebateFragment = new RebateFragment();
@@ -76,5 +76,4 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
-
 }

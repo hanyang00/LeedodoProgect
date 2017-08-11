@@ -3,11 +3,194 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:id="@+id/user_breakgrund"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp180"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/user_now_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我的"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginLeft="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp50"
+        android:text="立即登录"
+        android:textColor="@color/regular"
+        android:textSize="@dimen/sp25" />
+
+    <ImageView
+        android:id="@+id/user_collection_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_now_login"
+        android:layout_marginLeft="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp37"
+        android:src="@mipmap/shoukuanma" />
+
+    <ImageView
+
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/user_collection_code"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/yue" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginRight="@dimen/dp50"
+        android:src="@mipmap/kabao" />
+
+    <TextView
+        android:textSize="@dimen/sp14"
+        android:text="用户名"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    <TextView
+        android:layout_marginLeft="@dimen/dp10"
+        android:textSize="@dimen/sp14"
+        android:text="1213242"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:id="@+id/textView3" />
+
+    <TextView
+        android:layout_marginTop="@dimen/dp15"
+        android:textSize="@dimen/sp14"
+        android:text="手机号"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2" />
+    <TextView
+        android:layout_marginTop="@dimen/dp15"
+        android:textSize="@dimen/sp14"
+        android:text="158****1639"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp65"
+        android:layout_below="@id/user_breakgrund"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/white">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp15"
+            android:gravity="center"
+            android:text="安全设置"
+            android:textColor="@color/colorLight" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:src="@mipmap/gengduo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp65"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp15"
+            android:gravity="center"
+            android:text="消息"
+            android:textColor="@color/colorLight" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:src="@mipmap/gengduo" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp65"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp15"
+            android:gravity="center"
+            android:text="关于我们"
+            android:textColor="@color/colorLight" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:src="@mipmap/gengduo" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp65"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp15"
+            android:gravity="center"
+            android:text="消费记录"
+            android:textColor="@color/colorLight" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:src="@mipmap/gengduo" />
+
+    </RelativeLayout>
 </RelativeLayout>
