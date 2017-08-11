@@ -9,4 +9,6 @@
     <color name="textcolorfalst" >#000000</color>
     <color name="regular" >#666666</color>
     <color name="colorLight" >#333333</color>
+    <color name="colorMyEditHint">#999999</color>
+    
 </resources>
