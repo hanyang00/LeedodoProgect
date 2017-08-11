@@ -8,7 +8,7 @@
     <color name="textcolortrue" >#C30707</color>
     <color name="textcolorfalst" >#000000</color>
     <color name="colorRebateHead" >#4269b7</color>
-    <color name="colorRebateHeadText" >#ffffff</color>
+    <color name="colorRebateHeadText" >#c8ffffff</color>
     <color name="colorzhifubhaoText" >#31aae7</color>
     <color name="colorlightText" >#666666</color>
     <color name="colorlightTimeText" >#999999</color>
