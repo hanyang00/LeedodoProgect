@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/dp1"
+        android:orientation="vertical"
+        android:layout_height="@dimen/dp85">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/rebateitemcolor"
+            android:layout_height="@dimen/dp24">
+            <TextView
+                android:id="@+id/issue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp15"
+                android:text="A2017023"
+                android:textColor="@color/colorRebateHeadText"
+                android:textSize="@dimen/dp11"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/change_the_date"
+                    android:layout_width="wrap_content"
+                    android:text="2017年6月12日兑换"
+                    android:textColor="@color/colorRebateHeadText"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="@dimen/dp65">
+            <TextView
+                android:id="@+id/existing"
+                android:layout_width="wrap_content"
+                android:text="现有"
+                android:gravity="center_vertical"
+                android:drawableLeft="@mipmap/xianyou"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp14"
+                android:textColor="@color/existingtextcolor"
+                android:drawablePadding="@dimen/dp5"
+                />
+            <TextView
+                android:id="@+id/available_amount"
+                android:layout_width="wrap_content"
+                android:text="50.00"
+                android:layout_marginLeft="@dimen/dp10"
+                android:textSize="@dimen/dp20"
+                android:textColor="@color/rebateitemcolor"
+                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/slogan"
+                    android:layout_width="wrap_content"
+                    android:text="有便宜不占,和咸鱼有什么区别?"
+                    android:textColor="@color/colorlightTimeText"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:src="@mipmap/gengduo" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        
+    </LinearLayout>
+</LinearLayout>

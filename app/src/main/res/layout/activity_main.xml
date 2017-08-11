@@ -68,7 +68,6 @@
             android:padding="@dimen/dp5"
             android:text="我的"
             android:textColor="@drawable/textcolor_select"
-
             android:textSize="@dimen/dp10" />
 
     </RadioGroup>
@@ -77,6 +76,5 @@
         android:id="@+id/add_frament_Layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/radioGroup"
-        android:background="@color/white"></FrameLayout>
+        android:layout_above="@+id/radioGroup"></FrameLayout>
 </RelativeLayout>
