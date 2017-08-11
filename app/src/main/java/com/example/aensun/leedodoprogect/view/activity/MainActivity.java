@@ -1,6 +1,5 @@
 package com.example.aensun.leedodoprogect.view.activity;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
@@ -12,9 +11,14 @@ import com.example.aensun.leedodoprogect.view.fragment.NearbyFragment;
 import com.example.aensun.leedodoprogect.view.fragment.RebateFragment;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+*
+* 类描述： MainActivity
+* 创建人：hanshiyang
+* 创建时间：2017/8/10
+*
+*/
 public class MainActivity extends BaseActivity {
 
 
@@ -44,7 +48,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void ctrateFragment(){
+    private void ctrateFragment() {
         homePageFragment = new HomePageFragment();
         nearbyFragment = new NearbyFragment();
         rebateFragment = new RebateFragment();
@@ -72,5 +76,4 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
-
 }
