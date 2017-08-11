@@ -72,6 +72,7 @@ public class RebateFragment extends BaseFragment implements RebateCallback {
         rebateProgramRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         rebateScore.setText(waitCashback+"");
         theRebateAmount.setText(countReally+"");
+
     }
 
     @Override

@@ -14,7 +14,7 @@
             android:id="@+id/login_break"
             android:layout_width="@dimen/dp44"
             android:layout_height="@dimen/dp44"
-            android:src="@mipmap/ic_launcher" />
+            android:background="@mipmap/backss" />
 
         <TextView
             android:layout_width="wrap_content"
