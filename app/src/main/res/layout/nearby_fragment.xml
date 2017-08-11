@@ -1,15 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <!--整体的滑动布局-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <!--整体的布局 才开始-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <!--百度地图-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp150">
 
+            </LinearLayout>
+            <!--附近旺铺-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp70">
 
+                <TextView
+                    android:id="@+id/nershap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="附近旺铺"
+                    android:textColor="@color/textcolorfalst"
+                    android:textSize="@dimen/dp18"
+                    />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="附近"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+                <TextView
+                    android:id="@+id/chao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nershap"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:gravity="center"
+                    android:text="超人气美食推荐"
+                    android:textColor="@color/nearbyNear"
+                    android:textSize="@dimen/dp11"
+                    />
+                <!--中划线-->
+                <TextView
+                    android:layout_width="@dimen/dp31"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nershap"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_toLeftOf="@+id/chao"
+                    android:text="——"
+                    />
+
+                <TextView
+                    android:layout_width="@dimen/dp31"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nershap"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_toRightOf="@+id/chao"
+                    android:text="——"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:src="@mipmap/gengduo"
+                    />
+            </RelativeLayout>
+            <!--附近推荐  三个-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp220"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp15"
+                >
+                <!--第一个推荐-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp140"
+                        android:background="#bbc06a"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="小可爱的西点"
+                        android:textColor="@color/nearbyCommodity"
+                        android:textSize="@dimen/sp14"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="[安贞门]"
+                        android:textColor="@color/nearbyNear"
+                        android:textSize="@dimen/sp11"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp140"
+                        android:background="#bbc06a"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="小可爱的西点"
+                        android:textColor="@color/nearbyCommodity"
+                        android:textSize="@dimen/sp14"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="[安贞门]"
+                        android:textColor="@color/nearbyNear"
+                        android:textSize="@dimen/sp11"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp140"
+                        android:background="#bbc06a"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="小可爱的西点"
+                        android:textColor="@color/nearbyCommodity"
+                        android:textSize="@dimen/sp14"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="[安贞门]"
+                        android:textColor="@color/nearbyNear"
+                        android:textSize="@dimen/sp11"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <!--推荐与分类的分割线-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp11"
+                android:background="@color/nearbyFenge"
+                ></LinearLayout>
+            <!--Title + 分类-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>
