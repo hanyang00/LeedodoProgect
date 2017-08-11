@@ -52,7 +52,7 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter {
         } else if (mlist.size() > 3) {
             return mlist.size();
         } else {
-            return 2;
+            return 3;
         }
     }
 
