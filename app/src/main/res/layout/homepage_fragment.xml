@@ -1,13 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F2F4F5">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <com.youth.banner.Banner
+                    android:id="@+id/home_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp225"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"></com.youth.banner.Banner>
+
+
+            </RelativeLayout>
+            <!--ViewPager+小圆点-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp167">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/home_viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp10"></android.support.v4.view.ViewPager>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp5"
+                    >
+                    <View
+                        android:id="@+id/dot_1"
+                        android:layout_width="@dimen/dp7"
+                        android:layout_height="@dimen/dp7"
+                        android:background="@drawable/home_dot"
+                        android:layout_margin="@dimen/dp5"></View>
+                    <View
+                        android:id="@+id/dot_2"
+                        android:layout_width="@dimen/dp7"
+                        android:layout_height="@dimen/dp7"
+                        android:background="@drawable/home_dot2"
+                        android:layout_margin="@dimen/dp5"></View>
+                </LinearLayout>
+
+            </RelativeLayout>
+            <!--ViewPager分类-->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp183"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="#22ffff"></RelativeLayout>
+
+            <!--附近旺铺-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp219"
+                android:layout_marginTop="@dimen/dp10"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp44"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="#23de9ce7">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="附近旺铺" />
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dp44"
+                        android:layout_height="@dimen/dp44"
+                        android:layout_alignParentRight="true">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/fujindingwei" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/home_Horizontal_Recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b83a2d3f"></android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+            <!--TabLayout-->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/home_tablayou"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp75"
+                android:layout_marginTop="@dimen/dp10"></android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/home_tablelayout_ViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp200"></android.support.v4.view.ViewPager>
+
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="首页"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="@dimen/dp10">
+
+        <LinearLayout
+            android:id="@+id/home_city"
+            android:layout_width="@dimen/dp53"
+            android:layout_height="@dimen/dp19"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp27"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="北京"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/down_jiantou" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="@dimen/dp183"
+            android:layout_height="@dimen/dp21"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/home_sousuo" />
+
+        <ImageView
+            android:id="@+id/home_saoyisao"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:src="@mipmap/home_saosao" />
+
+        <ImageView
+            android:id="@+id/home_naozhong"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_toLeftOf="@+id/home_saoyisao"
+            android:src="@mipmap/home_xiaoxi" />
+
+    </RelativeLayout>
 </RelativeLayout>
