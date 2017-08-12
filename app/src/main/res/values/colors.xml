@@ -7,4 +7,7 @@
     <color name="white">#FFFFFF</color>
     <color name="textcolortrue" >#C30707</color>
     <color name="textcolorfalst" >#000000</color>
+    <color name="nearbyCommodity">#333333</color>
+    <color name="nearbyNear" >#999999</color>
+
 </resources>
