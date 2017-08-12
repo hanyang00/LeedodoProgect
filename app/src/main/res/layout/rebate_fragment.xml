@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
+    android:background="@color/backgrounds"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -73,6 +74,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp44"
+            android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -143,6 +145,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
             <TextView
@@ -179,9 +182,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp65"
-            android:layout_marginTop="@dimen/dp19"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dp10"
             android:orientation="horizontal">
 
             <ImageView

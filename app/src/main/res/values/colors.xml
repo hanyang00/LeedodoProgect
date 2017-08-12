@@ -21,4 +21,5 @@
     <color name="nearbyCommodity">#333333</color>
     <color name="nearbyNear" >#999999</color>
 
+    <color name="colorRadioButton">#c20000</color>
 </resources>
