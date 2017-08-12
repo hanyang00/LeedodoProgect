@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.view.adapter.clickontheeventcallbackinterface.MyOnItemclicklistener;
 
 import java.util.ArrayList;
 
@@ -21,10 +22,14 @@ import butterknife.ButterKnife;
  * 创建时间 $date$
  */
 
-public class RebateRecyclerViewAdapter extends RecyclerView.Adapter {
+public class RebateRecyclerViewAdapter extends RecyclerView.Adapter implements View.OnClickListener {
 
     private ArrayList<String> mlist;
     private Context mcontext;
+    private MyOnItemclicklistener onItemclicklistener;
+    public void setOnItemclicklistener(MyOnItemclicklistener onItemclicklistener){
+        this.onItemclicklistener=onItemclicklistener;
+    }
 
     public RebateRecyclerViewAdapter(ArrayList<String> mlist, Context mcontext) {
         this.mlist = mlist;
@@ -34,6 +39,7 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(mcontext, R.layout.rebate_item, null);
+        view.setOnClickListener(this);
         viewholder viewholder = new viewholder(view);
 
         return viewholder;
@@ -43,6 +49,7 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         viewholder viewholder = (RebateRecyclerViewAdapter.viewholder) holder;
         viewholder.issue.setText(mlist.get(position));
+        viewholder.itemView.setTag(position);
     }
 
     @Override
@@ -54,6 +61,13 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter {
         } else {
             return 3;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+    if (onItemclicklistener!=null){
+        onItemclicklistener.OnItemclicklistener(v, (int) v.getTag());
+    }
     }
 
     class viewholder extends RecyclerView.ViewHolder {
