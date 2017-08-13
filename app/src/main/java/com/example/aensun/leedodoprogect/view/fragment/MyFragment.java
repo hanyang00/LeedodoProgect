@@ -8,7 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.view.activity.ConsumptionActivity;
 import com.example.aensun.leedodoprogect.view.activity.LoginActivity;
+import com.example.aensun.leedodoprogect.view.activity.SecuritySettingActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -84,23 +86,33 @@ public class MyFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.user_now_login:
-                Toast.makeText(getActivity(), "11", Toast.LENGTH_SHORT).show();
                 Intent loginIntent =new Intent(getActivity(), LoginActivity.class);
                 startActivity(loginIntent);
                 break;
             case R.id.user_collection_code:
+                //收款码
                 break;
             case R.id.user_balance:
+                //余额
                 break;
             case R.id.user_card_package:
+                //卡包
                 break;
             case R.id.user_security_setting:
+                //安全设置
+                Intent securityIntent =new Intent(getActivity(), SecuritySettingActivity.class);
+                startActivity(securityIntent);
                 break;
             case R.id.user_message:
+                //消息
                 break;
             case R.id.user_about_us:
+                //关于我们
                 break;
             case R.id.user_pecords_of_consumption:
+                //消费记录跳转详情页
+                Intent counsumptionIntent = new Intent(getActivity(), ConsumptionActivity.class);
+                startActivity(counsumptionIntent);
                 break;
         }
     }
