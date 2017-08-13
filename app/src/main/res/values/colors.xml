@@ -21,4 +21,5 @@
     <color name="colorRed">#c20000</color>
     <color name="colorBlack">#000000</color>
 
+    <color name="colorRadioButton">#c20000</color>
 </resources>
