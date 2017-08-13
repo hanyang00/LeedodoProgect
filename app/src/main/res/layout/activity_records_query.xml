@@ -16,7 +16,7 @@
             android:id="@+id/close_records_query"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="@dimen/dp15"
             android:src="@mipmap/backss" />
 
         <TextView
@@ -40,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginLeft="15dp"
             android:button="@null"
             android:gravity="center"
             android:tag="0"
@@ -68,6 +69,7 @@
             android:background="@drawable/radiobutton_select"
             android:gravity="center"
             android:tag="2"
+            android:layout_marginRight="@dimen/dp15"
             android:textColor="@drawable/textcolor_select"
             android:text="待返利" />
     </RadioGroup>
