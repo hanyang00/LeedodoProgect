@@ -17,5 +17,8 @@
     <color name="regular" >#666666</color>
     <color name="colorLight" >#333333</color>
     <color name="colorMyEditHint">#999999</color>
+    <color name="colorBule">#435C94</color>
+    <color name="colorRed">#c20000</color>
+    <color name="colorBlack">#000000</color>
 
 </resources>

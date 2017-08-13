@@ -42,7 +42,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected int setContentViews() {
-
         return R.layout.login_activity;
     }
 
@@ -57,18 +56,23 @@ public class LoginActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_break:
+                //返回按钮
                 finish();
                 break;
             case R.id.login_register:
+                //跳转注册
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
                 break;
             case R.id.login_looks:
+                //查看密码，隐藏密码
                 break;
             case R.id.login_btn:
+                //登录按钮
 
                 break;
             case R.id.login_forget_password:
+                //忘记密码
                 break;
         }
     }

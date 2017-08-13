@@ -11,10 +11,14 @@
         android:background="@color/white">
 
         <ImageView
+            android:layout_marginLeft="@dimen/dp5"
             android:id="@+id/register_break"
-            android:layout_width="@dimen/dp44"
-            android:layout_height="@dimen/dp44"
-            android:src="@mipmap/backss" />
+            android:layout_width="@dimen/dp34"
+            android:layout_height="@dimen/dp34"
+            android:background="@mipmap/backss"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,13 +38,13 @@
         android:background="@color/white">
 
         <ImageView
-            android:layout_marginLeft="@dimen/dp17"
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/shouji"
             android:layout_centerVertical="true"
-            android:id="@+id/imageView3" />
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp17"
+            android:src="@mipmap/shouji" />
 
         <EditText
             android:id="@+id/ed_register_phone"
@@ -57,15 +61,15 @@
             android:textColorHint="@color/colorMyEditHint" />
 
         <TextView
-            android:layout_marginRight="@dimen/dp15"
+            android:id="@+id/register_obtain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="获取验证码"
-            android:textColorHint="@color/colorMyEditHint"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/register_obtain" />
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:text="获取验证码"
+            android:textColorHint="@color/colorMyEditHint" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -96,15 +100,56 @@
             android:hint="请输入验证码"
             android:textColorHint="@color/colorMyEditHint" />
     </RelativeLayout>
-    
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp15"
+            android:src="@mipmap/mima" />
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_toEndOf="@+id/imageView6"
+            android:layout_toRightOf="@+id/imageView6"
+            android:layout_weight="0.34"
+            android:background="@null"
+            android:hint="请输入密码"
+            android:textColorHint="@color/colorMyEditHint" />
+
+        <CheckBox
+            android:id="@+id/register_looks"
+            android:layout_width="@dimen/dp23"
+            android:layout_height="@dimen/dp15"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@drawable/password_select"
+            android:button="@null" />
+    </RelativeLayout>
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/colorMyEditHint"
-        android:textSize="@dimen/sp12"
         android:layout_marginTop="@dimen/dp10"
         android:text="未注册的手机号登录成功后讲自动注册为大道用户"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/colorMyEditHint"
+        android:textSize="@dimen/sp12" />
 
     <Button
         android:id="@+id/register_login_btn"
@@ -127,4 +172,32 @@
         android:layout_marginTop="@dimen/dp15"
         android:text="其他方式登录"
         android:textColor="@color/colorMyEditHint" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp15">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登录即表示您同意大道"
+                android:textColor="@color/colorMyEditHint" />
+
+            <TextView
+                android:id="@+id/register_agreement"
+                android:textColor="#0156ff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户协议" />
+        </LinearLayout>
+    </RelativeLayout>
+
 </LinearLayout>
