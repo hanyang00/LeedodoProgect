@@ -3,7 +3,6 @@ package com.example.aensun.leedodoprogect.view.fragment.homeFragments;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +74,6 @@ public class ClassificationFragment_1 extends BaseFragment implements IResponesV
 
     @Override
     public void requestSuccess(String results) {
-        Log.e("MVP-------", results.toString());
         if (results != null) {
             Gson gson = new Gson();
             ClassificBean classificBean = gson.fromJson(results, ClassificBean.class);
@@ -87,6 +85,9 @@ public class ClassificationFragment_1 extends BaseFragment implements IResponesV
             homeClassificationRecycle.setHasFixedSize(true);
             HomeClassificationRecycleAdapter classifAdapter = new HomeClassificationRecycleAdapter(getActivity(), classificList);
             homeClassificationRecycle.setAdapter(classifAdapter);
+
+
+
         }
 
     }

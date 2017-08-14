@@ -10,4 +10,5 @@ import java.util.Map;
 
 public interface IGetNearShopRequest {
     public abstract void getNearShops(Map<String,String> map);
+
 }
