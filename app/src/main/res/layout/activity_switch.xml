@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp38"
+        android:layout_marginTop="@dimen/dp5">
+
+        <RelativeLayout
+            android:id="@+id/relative_back"
+            android:layout_width="@dimen/dp38"
+            android:layout_height="@dimen/dp38">
+            <ImageView
+                android:layout_width="@dimen/dp38"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/backss" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp300"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sp12"
+            android:background="@mipmap/sousuojisousokuang">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp30"
+                android:background="@null"
+                android:hint="请输入商户名称"
+                android:textColorHint="#999999"
+                android:textSize="@dimen/sp12" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp38"
+        android:background="#F2F4F5">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp12"
+            android:textColor="#999999"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp7"
+            android:text="最近搜索"/>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/history_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        ></ListView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CFCFCF"/>
+
+        <Button
+            android:id="@+id/clear_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:background="@null"
+            android:textColor="#333333"
+            android:text="清除历史记录" />
+
+
+
+
+</LinearLayout>
