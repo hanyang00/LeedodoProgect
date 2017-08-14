@@ -6,9 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByAdapters.NerByTabListAdapter;
 
 /**
  * 类描述：NerTabLayoutFragment
@@ -34,13 +38,20 @@ public class NerTabLayoutFragment extends Fragment {
          * 视图和控件
          */
         view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
-
+        listview=(ListView)view.findViewById(R.id.nerby_tab_listview);
         /**
          * 接收传过来的信息  操作
          */
 //        Bundle arguments = getArguments();
 //
 //        String name = arguments.getString(KEY1);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(),"文本呀呀呀呀呀",Toast.LENGTH_SHORT).show();
+            }
+        });
+        listview.setAdapter(new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(),getActivity()));
 
         return view;
     }
