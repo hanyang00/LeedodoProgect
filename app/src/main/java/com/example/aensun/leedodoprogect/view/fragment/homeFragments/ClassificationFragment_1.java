@@ -13,8 +13,9 @@ import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.adapters.HomeClassificationRecycleAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.BaseFragment;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.ClassificBean;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.BaseService;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.utils.UrlUtils;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetClassificationResults;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.IResponesView;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.utils.GridSpacingItemDecoration;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -51,6 +52,7 @@ public class ClassificationFragment_1 extends BaseFragment {
 
     @Override
     protected void initData() {
+
         Map<String, String> map = new HashMap<>();
         map.put("pageSize", "10");
         Retrofit retrofit = new Retrofit.Builder()
@@ -113,5 +115,24 @@ public class ClassificationFragment_1 extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+
+    @Override
+    public void requestSuccess(String results) {
+        Log.e("MVP-------", results.toString());
+        if (results != null) {
+            Gson gson = new Gson();
+            ClassificBean classificBean = gson.fromJson(results, ClassificBean.class);
+            List<ClassificBean.ObjectBean.ListBean> classificList = classificBean.object.list;
+
+
+            homeClassificationRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 5, GridLayoutManager.VERTICAL, false));
+            homeClassificationRecycle.addItemDecoration(new GridSpacingItemDecoration(5, getResources().getDimensionPixelSize(R.dimen.padding_middle), true));
+            homeClassificationRecycle.setHasFixedSize(true);
+            HomeClassificationRecycleAdapter classifAdapter = new HomeClassificationRecycleAdapter(getActivity(), classificList);
+            homeClassificationRecycle.setAdapter(classifAdapter);
+        }
+
     }
 }

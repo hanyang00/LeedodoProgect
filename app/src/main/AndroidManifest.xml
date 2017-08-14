@@ -3,6 +3,9 @@
     package="com.example.aensun.leedodoprogect">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +34,10 @@
         <activity android:name=".view.activity.ConsumptionActivity"/>
         <activity android:name=".view.activity.SecuritySettingActivity"/>
         <activity android:name=".view.activity.ReplacePhoneActivity"/>
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name=".view.activity.CityActivity" />
+        <activity android:name=".view.activity.TwoDimensionalCodeActivity"></activity>
     </application>
 
 </manifest>

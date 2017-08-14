@@ -7,9 +7,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,42 +34,100 @@
             <!--ViewPager+小圆点-->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp167">
+                android:layout_height="@dimen/dp200">
+
                 <android.support.v4.view.ViewPager
                     android:id="@+id/home_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/dp10"></android.support.v4.view.ViewPager>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/dp5"
-                    >
+                    android:layout_marginBottom="@dimen/dp5">
+
                     <View
                         android:id="@+id/dot_1"
                         android:layout_width="@dimen/dp7"
                         android:layout_height="@dimen/dp7"
-                        android:background="@drawable/home_dot"
-                        android:layout_margin="@dimen/dp5"></View>
+                        android:layout_margin="@dimen/dp5"
+                        android:background="@drawable/home_dot"></View>
+
                     <View
                         android:id="@+id/dot_2"
                         android:layout_width="@dimen/dp7"
                         android:layout_height="@dimen/dp7"
-                        android:background="@drawable/home_dot2"
-                        android:layout_margin="@dimen/dp5"></View>
+                        android:layout_margin="@dimen/dp5"
+                        android:background="@drawable/home_dot2"></View>
                 </LinearLayout>
 
             </RelativeLayout>
             <!--ViewPager分类-->
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp183"
-                android:layout_marginTop="@dimen/dp10"
-                android:background="#22ffff"></RelativeLayout>
+                android:layout_marginTop="@dimen/dp10">
+
+                <ImageView
+                    android:id="@+id/img_one"
+                    android:layout_width="@dimen/dp187"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:id="@+id/img_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp1"
+                            android:src="@mipmap/ic_launcher"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:id="@+id/ime_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toRightOf="@id/img_two"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_launcher" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:id="@+id/img_four"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/ic_launcher"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:id="@+id/ime_five"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/ic_launcher"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <!--附近旺铺-->
             <LinearLayout
@@ -128,6 +186,7 @@
 
         </LinearLayout>
     </ScrollView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,27 +200,52 @@
             android:layout_marginRight="@dimen/dp27"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="北京"
-                android:textColor="#333333"
-                android:textSize="14sp" />
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/down_jiantou" />
+                android:background="@mipmap/beijingyuanjiao"
+                android:alpha="0.7">
+                <TextView
+                    android:id="@+id/home_city_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="北京"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    android:alpha="0.7"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/down_jiantou"
+                    android:alpha="0.7"/>
+            </LinearLayout>
+
 
         </LinearLayout>
 
-
-        <ImageView
+        <LinearLayout
             android:layout_width="@dimen/dp183"
             android:layout_height="@dimen/dp21"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/home_sousuo" />
+            android:background="@mipmap/sousuo"
+            android:gravity="center"
+            android:alpha="0.7">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:alpha="0.7"
+                android:background="@null"
+                android:textSize="@dimen/sp12" />
+
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/home_saoyisao"
@@ -169,7 +253,9 @@
             android:layout_height="@dimen/dp30"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/dp15"
-            android:src="@mipmap/home_saosao" />
+            android:src="@mipmap/saoyisaoo"
+            android:background="@mipmap/beijingyuan"
+            android:alpha="0.7"/>
 
         <ImageView
             android:id="@+id/home_naozhong"
@@ -178,7 +264,9 @@
             android:layout_marginLeft="@dimen/dp20"
             android:layout_marginRight="@dimen/dp5"
             android:layout_toLeftOf="@+id/home_saoyisao"
-            android:src="@mipmap/home_xiaoxi" />
+            android:background="@mipmap/beijingyuan"
+            android:src="@mipmap/xiaoxi"
+            android:alpha="0.7"/>
 
     </RelativeLayout>
 </RelativeLayout>
