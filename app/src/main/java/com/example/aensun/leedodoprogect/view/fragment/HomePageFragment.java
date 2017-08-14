@@ -3,7 +3,6 @@ package com.example.aensun.leedodoprogect.view.fragment;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,22 +11,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.utils.GlideImageLoader;
 import com.example.aensun.leedodoprogect.view.activity.CityActivity;
+import com.example.aensun.leedodoprogect.view.activity.SwitchActivity;
 import com.example.aensun.leedodoprogect.view.activity.TwoDimensionalCodeActivity;
 import com.example.aensun.leedodoprogect.view.adapters.HomeClassificationViewPagerAdapter;
 import com.example.aensun.leedodoprogect.view.adapters.HomeHorizontaRecycleAdapter;
-import com.example.aensun.leedodoprogect.view.adapters.HomeTabLayouViewPagerAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.ClassificationFragment_1;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.ClassificationFragment_2;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.TabLayoutFragment;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.RoundPicBean;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetNearShopsResults;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetRoundPicResults;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.INearShopsView;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.IRoundPicView;
+import com.google.gson.Gson;
 import com.google.zxing.activity.CaptureActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -47,18 +52,18 @@ import static android.app.Activity.RESULT_OK;
  * Created by aensun on 2017-08-10.
  */
 
-public class HomePageFragment extends BaseFragment implements INearShopsView {
+public class HomePageFragment extends BaseFragment implements INearShopsView,IRoundPicView{
     @Bind(R.id.home_banner)
     Banner homeBanner;
     @Bind(R.id.home_viewPager)
     ViewPager homeViewPager;
 
-    @Bind(R.id.home_tablelayout_ViewPager)
-    ViewPager homeTablelayoutViewPager;
+    /*  @Bind(R.id.home_tablelayout_ViewPager)
+      ViewPager homeTablelayoutViewPager;
 
 
-    @Bind(R.id.home_tablayou)
-    TabLayout homeTablayou;
+      @Bind(R.id.home_tablayou)
+      TabLayout homeTablayou;*/
     //扫一扫
     @Bind(R.id.home_saoyisao)
     ImageView homeSaoyisao;
@@ -71,7 +76,11 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
     //附近旺铺RecycleView
     @Bind(R.id.home_Horizontal_Recycle)
     RecyclerView homeHorizontalRecycle;
-    private List<String> imgList;
+    //定位按钮
+    @Bind(R.id.home_Location)
+    RelativeLayout homeLocation;
+    @Bind(R.id.switch_editText)
+    EditText switchEditText;
     List<Fragment> fList;
 
     //TabLayou
@@ -80,6 +89,8 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
 
     //小圆点
     List<View> dotList = new ArrayList<>();
+    //轮播图片
+    private List<String> roundList;
 
 
     @Override
@@ -90,11 +101,6 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
 
     @Override
     protected void initData() {
-        imgList = new ArrayList<>();
-        imgList.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3320190108,3284412601&fm=11&gp=0.jpg");
-        imgList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502382316832&di=9bf6b3b70c8ca413a5895d9e09eb1092&imgtype=0&src=http%3A%2F%2Fnpic7.edushi.com%2Fcn%2Fzixun%2Fzh-chs%2F2017-01%2F20%2F3738587-20170120162125513.jpg");
-        imgList.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3320190108,3284412601&fm=11&gp=0.jpg");
-        imgList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502382316832&di=9bf6b3b70c8ca413a5895d9e09eb1092&imgtype=0&src=http%3A%2F%2Fnpic7.edushi.com%2Fcn%2Fzixun%2Fzh-chs%2F2017-01%2F20%2F3738587-20170120162125513.jpg");
 
         //分类ViewPager+Fragment
         fList = new ArrayList<>();
@@ -149,37 +155,26 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
             TabLayoutFragment fragment = new TabLayoutFragment();
             tabviewpagerList.add(fragment);
         }
-        homeTablayou.setupWithViewPager(homeTablelayoutViewPager);
+  /*      homeTablayou.setupWithViewPager(homeTablelayoutViewPager);
         HomeTabLayouViewPagerAdapter adapter1 = new HomeTabLayouViewPagerAdapter(getFragmentManager(), getActivity(), tabviewpagerList, tabList);
         homeTablelayoutViewPager.setAdapter(adapter1);
-        //横向RecycleView适配
-        List<String> slist = new ArrayList<>();
-        for (int i = 0; i < 2000; i++) {
-            slist.add("" + i);
-        }
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        homeHorizontalRecycle.setLayoutManager(layoutManager);
-        HomeHorizontaRecycleAdapter adapter2 = new HomeHorizontaRecycleAdapter(getActivity(), slist);
-        homeHorizontalRecycle.setAdapter(adapter2);
-
-
-        Map<String,String> map = new HashMap<>();
-        map.put("longitude","116.4192930000");
-        map.put("latitude","39.9768360000");
+*/
+        //附近商铺
+        Map<String, String> map = new HashMap<>();
+        map.put("longitude", "116.4192930000");
+        map.put("latitude", "39.9768360000");
         GetNearShopsResults getNearShopsResults = new GetNearShopsResults(this);
         getNearShopsResults.getData(map);
+        //轮播图
+        Map<String, String> map2 = new HashMap<>();
+        map2.put("type", "1");
+        GetRoundPicResults  getRoundPicResults = new GetRoundPicResults(this);
+        getRoundPicResults.getRoundPic(map2);
 
     }
 
     @Override
     protected void initDataFromServer() {
-        homeBanner.setImageLoader(new GlideImageLoader());
-        homeBanner.setImages(imgList);
-        homeBanner.setDelayTime(5000);
-        homeBanner.setIndicatorGravity(BannerConfig.CENTER);
-        homeBanner.start();
 
     }
 
@@ -198,16 +193,25 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
     }
 
     //点击事件
-    @OnClick({R.id.home_saoyisao, R.id.home_city_text})
+    @OnClick({R.id.home_saoyisao, R.id.home_city_text, R.id.home_Location,R.id.switch_editText})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             //PopuWindow按钮
             case R.id.home_saoyisao:
                 createPopuWindow();
                 break;
+            //城市列表按钮
             case R.id.home_city_text:
                 Intent it = new Intent(getActivity(), CityActivity.class);
                 startActivity(it);
+                break;
+            //定位
+            case R.id.home_Location:
+                break;
+            //搜索
+            case R.id.switch_editText:
+               Intent it2 = new Intent(getActivity(), SwitchActivity.class);
+                startActivity(it2);
                 break;
         }
 
@@ -227,7 +231,7 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
     public void createPopuWindow() {
         final View popView = getActivity().getLayoutInflater().inflate(R.layout.popuwindow_view, null);
 
-        final PopupWindow window = new PopupWindow(popView,270, 212);
+        final PopupWindow window = new PopupWindow(popView, 270, 212);
         // TODO: 2016/5/17 设置可以获取焦点
         window.setFocusable(true);
         // TODO: 2016/5/17 设置背景颜色
@@ -260,9 +264,46 @@ public class HomePageFragment extends BaseFragment implements INearShopsView {
             }
         });
     }
+
+    //请求结果
     @Override
     public void requestSuccess(String results) {
-        Log.d("NearShops",results.toString());
+        Log.d("NearShops", results.toString());
+
+
+        //横向RecycleView适配
+        List<String> slist = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            slist.add("" + i);
+        }
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        homeHorizontalRecycle.setLayoutManager(layoutManager);
+        HomeHorizontaRecycleAdapter adapter2 = new HomeHorizontaRecycleAdapter(getActivity(), slist);
+        homeHorizontalRecycle.setAdapter(adapter2);
+
+    }
+
+
+    @Override
+    public void roundResults(String results) {
+//        Snackbar.make(getView(), results.toString(),Snackbar.LENGTH_LONG);
+        Log.e("sssssssss",results.toString());
+
+        Gson gson = new Gson();
+        RoundPicBean roundPicBean = gson.fromJson(results, RoundPicBean.class);
+        List<RoundPicBean.ObjectBean.ListBean> list = roundPicBean.object.list;
+        roundList = new ArrayList<>();
+        for (int i =0;i<list.size();i++){
+            String picture = list.get(i).picture;
+            roundList.add(picture);
+        }
+        homeBanner.setImageLoader(new GlideImageLoader());
+        homeBanner.setImages(roundList);
+        homeBanner.setDelayTime(5000);
+        homeBanner.setIndicatorGravity(BannerConfig.CENTER);
+        homeBanner.start();
+
     }
 }
 

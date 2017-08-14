@@ -58,6 +58,8 @@ public class GetNearShopRequest implements IGetNearShopRequest {
                     }
                 });
     }
+
+
     public interface CallBack {
         void requestSuccess(String resutls);
     }

@@ -57,7 +57,8 @@
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.RegisterActivity" />
         <activity android:name=".view.activity.CityActivity" />
-        <activity android:name=".view.activity.TwoDimensionalCodeActivity"></activity>
+        <activity android:name=".view.activity.TwoDimensionalCodeActivity" />
+        <activity android:name=".view.activity.SwitchActivity"></activity>
     </application>
 
 </manifest>

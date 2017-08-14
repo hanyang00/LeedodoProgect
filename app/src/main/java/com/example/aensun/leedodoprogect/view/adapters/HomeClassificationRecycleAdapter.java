@@ -42,12 +42,18 @@ public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeC
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.classificText.setText(list.get(position).categoryName);
         //圆形加载图片
         RequestOptions requestOptions = RequestOptions.circleCropTransform();
         Glide.with(context).load(list.get(position).picture).apply(requestOptions).into(holder.classificImg);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onItemClick.itemClick(position);
+            }
+        });
     }
 
     @Override
@@ -67,4 +73,12 @@ public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeC
         }
     }
 
+    public interface RecyclesetOnItemClick{
+        void itemClick(int position);
+    }
+    RecyclesetOnItemClick onItemClick;
+
+    public  HomeClassificationRecycleAdapter(RecyclesetOnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
 }

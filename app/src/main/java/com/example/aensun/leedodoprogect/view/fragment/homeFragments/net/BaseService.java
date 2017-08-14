@@ -16,7 +16,7 @@ public interface BaseService {
 
     //首页分类
     @POST("listCategories")
-    Observable<String> getClassificationRequst(@QueryMap Map<String,String> map);
+    Observable<String> getClassificationRequst(@QueryMap Map<String, String> map);
 
     //城市列表
     @POST("/findAllCityList")
@@ -24,6 +24,10 @@ public interface BaseService {
 
     //附近旺铺
     @POST("/near/shops")
-    Observable<String> getNearShops(@QueryMap Map<String,String> map);
+    Observable<String> getNearShops(@QueryMap Map<String, String> map);
+
+    //轮播图
+    @POST("/listRecommendPositions")
+    Observable<String> getRoundPic(@QueryMap Map<String, String> map);
 
 }
