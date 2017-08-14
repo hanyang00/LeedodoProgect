@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/duihuakuang"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_SaoyiSao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:src="@mipmap/saoyisaoo"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:text="扫一扫"
+            android:textColor="#666666"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/sp18" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/pop_PayMa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+
+            android:src="@mipmap/fukuanma" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="付款码"
+            android:layout_marginLeft="@dimen/dp15"
+            android:textColor="#666666"
+
+            android:textSize="@dimen/sp18" />
+    </LinearLayout>
+
+
+</LinearLayout>
