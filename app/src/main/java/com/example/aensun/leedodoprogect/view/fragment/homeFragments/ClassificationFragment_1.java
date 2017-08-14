@@ -1,6 +1,7 @@
 package com.example.aensun.leedodoprogect.view.fragment.homeFragments;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static android.R.attr.duration;
 
 /**
  * date:2017/8/11
@@ -86,8 +89,12 @@ public class ClassificationFragment_1 extends BaseFragment implements IResponesV
             HomeClassificationRecycleAdapter classifAdapter = new HomeClassificationRecycleAdapter(getActivity(), classificList);
             homeClassificationRecycle.setAdapter(classifAdapter);
 
-
-
+            classifAdapter.HomeClassificationRecycleAdapter(new HomeClassificationRecycleAdapter.RecyclesetOnItemClick() {
+                @Override
+                public void itemClick(int position) {
+                    Snackbar.make(getView(),""+position, duration).show();
+                }
+            });
         }
 
     }
