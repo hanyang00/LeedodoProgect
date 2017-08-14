@@ -78,7 +78,7 @@ public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeC
     }
     RecyclesetOnItemClick onItemClick;
 
-    public  HomeClassificationRecycleAdapter(RecyclesetOnItemClick onItemClick) {
+    public void HomeClassificationRecycleAdapter(RecyclesetOnItemClick onItemClick) {
         this.onItemClick = onItemClick;
     }
 }

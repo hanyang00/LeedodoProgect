@@ -37,7 +37,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * function:
  */
 
-public class ClassificationFragment_1 extends BaseFragment {
+public class ClassificationFragment_1 extends BaseFragment implements IResponesView {
 
 
     @Bind(R.id.home_Classification_Recycle)
@@ -131,8 +131,12 @@ public class ClassificationFragment_1 extends BaseFragment {
             HomeClassificationRecycleAdapter classifAdapter = new HomeClassificationRecycleAdapter(getActivity(), classificList);
             homeClassificationRecycle.setAdapter(classifAdapter);
 
-
-
+            classifAdapter.HomeClassificationRecycleAdapter(new HomeClassificationRecycleAdapter.RecyclesetOnItemClick() {
+                @Override
+                public void itemClick(int position) {
+                    Snackbar.make(getView(),""+position, duration).show();
+                }
+            });
         }
 
     }
