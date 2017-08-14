@@ -135,4 +135,12 @@
         android:layout_marginTop="@dimen/dp15"
         android:text="忘记密码？"
         android:textColor="@color/colorMyEditHint" />
+
+    <TextView
+        android:id="@+id/login_check"
+        android:textColor="@color/colorRed"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

@@ -173,6 +173,13 @@
         android:text="其他方式登录"
         android:textColor="@color/colorMyEditHint" />
 
+    <TextView
+        android:id="@+id/register_check"
+        android:textColor="@color/colorRed"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
