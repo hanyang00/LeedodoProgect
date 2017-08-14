@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
@@ -37,26 +35,26 @@ public class NerTabLayoutFragment extends Fragment {
         /**
          * 视图和控件
          */
-        view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
-        listview=(ListView)view.findViewById(R.id.nerby_tab_listview);
         /**
          * 接收传过来的信息  操作
          */
-//        Bundle arguments = getArguments();
-//
-//        String name = arguments.getString(KEY1);
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),"文本呀呀呀呀呀",Toast.LENGTH_SHORT).show();
-            }
-        });
-        listview.setAdapter(new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(),getActivity()));
-
+        Bundle arguments = getArguments();
+        String name = arguments.getString(KEY1);
+        //判断是不是全部  的  点击
+        if(name.equals("全部")){
+            view=View.inflate(getActivity(), R.layout.nerby_tab_all_fragment, null);
+        }else{
+            view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
+            listview=(ListView)view.findViewById(R.id.nerby_tab_listview);
+            listview.setAdapter(new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(),getActivity()));
+        }
         return view;
     }
 
-    public static Fragment getFragment(String url) {
+    /**
+     *静态方法  供外界调用
+     */
+    public static Fragment getFragment(String url,String title) {
         /**
          * 实例化Fragment
          * 进行赋值
@@ -66,7 +64,7 @@ public class NerTabLayoutFragment extends Fragment {
 
         Bundle bundle = new Bundle();
 
-        bundle.putString(KEY1, url);
+        bundle.putString(KEY1, title);
 
         fragment.setArguments(bundle);
 
