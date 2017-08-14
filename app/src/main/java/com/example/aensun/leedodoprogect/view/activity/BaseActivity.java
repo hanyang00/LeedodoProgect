@@ -24,7 +24,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
     protected abstract int setContentViews();
 
     public void initView() {
