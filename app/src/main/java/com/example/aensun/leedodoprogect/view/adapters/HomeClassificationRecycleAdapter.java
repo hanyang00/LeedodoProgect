@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.ClassificBean;
 
@@ -22,12 +23,15 @@ import java.util.List;
 
 public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeClassificationRecycleAdapter.ViewHolder> {
 
+
     Context context;
     List<ClassificBean.ObjectBean.ListBean> list;
+
 
     public HomeClassificationRecycleAdapter(Context context, List<ClassificBean.ObjectBean.ListBean> list) {
         this.context = context;
         this.list = list;
+
     }
 
     @Override
@@ -38,9 +42,18 @@ public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeC
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.classificText.setText(list.get(position).categoryName);
-        Glide.with(context).load(list.get(position).picture).into(holder.classificImg);
+        //圆形加载图片
+        RequestOptions requestOptions = RequestOptions.circleCropTransform();
+        Glide.with(context).load(list.get(position).picture).apply(requestOptions).into(holder.classificImg);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onItemClick.itemClick(position);
+            }
+        });
     }
 
     @Override
@@ -60,4 +73,12 @@ public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeC
         }
     }
 
+    public interface RecyclesetOnItemClick{
+        void itemClick(int position);
+    }
+    RecyclesetOnItemClick onItemClick;
+
+    public  HomeClassificationRecycleAdapter(RecyclesetOnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
 }

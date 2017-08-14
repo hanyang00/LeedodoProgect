@@ -26,9 +26,9 @@
 
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
-        android:name=".view.activity.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -60,6 +60,9 @@
         <activity android:name=".view.activity.ConsumptionActivity"/>
         <activity android:name=".view.activity.SecuritySettingActivity"/>
         <activity android:name=".view.activity.ReplacePhoneActivity"/>
+        <activity android:name=".view.activity.CityActivity" />
+        <activity android:name=".view.activity.TwoDimensionalCodeActivity" />
+        <activity android:name=".view.activity.SwitchActivity"></activity>
     </application>
 
 </manifest>
