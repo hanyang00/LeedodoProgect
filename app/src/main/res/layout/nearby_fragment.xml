@@ -3,32 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-
-    android:layout_height="600dp">
-    <!--整体的滑动布局-->
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="vertical"
-        >
-        <!--整体的布局 才开始-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways"
-            >
-            <!--百度地图-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp150">
-
-            </LinearLayout>
-            <!--附近旺铺-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp70">
     android:layout_height="wrap_content">
     <!--整体的滑动布局-->
     <android.support.design.widget.AppBarLayout
