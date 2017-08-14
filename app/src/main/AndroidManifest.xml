@@ -45,6 +45,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name=".view.activity.DateActivity" />
+        <activity android:name=".view.activity.RebatesThatActivity" />
+        <activity android:name=".view.activity.RecordsQueryActivity"></activity>
 
         <activity android:name=".view.activity.LoginActivity"/>
         <activity android:name=".view.activity.RegisterActivity"/>
@@ -52,6 +57,9 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="pr8lit7KGEnIkxLX0XlFxmXoAF4yypdA" />
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
+        <activity android:name=".view.activity.ConsumptionActivity"/>
+        <activity android:name=".view.activity.SecuritySettingActivity"/>
+        <activity android:name=".view.activity.ReplacePhoneActivity"/>
     </application>
 
 </manifest>
