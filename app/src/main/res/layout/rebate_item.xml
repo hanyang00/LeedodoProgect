@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:padding="@dimen/dp1"
         android:orientation="vertical"
+        android:background="@drawable/rebate_item_frame"
         android:layout_height="@dimen/dp85">
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,6 +82,9 @@
             </RelativeLayout>
 
         </LinearLayout>
-        
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/dp15" />
 </LinearLayout>
