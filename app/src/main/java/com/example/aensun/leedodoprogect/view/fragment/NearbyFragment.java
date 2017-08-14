@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.adapters.NerByTabLayoutFragmentPageAdapter;
-import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerbyBean.RecommendBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.RecommendBean;
 
 import java.util.List;
 

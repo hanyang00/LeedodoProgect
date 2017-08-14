@@ -1,4 +1,4 @@
-package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerbyBean;
+package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
