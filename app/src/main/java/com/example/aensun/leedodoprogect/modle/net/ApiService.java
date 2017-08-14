@@ -1,5 +1,6 @@
 package com.example.aensun.leedodoprogect.modle.net;
 
+import com.example.aensun.leedodoprogect.modle.bean.LoginPhoneBean;
 import com.example.aensun.leedodoprogect.modle.bean.PhoneCodeBean;
 
 
@@ -36,5 +37,15 @@ public interface ApiService {
      */
     @POST("user/register")
     Observable<PhoneCodeBean> registerPhone(@Query("phone") String phone, @Query("password") String password, @Query("code") String code, @Query("merchant") int merchant);
+
+    /**
+     * 登录
+     * @param phone
+     * @param password
+     * @param merchant
+     * @return
+     */
+    @POST("user/login")
+    Observable<LoginPhoneBean> loginPhone(@Query("phone") String phone, @Query("password")String password, @Query("merchant") int merchant);
 
 }

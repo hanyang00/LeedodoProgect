@@ -40,6 +40,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.github.Othershe:CalendarView:1.0.1'
     testCompile 'junit:junit:4.12'
 }
