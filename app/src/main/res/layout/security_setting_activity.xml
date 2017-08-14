@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="@color/backgrounds"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
     <RelativeLayout
@@ -12,14 +13,14 @@
         android:background="@color/white">
 
         <ImageView
-            android:layout_marginLeft="@dimen/dp5"
             android:id="@+id/login_break"
             android:layout_width="@dimen/dp34"
             android:layout_height="@dimen/dp34"
-            android:background="@mipmap/backss"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp5"
+            android:background="@mipmap/backss" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -140,4 +141,25 @@
 
     </RelativeLayout>
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:id="@+id/security_sign_out"
+            android:textColor="@color/colorMyEditHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/shapro_sign_out"
+            android:text="退出登录" />
+    </RelativeLayout>
 </LinearLayout>

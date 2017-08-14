@@ -1,6 +1,9 @@
 package com.example.aensun.leedodoprogect.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +28,7 @@ import io.reactivex.disposables.Disposable;
  * Created by aensun on 2017-08-11.
  */
 
-public class RegisterActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener{
+public class RegisterActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener {
 
 
     private static final String TAG = "RegisterActivity";
@@ -63,13 +66,13 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
     @Override
     protected void initData() {
         registerLooks.setOnCheckedChangeListener(this);
+        registerLooks.setChecked(true);
 
 
     }
 
 
-
-    @OnClick({R.id.register_break, R.id.register_login_btn,R.id.register_other,R.id.register_agreement,R.id.register_obtain})
+    @OnClick({R.id.register_break, R.id.register_login_btn, R.id.register_other, R.id.register_agreement, R.id.register_obtain})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.register_break:
@@ -105,14 +108,15 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
 
             @Override
             public void onNext(@NonNull PhoneCodeBean phoneCodeBean) {
+                if(phoneCodeBean!=null){
                 String descirption = phoneCodeBean.getDescirption();
                 Toast.makeText(RegisterActivity.this, descirption, Toast.LENGTH_SHORT).show();
-
+                }
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.e(TAG,e.getMessage());
+                Log.e(TAG, e.getMessage());
 
             }
 
@@ -120,7 +124,7 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
             public void onComplete() {
 
             }
-        },phone,0,1);
+        }, phone, 0, 1);
 
     }
 
@@ -129,34 +133,47 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
         passWord = edRegisterPassword.getText().toString().trim();
         phoneCode = edRegisterCode.getText().toString().trim();
         HttpMethodsPresenter.getInstance().getRegisterPhone(new Observer<PhoneCodeBean>() {
-                @Override
-                public void onSubscribe(@NonNull Disposable d) {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
 
+            }
+
+            @Override
+            public void onNext(@NonNull PhoneCodeBean phoneCodeBean) {
+                Log.d(TAG, phoneCodeBean.getDescirption());
+                if (phoneCodeBean != null) {
+                    if (phoneCodeBean.getDescirption().equals("系统处理成功")) {
+                        Intent intent = getIntent();
+                        intent.putExtra("phone", phone);
+                        intent.putExtra("passWord", passWord);
+                        setResult(1, intent);
+                        finish();
+                    }
                 }
+            }
 
-                @Override
-                public void onNext(@NonNull PhoneCodeBean phoneCodeBean) {
-                    Toast.makeText(RegisterActivity.this, phoneCodeBean.getDescirption(), Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onError(@NonNull Throwable e) {
 
-                @Override
-                public void onError(@NonNull Throwable e) {
+            }
 
-                }
+            @Override
+            public void onComplete() {
 
-                @Override
-                public void onComplete() {
-
-                }
-            },phone, passWord,phoneCode,0);
+            }
+        }, phone, passWord, phoneCode, 0);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
-            edRegisterPassword.setText("********");
-        }else{
+        if (isChecked) {
+            //
+            edRegisterPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            edRegisterPassword.setSelection(edRegisterPassword.length());
 
+        } else {
+            edRegisterPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            edRegisterPassword.setSelection(edRegisterPassword.length());
         }
 
     }
