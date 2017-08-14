@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.example.aensun.leedodoprogect.R;
 
@@ -24,7 +24,7 @@ public class NerTabLayoutFragment extends Fragment {
     /**
      * 控件和视图
      */
-    TextView text;
+    ListView listview;
     private View view;
 
     @Nullable
@@ -34,16 +34,13 @@ public class NerTabLayoutFragment extends Fragment {
          * 视图和控件
          */
         view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
-        text = (TextView) view.findViewById(R.id.texxxxxxxxxxxx);
 
         /**
          * 接收传过来的信息  操作
          */
-        Bundle arguments = getArguments();
-
-        String name = arguments.getString(KEY1);
-
-        text.setText(name);
+//        Bundle arguments = getArguments();
+//
+//        String name = arguments.getString(KEY1);
 
         return view;
     }
