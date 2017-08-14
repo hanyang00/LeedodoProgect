@@ -70,12 +70,17 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        //创建保存登录的状态
         getLoginStatus();
+        //显示隐藏用户 手机号
         operationUserNamePhone();
 
     }
 
+    /**
+     * 显示隐藏用户名 手机号，
+     * 赋值
+     */
     private void operationUserNamePhone() {
         login = sharedPreferences.getBoolean("login", false);
         if (login) {
@@ -92,6 +97,12 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+    /**
+     *
+     * 显示隐藏的方法
+     * @param name
+     * @param maskNumber
+     */
     private void addUser(String name, String maskNumber) {
         userNowLogin.setVisibility(View.GONE);
         nowUserName.setVisibility(View.VISIBLE);
@@ -164,6 +175,12 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 接收回传过来的用户名密码
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -177,12 +194,18 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 创建sharedPreferences
+     */
     public void getLoginStatus() {
         sharedPreferences = getActivity().getSharedPreferences("user", MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
 
 
+    /**
+     * 绑定EventBus
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -192,6 +215,9 @@ public class MyFragment extends BaseFragment {
 
     }
 
+    /**
+     * 解绑EventBus
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -200,7 +226,10 @@ public class MyFragment extends BaseFragment {
         }
     }
 
-
+    /**
+     * 接收传过来的值
+     * @param str
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(String str) {
         getLoginStatus();

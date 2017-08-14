@@ -2,6 +2,8 @@ package com.example.aensun.leedodoprogect.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.modle.bean.PhoneCodeBean;
 import com.example.aensun.leedodoprogect.presenter.HttpMethodsPresenter;
+import com.example.aensun.leedodoprogect.utils.CheckUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -54,6 +57,8 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
     EditText edRegisterCode;
     @Bind(R.id.register_looks)
     CheckBox registerLooks;
+    @Bind(R.id.register_check)
+    TextView registerCheck;
     private String phone;
     private String phoneCode;
     private String passWord;
@@ -67,7 +72,55 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
     protected void initData() {
         registerLooks.setOnCheckedChangeListener(this);
         registerLooks.setChecked(true);
+        /**
+         * 输入框监听事件
+         */
+        edRegisterPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               boolean checkPhone = CheckUtils.checkPhoneNumber(s.toString());
+                if(checkPhone){
+                    registerCheck.setText("");
+                }else{
+                    registerCheck.setText("请输入正确的手机格式");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        /**
+         * 输入框监听事件
+         */
+        edRegisterPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               boolean checkPassWord = CheckUtils.checkUsername(s.toString());
+                if(checkPassWord){
+                    registerCheck.setText("");
+                }else{
+                    registerCheck.setText("请输入6-12位字母或数字,不可以有？#* 等特殊符号");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -98,6 +151,9 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
         }
     }
 
+    /**
+     *网络请求获取短信验证码
+     */
     public void getPhoneCodes() {
         phone = edRegisterPhone.getText().toString().trim();
         HttpMethodsPresenter.getInstance().getPhoneCode(new Observer<PhoneCodeBean>() {
@@ -128,7 +184,9 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
 
     }
 
-
+    /**
+     * 网络请求登录
+     */
     public void getRegisterPhone() {
         passWord = edRegisterPassword.getText().toString().trim();
         phoneCode = edRegisterCode.getText().toString().trim();
@@ -164,6 +222,11 @@ public class RegisterActivity extends BaseActivity implements CompoundButton.OnC
         }, phone, passWord, phoneCode, 0);
     }
 
+    /**
+     * 显示隐藏密码
+     * @param buttonView
+     * @param isChecked
+     */
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
