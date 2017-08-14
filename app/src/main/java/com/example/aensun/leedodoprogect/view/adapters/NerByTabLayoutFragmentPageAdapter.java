@@ -7,8 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerTabLayoutFragment;
 
 /**
- * 类描述：
- * 创建人：yekh
+ * 类描述：TabLayout的适配器
  * 创建时间：2017/8/12 17:31
  */
 public class NerByTabLayoutFragmentPageAdapter extends FragmentPagerAdapter {
@@ -25,10 +24,13 @@ public class NerByTabLayoutFragmentPageAdapter extends FragmentPagerAdapter {
         return strs[position];
     }
 
+    /**
+     * 根据不同的Title返回不同的Franmengt
+     */
     @Override
     public Fragment getItem(int position) {
-
-        return NerTabLayoutFragment.getFragment(strs[position]);
+        //Fragment返回不同Fragment的静态方法
+        return NerTabLayoutFragment.getFragment(null,strs[position]);
     }
 
     @Override
