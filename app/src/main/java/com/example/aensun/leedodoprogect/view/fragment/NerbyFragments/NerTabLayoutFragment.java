@@ -35,6 +35,19 @@ public class NerTabLayoutFragment extends Fragment {
         /**
          * 视图和控件
          */
+        view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
+
+        /**
+         * 接收传过来的信息  操作
+         */
+//        Bundle arguments = getArguments();
+//
+//        String name = arguments.getString(KEY1);
+
+        return view;
+    }
+
+    public static Fragment getFragment(String url) {
         /**
          * 接收传过来的信息  操作
          */
@@ -64,7 +77,7 @@ public class NerTabLayoutFragment extends Fragment {
 
         Bundle bundle = new Bundle();
 
-        bundle.putString(KEY1, title);
+        bundle.putString(KEY1, url);
 
         fragment.setArguments(bundle);
 

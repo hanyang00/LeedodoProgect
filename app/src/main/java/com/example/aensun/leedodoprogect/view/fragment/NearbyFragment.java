@@ -2,12 +2,17 @@ package com.example.aensun.leedodoprogect.view.fragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
@@ -18,6 +23,10 @@ import com.bumptech.glide.Glide;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.adapters.NerByTabLayoutFragmentPageAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.RecommendBean;
+
+import java.util.List;
+import com.example.aensun.leedodoprogect.view.adapters.NerByTabLayoutFragmentPageAdapter;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.RecommendBean;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.MyLocationListener;
 
 import java.util.List;
@@ -25,6 +34,20 @@ import java.util.List;
 /**
  * Created by aensun on 2017-08-10.
  */
+
+public class NearbyFragment extends BaseFragment {
+
+    /**
+     * 声明控件
+     */
+    TabLayout tab;
+    ViewPager vp;
+    ImageView imv1, imv2, imv3;
+    TextView name1, name2, name3, address1, address2, address3;
+    /**
+     * View视图
+     */
+    private View view;
 
 public class NearbyFragment extends BaseFragment {
     private MapView mMapView;
@@ -183,4 +206,5 @@ public class NearbyFragment extends BaseFragment {
         //在fragment执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
         mMapView.onPause();
     }
+
 }
