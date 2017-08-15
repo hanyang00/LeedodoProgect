@@ -11,10 +11,14 @@
         android:background="@color/white">
 
         <ImageView
+            android:layout_marginLeft="@dimen/dp5"
             android:id="@+id/login_break"
-            android:layout_width="@dimen/dp44"
-            android:layout_height="@dimen/dp44"
-            android:background="@mipmap/backss" />
+            android:layout_width="@dimen/dp34"
+            android:layout_height="@dimen/dp34"
+            android:background="@mipmap/backss"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"

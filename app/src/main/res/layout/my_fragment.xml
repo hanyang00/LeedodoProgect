@@ -8,9 +8,9 @@
         android:id="@+id/user_breakgrund"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp190"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/user_now_login"
@@ -26,9 +26,8 @@
         android:id="@+id/user_collection_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/user_now_login"
         android:layout_marginLeft="@dimen/dp50"
-        android:layout_marginTop="@dimen/dp37"
+        android:layout_marginTop="@dimen/dp112"
         android:src="@mipmap/shoukuanma" />
 
     <ImageView
@@ -57,6 +56,7 @@
         android:layout_marginLeft="@dimen/dp15"
         android:layout_marginTop="@dimen/dp27"
         android:text="用户名"
+        android:textColor="@color/colorLight"
         android:textSize="@dimen/sp14" />
 
     <TextView
@@ -69,6 +69,7 @@
         android:layout_toEndOf="@+id/now_user_name"
         android:layout_toRightOf="@+id/now_user_name"
         android:text="1213242"
+        android:textColor="@color/colorLight"
         android:textSize="@dimen/sp14" />
 
     <TextView
@@ -79,6 +80,7 @@
         android:layout_marginLeft="@dimen/dp15"
         android:layout_marginTop="@dimen/dp15"
         android:text="手机号"
+        android:textColor="@color/colorLight"
         android:textSize="@dimen/sp14" />
 
     <TextView
@@ -90,6 +92,7 @@
         android:layout_below="@+id/user_name"
         android:layout_marginTop="@dimen/dp15"
         android:text="158****1639"
+        android:textColor="@color/colorLight"
         android:textSize="@dimen/sp14" />
 
 
