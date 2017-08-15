@@ -34,42 +34,105 @@
             <!--ViewPager+小圆点-->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp167">
+                android:layout_height="@dimen/dp200">
+
                 <android.support.v4.view.ViewPager
                     android:id="@+id/home_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp10"></android.support.v4.view.ViewPager>
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="#23de9ce7"></android.support.v4.view.ViewPager>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/dp5"
-                    >
+                    android:layout_marginBottom="@dimen/dp5">
+
                     <View
                         android:id="@+id/dot_1"
                         android:layout_width="@dimen/dp7"
                         android:layout_height="@dimen/dp7"
-                        android:background="@drawable/home_dot"
-                        android:layout_margin="@dimen/dp5"></View>
+                        android:layout_margin="@dimen/dp5"
+                        android:background="@drawable/home_dot"></View>
+
                     <View
                         android:id="@+id/dot_2"
                         android:layout_width="@dimen/dp7"
                         android:layout_height="@dimen/dp7"
-                        android:background="@drawable/home_dot2"
-                        android:layout_margin="@dimen/dp5"></View>
+                        android:layout_margin="@dimen/dp5"
+                        android:background="@drawable/home_dot2"></View>
                 </LinearLayout>
 
             </RelativeLayout>
             <!--ViewPager分类-->
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp183"
                 android:layout_marginTop="@dimen/dp10"
-                android:background="#22ffff"></RelativeLayout>
+                android:background="#23de9ce7">
+
+                <ImageView
+                    android:id="@+id/img_one"
+                    android:layout_width="@dimen/dp187"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/img_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp1"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <ImageView
+                            android:id="@+id/ime_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toRightOf="@id/img_two"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_launcher" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/img_four"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <ImageView
+                            android:id="@+id/ime_five"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_launcher" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <!--附近旺铺-->
             <LinearLayout
@@ -92,6 +155,7 @@
                         android:text="附近旺铺" />
 
                     <RelativeLayout
+                        android:id="@+id/home_Location"
                         android:layout_width="@dimen/dp44"
                         android:layout_height="@dimen/dp44"
                         android:layout_alignParentRight="true">
@@ -99,9 +163,9 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
+                            android:src="@mipmap/fujindingwei"
                             android:layout_centerVertical="true"
-                            android:src="@mipmap/fujindingwei" />
+                            android:layout_centerHorizontal="true" />
                     </RelativeLayout>
 
                 </RelativeLayout>
@@ -109,25 +173,49 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/home_Horizontal_Recycle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#b83a2d3f"></android.support.v7.widget.RecyclerView>
+                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
 
-            <!--TabLayout-->
-            <android.support.design.widget.TabLayout
-                android:id="@+id/home_tablayou"
+            <!--RadioGroup-->
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp75"
-                android:layout_marginTop="@dimen/dp10"></android.support.design.widget.TabLayout>
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/home_tablelayout_ViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp200"></android.support.v4.view.ViewPager>
+                android:layout_height="@dimen/dp44"
+                android:orientation="horizontal"
+                android:background="#23de9ce7">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="美食"
+                    style="@style/RedioGroup"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="休闲娱乐"
+                    style="@style/RedioGroup"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="生活服务"
+                    style="@style/RedioGroup"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="酒店"
+                    style="@style/RedioGroup"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="全部"
+                    style="@style/RedioGroup"/>
+                
+            </RadioGroup>
 
         </LinearLayout>
     </ScrollView>
+
+
+    <!--顶部-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,27 +229,54 @@
             android:layout_marginRight="@dimen/dp27"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="北京"
-                android:textColor="#333333"
-                android:textSize="14sp" />
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/down_jiantou" />
+                android:alpha="0.7"
+                android:background="@mipmap/beijingyuanjiao">
+
+                <TextView
+                    android:id="@+id/home_city_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:text="北京"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alpha="0.7"
+                    android:src="@mipmap/down_jiantou" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
+        <LinearLayout
 
-        <ImageView
             android:layout_width="@dimen/dp183"
             android:layout_height="@dimen/dp21"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/home_sousuo" />
+            android:alpha="0.7"
+            android:background="@mipmap/sousuo"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/switch_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:alpha="0.7"
+                android:background="@null"
+                android:textSize="@dimen/sp12" />
+
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/home_saoyisao"
@@ -169,7 +284,9 @@
             android:layout_height="@dimen/dp30"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/dp15"
-            android:src="@mipmap/home_saosao" />
+            android:alpha="0.7"
+            android:background="@mipmap/beijingyuan"
+            android:src="@mipmap/saoyisaoo" />
 
         <ImageView
             android:id="@+id/home_naozhong"
@@ -178,7 +295,9 @@
             android:layout_marginLeft="@dimen/dp20"
             android:layout_marginRight="@dimen/dp5"
             android:layout_toLeftOf="@+id/home_saoyisao"
-            android:src="@mipmap/home_xiaoxi" />
+            android:alpha="0.7"
+            android:background="@mipmap/beijingyuan"
+            android:src="@mipmap/xiaoxi" />
 
     </RelativeLayout>
 </RelativeLayout>

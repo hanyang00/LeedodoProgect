@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounds"
+    android:orientation="vertical"
     tools:context="com.example.aensun.leedodoprogect.view.activity.RebatesThatActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp44"
@@ -13,6 +16,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -24,4 +28,306 @@
             android:gravity="center"
             android:text="返利详情" />
     </LinearLayout>
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp85"
+        android:layout_marginTop="@dimen/dp10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp85"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/dp1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp24"
+                android:background="@color/rebateitemcolor">
+
+                <TextView
+                    android:id="@+id/particulars_issue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:text="A2017023"
+                    android:textColor="@color/colorRebateHeadText"
+                    android:textSize="@dimen/dp11" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/particulars_change_the_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:text="2017年6月12日兑换"
+                        android:textColor="@color/colorRebateHeadText" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp65"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/particulars_existing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:drawableLeft="@mipmap/xianyou"
+                    android:drawablePadding="@dimen/dp5"
+                    android:gravity="center_vertical"
+                    android:text="现有"
+                    android:textColor="@color/existingtextcolor"
+                    android:textSize="@dimen/dp14" />
+
+                <TextView
+                    android:id="@+id/particulars_available_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="50.00"
+                    android:textColor="@color/rebateitemcolor"
+                    android:textSize="@dimen/dp20" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/slogan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:text="有便宜不占,和咸鱼有什么区别?"
+                        android:textColor="@color/colorlightTimeText" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp5"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:src="@mipmap/gengduo" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="积分规则"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp15"
+            android:textSize="@dimen/dp14"
+            android:textColor="@color/existingtextcolor"
+            android:layout_height="@dimen/dp30" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp1"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="用户在利多多商户消费即可获得积分。"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp15"
+            android:text="单笔在1-30000元之间的消费会获得A级积分。"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="不同级别的积分不能通用。"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp15"
+            android:text="退款成功后以获得积分会相应扣除。"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp15"
+            android:text="7天内获得积分处于冻结状态，不参与返利兑换。"
+            android:layout_marginBottom="@dimen/dp13"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="兑换规则"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp15"
+            android:textSize="@dimen/dp14"
+            android:textColor="@color/existingtextcolor"
+            android:layout_height="@dimen/dp30" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="再兑换日达到兑换所需积分即可。" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="单笔在1-30000元之间的消费会获得A级积分即可兑换返利计划。" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="兑换所需积分每次自动变化。" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="用户可通过提示文字了解本次兑换的完成度。" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:lineSpacingExtra="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp13"
+            android:text="用户积分超过两倍兑换所需积分时自动兑换两份返利计划，以此类推，不设上限。" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="返利规则"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp15"
+            android:textSize="@dimen/dp14"
+            android:textColor="@color/existingtextcolor"
+            android:layout_height="@dimen/dp30" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp1"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="兑换的返利计划将分为多起返还给用户。"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp15"
+            android:text="反例时大道将代缴税费。"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp13"
+            android:text="返利将账后即可提现。"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="参考案例"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp15"
+            android:textSize="@dimen/dp14"
+            android:textColor="@color/existingtextcolor"
+            android:layout_height="@dimen/dp30" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp1"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp13"
+            android:text="某人每日在商户A消费50元获得5积分，到兑换日共累计为500积分，到兑换其中35
+            分为冻结状态。到兑换日用400积分兑换了20元返利，分12期发放。
+            此人当天剩余积分为500-400=100分，获得返利20/12=1.66元，且此后每隔一段时间还可获得1.66元，共计12次。"
+            />
+    </LinearLayout>
+
+</LinearLayout>

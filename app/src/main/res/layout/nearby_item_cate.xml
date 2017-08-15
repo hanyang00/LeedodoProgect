@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+    <!--条目布局-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp17"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp17"
+        >
+        <!--图片显示-->
+        <ImageView
+            android:id="@+id/newby_item_product_imv"
+            android:layout_width="@dimen/dp90"
+            android:layout_height="@dimen/dp70"
+            android:background="#a47676"
+            />
+        <!--商品信息 名称及价位 .....-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/newby_item_product_imv"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <!--名称的 LinearLayout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/newby_item_product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="789咖啡"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp14"
+                    />
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textSize="@dimen/sp12"-->
+                <!--android:text="￥45/人"-->
+                <!--android:layout_marginTop="@dimen/dp5"-->
+                <!--/>-->
+
+            </LinearLayout>
+            <!--价钱的LinerLayout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:text="￥ "
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp12"
+                    />
+
+                <TextView
+                    android:id="@+id/newby_item_product_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:text="价钱"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp12"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:text="/人"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp12"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp12"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="积分率 "
+                    android:textColor="#333333"
+                    android:textSize="@dimen/dp14"
+                    />
+
+                <TextView
+                    android:id="@+id/newby_item_product_jifen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15%"
+                    android:textColor="#b22020"
+                    android:textSize="@dimen/dp14"
+                    />
+
+                <TextView
+                    android:id="@+id/newby_item_product_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp60"
+                    android:text="安贞 距您  100m"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/dp14"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+<LinearLayout
+    android:id="@+id/nerby_item_favorable_onelin"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp10"
+    >
+    <ImageView
+        android:id="@+id/nerby_item_favorable_one_imv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="@dimen/dp80"
+        />
+    <TextView
+        android:id="@+id/nerby_item_favorable_one_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/dp40"
+        android:textColor="#999999"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/nerby_item_favorable_twolin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        >
+        <ImageView
+            android:id="@+id/nerby_item_favorable_two_imv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="@dimen/dp80"
+            />
+        <TextView
+            android:id="@+id/nerby_item_favorable_two_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="@dimen/dp40"
+            android:textColor="#999999"
+            />
+    </LinearLayout>
+</LinearLayout>

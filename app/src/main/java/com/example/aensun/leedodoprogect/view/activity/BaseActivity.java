@@ -8,9 +8,11 @@ import butterknife.ButterKnife;
 
 /**
  * Created by aensun on 2017-08-10.
+ *
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +22,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initData();
     }
-
 
 
     protected abstract int setContentViews();
