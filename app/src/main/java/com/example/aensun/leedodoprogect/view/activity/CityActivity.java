@@ -40,7 +40,6 @@ public class CityActivity extends BaseActivity implements ICitySponesView {
 
     @Override
     public void requestSuccess(String results) {
-//        Log.w("CITY============", results.toString());
         String json = results.toString();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -50,6 +49,8 @@ public class CityActivity extends BaseActivity implements ICitySponesView {
         list = cityBean.object;
         adapter = new CitiesAdapter(this, list);
         recyclerView.setAdapter(adapter);
+
+
 
     }
 

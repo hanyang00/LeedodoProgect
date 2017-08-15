@@ -35,6 +35,12 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    sourceSets{
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -44,6 +50,7 @@ dependencies {
     })
     compile project(':zxinglib')
     compile 'com.google.code.gson:gson:2.8.1'
+    compile files('libs/AMap3DMap_5.2.1_AMapSearch_5.2.1_AMapLocation_3.5.0_20170731.jar')
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.android.support:appcompat-v7:25.3.1'

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F2F4F5">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +19,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <com.youth.banner.Banner
                     android:id="@+id/home_banner"
                     android:layout_width="match_parent"
@@ -28,10 +26,13 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"></com.youth.banner.Banner>
-
-
             </RelativeLayout>
             <!--ViewPager+小圆点-->
+            <TextView
+                style="@style/Textbackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp200">
@@ -40,8 +41,7 @@
                     android:id="@+id/home_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp10"
-                    android:background="#23de9ce7"></android.support.v4.view.ViewPager>
+                    android:layout_marginTop="@dimen/dp10"></android.support.v4.view.ViewPager>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -68,12 +68,14 @@
             </RelativeLayout>
             <!--ViewPager分类-->
 
+            <TextView
+                style="@style/Textbackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp183"
-                android:layout_marginTop="@dimen/dp10"
-                android:background="#23de9ce7">
+                android:layout_height="@dimen/dp183">
 
                 <ImageView
                     android:id="@+id/img_one"
@@ -134,18 +136,20 @@
 
             </LinearLayout>
 
+            <TextView
+                style="@style/Textbackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10" />
             <!--附近旺铺-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp219"
-                android:layout_marginTop="@dimen/dp10"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp44"
-                    android:layout_marginTop="@dimen/dp10"
-                    android:background="#23de9ce7">
+                    android:layout_marginTop="@dimen/dp10">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -163,9 +167,9 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/fujindingwei"
+                            android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true" />
+                            android:src="@mipmap/fujindingwei" />
                     </RelativeLayout>
 
                 </RelativeLayout>
@@ -177,39 +181,64 @@
 
             </LinearLayout>
 
+            <TextView
+                style="@style/Textbackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10" />
             <!--RadioGroup-->
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp44"
-                android:orientation="horizontal"
-                android:background="#23de9ce7">
+                android:background="@drawable/groupselect"
+                android:orientation="horizontal">
+
                 <RadioButton
+                    android:id="@+id/radio_goodFood"
+                    style="@style/RedioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="美食"
-                    style="@style/RedioGroup"/>
+                    android:background="@drawable/groupselect"
+                    android:text="美食" />
+
                 <RadioButton
+                    android:id="@+id/radio_LeisurepPlay"
+                    style="@style/RedioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="休闲娱乐"
-                    style="@style/RedioGroup"/>
+                    android:background="@drawable/groupselect"
+                    android:text="休闲娱乐" />
+
                 <RadioButton
+                    android:id="@+id/radio_lifeService"
+                    style="@style/RedioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="生活服务"
-                    style="@style/RedioGroup"/>
+                    android:background="@drawable/groupselect"
+                    android:text="生活服务" />
+
                 <RadioButton
+                    android:id="@+id/radio_hotel"
+                    android:background="@drawable/groupselect"
+                    style="@style/RedioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="酒店"
-                    style="@style/RedioGroup"/>
+                    android:text="酒店" />
+
                 <RadioButton
+                    android:id="@+id/radio_All"
+                    style="@style/RedioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="全部"
-                    style="@style/RedioGroup"/>
-                
+                    android:background="@drawable/groupselect"
+                    android:text="全部" />
+
             </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:textColor="#dddddd" />
+
 
         </LinearLayout>
     </ScrollView>
