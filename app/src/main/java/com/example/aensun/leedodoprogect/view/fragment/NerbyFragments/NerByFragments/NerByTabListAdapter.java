@@ -1,4 +1,4 @@
-package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByAdapters;
+package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments;
 
 import android.content.Context;
 import android.view.View;

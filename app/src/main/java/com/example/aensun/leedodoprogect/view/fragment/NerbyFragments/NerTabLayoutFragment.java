@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
-import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByAdapters.NerByTabListAdapter;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByTabListAdapter;
 
 /**
  * 类描述：NerTabLayoutFragment
@@ -40,14 +40,10 @@ public class NerTabLayoutFragment extends Fragment {
          */
         Bundle arguments = getArguments();
         String name = arguments.getString(KEY1);
-        //判断是不是全部  的  点击
-        if(name.equals("全部")){
-            view=View.inflate(getActivity(), R.layout.nerby_tab_all_fragment, null);
-        }else{
+
             view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
             listview=(ListView)view.findViewById(R.id.nerby_tab_listview);
             listview.setAdapter(new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(),getActivity()));
-        }
         return view;
     }
 
@@ -61,13 +57,9 @@ public class NerTabLayoutFragment extends Fragment {
          * 设置Bundle
          */
         NerTabLayoutFragment fragment = new NerTabLayoutFragment();
-
         Bundle bundle = new Bundle();
-
         bundle.putString(KEY1, title);
-
         fragment.setArguments(bundle);
-
         return fragment;
     }
 

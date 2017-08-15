@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByAllFragment;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerTabLayoutFragment;
 
 /**
@@ -30,7 +31,12 @@ public class NerByTabLayoutFragmentPageAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         //Fragment返回不同Fragment的静态方法
-        return NerTabLayoutFragment.getFragment(null,strs[position]);
+        if(strs[position].equals("全部")){
+            return new NerByAllFragment();
+        }else{
+            return NerTabLayoutFragment.getFragment(null,strs[position]);
+        }
+
     }
 
     @Override

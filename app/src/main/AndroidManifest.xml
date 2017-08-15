@@ -29,7 +29,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:allowBackup="true"
+
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -51,12 +51,6 @@
         <activity android:name=".view.activity.RebatesThatActivity" />
         <activity android:name=".view.activity.RecordsQueryActivity"></activity>
 
-        <activity android:name=".view.activity.LoginActivity"/>
-        <activity android:name=".view.activity.RegisterActivity"/>
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="pr8lit7KGEnIkxLX0XlFxmXoAF4yypdA" />
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
         <activity android:name=".view.activity.ConsumptionActivity"/>
         <activity android:name=".view.activity.SecuritySettingActivity"/>
         <activity android:name=".view.activity.ReplacePhoneActivity"/>
