@@ -3,6 +3,7 @@ package com.example.aensun.leedodoprogect.view.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.aensun.leedodoprogect.R;
 import com.google.zxing.WriterException;
@@ -10,11 +11,14 @@ import com.google.zxing.common.BitmapUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class TwoDimensionalCodeActivity extends BaseActivity {
 
     @Bind(R.id.twoDimensionalImg)
     ImageView twoDimensionalImg;
+    @Bind(R.id.pay_backs)
+    RelativeLayout payBacks;
 
     @Override
     protected int setContentViews() {
@@ -47,5 +51,10 @@ public class TwoDimensionalCodeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.pay_backs)
+    public void onViewClicked() {
+        finish();
     }
 }
