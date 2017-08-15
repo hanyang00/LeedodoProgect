@@ -3,6 +3,7 @@ package com.example.aensun.leedodoprogect.view.fragment;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,12 +15,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.utils.GlideImageLoader;
 import com.example.aensun.leedodoprogect.view.activity.CityActivity;
+import com.example.aensun.leedodoprogect.view.activity.LocationActivity;
 import com.example.aensun.leedodoprogect.view.activity.SwitchActivity;
 import com.example.aensun.leedodoprogect.view.activity.TwoDimensionalCodeActivity;
 import com.example.aensun.leedodoprogect.view.adapters.HomeClassificationViewPagerAdapter;
@@ -52,7 +60,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by aensun on 2017-08-10.
  */
 
-public class HomePageFragment extends BaseFragment implements INearShopsView,IRoundPicView{
+public class HomePageFragment extends BaseFragment implements INearShopsView, IRoundPicView, AMapLocationListener {
     @Bind(R.id.home_banner)
     Banner homeBanner;
     @Bind(R.id.home_viewPager)
@@ -60,8 +68,6 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
 
     /*  @Bind(R.id.home_tablelayout_ViewPager)
       ViewPager homeTablelayoutViewPager;
-
-
       @Bind(R.id.home_tablayou)
       TabLayout homeTablayou;*/
     //扫一扫
@@ -89,6 +95,17 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
 
     //小圆点
     List<View> dotList = new ArrayList<>();
+    @Bind(R.id.radio_goodFood)
+    RadioButton radioGoodFood;
+    @Bind(R.id.radio_LeisurepPlay)
+    RadioButton radioLeisurepPlay;
+    @Bind(R.id.radio_lifeService)
+    RadioButton radioLifeService;
+    @Bind(R.id.radio_hotel)
+    RadioButton radioHotel;
+    @Bind(R.id.radio_All)
+    RadioButton radioAll;
+
     //轮播图片
     private List<String> roundList;
 
@@ -167,8 +184,8 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
         getNearShopsResults.getData(map);
         //轮播图
         Map<String, String> map2 = new HashMap<>();
-        map2.put("type", "1");
-        GetRoundPicResults  getRoundPicResults = new GetRoundPicResults(this);
+        map2.put("type", "0");
+        GetRoundPicResults getRoundPicResults = new GetRoundPicResults(this);
         getRoundPicResults.getRoundPic(map2);
 
     }
@@ -176,6 +193,26 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
     @Override
     protected void initDataFromServer() {
 
+        AMapLocationClient mlocationClient;
+        //声明mLocationOption对象
+        AMapLocationClientOption mLocationOption = null;
+        mlocationClient = new AMapLocationClient(getActivity());
+        //初始化定位参数
+        mLocationOption = new AMapLocationClientOption();
+        //设置定位监听
+        mlocationClient.setLocationListener(this);
+        //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        //设置定位间隔,单位毫秒,默认为2000ms
+        mLocationOption.setInterval(2000);
+        //设置定位参数
+        mlocationClient.setLocationOption(mLocationOption);
+        // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+        // 注意设置合适的定位时间的间隔（最小间隔支持为1000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+        // 在定位结束后，在合适的生命周期调用onDestroy()方法
+        // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+        //启动定位
+        mlocationClient.startLocation();
     }
 
     @Override
@@ -193,7 +230,8 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
     }
 
     //点击事件
-    @OnClick({R.id.home_saoyisao, R.id.home_city_text, R.id.home_Location,R.id.switch_editText})
+    @OnClick({R.id.home_saoyisao, R.id.home_city_text, R.id.home_Location, R.id.switch_editText
+    ,R.id.radio_goodFood, R.id.radio_LeisurepPlay, R.id.radio_lifeService, R.id.radio_hotel, R.id.radio_All})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             //PopuWindow按钮
@@ -207,12 +245,27 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
                 break;
             //定位
             case R.id.home_Location:
+                Intent itLocation = new Intent(getActivity(), LocationActivity.class);
+                startActivityForResult(itLocation, 0);
+                Snackbar.make(getView(), "定位", Snackbar.LENGTH_SHORT).show();
                 break;
             //搜索
             case R.id.switch_editText:
-               Intent it2 = new Intent(getActivity(), SwitchActivity.class);
+                Intent it2 = new Intent(getActivity(), SwitchActivity.class);
                 startActivity(it2);
                 break;
+            case R.id.radio_goodFood:
+
+                break;
+            case R.id.radio_LeisurepPlay:
+                break;
+            case R.id.radio_lifeService:
+                break;
+            case R.id.radio_hotel:
+                break;
+            case R.id.radio_All:
+                break;
+
         }
 
     }
@@ -288,13 +341,13 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
     @Override
     public void roundResults(String results) {
 //        Snackbar.make(getView(), results.toString(),Snackbar.LENGTH_LONG);
-        Log.e("sssssssss",results.toString());
+        Log.e("sssssssss", results.toString());
 
         Gson gson = new Gson();
         RoundPicBean roundPicBean = gson.fromJson(results, RoundPicBean.class);
         List<RoundPicBean.ObjectBean.ListBean> list = roundPicBean.object.list;
         roundList = new ArrayList<>();
-        for (int i =0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             String picture = list.get(i).picture;
             roundList.add(picture);
         }
@@ -305,6 +358,25 @@ public class HomePageFragment extends BaseFragment implements INearShopsView,IRo
         homeBanner.start();
 
     }
+
+
+    @Override
+    public void onLocationChanged(AMapLocation aMapLocation) {
+        if (aMapLocation != null) {
+            if (aMapLocation.getErrorCode() == 0) {
+//                Log.e("位置：", aMapLocation.getAddress());
+                Toast.makeText(getActivity(), "" + aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
+                //定位城市
+                homeCityText.setText(aMapLocation.getCity());
+            } else {
+                //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                Log.e("AmapError", "location Error, ErrCode:"
+                        + aMapLocation.getErrorCode() + ", errInfo:"
+                        + aMapLocation.getErrorInfo());
+            }
+        }
+    }
+
 }
 
 

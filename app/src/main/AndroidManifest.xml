@@ -17,6 +17,8 @@
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <!-- 访问网络，网络定位需要上网-->
+    package="com.example.aensun.leedodoprogect">
+    <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- SD卡读取权限，用户写入离线定位数据-->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
@@ -26,7 +28,18 @@
 
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <!--打开照相机-->
     <uses-permission android:name="android.permission.CAMERA" />
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
 
@@ -50,6 +63,20 @@
         <activity android:name=".view.activity.DateActivity" />
         <activity android:name=".view.activity.RebatesThatActivity" />
         <activity android:name=".view.activity.RecordsQueryActivity"></activity>
+        <activity android:name=".view.activity.CityActivity" />
+        <activity android:name=".view.activity.TwoDimensionalCodeActivity" />
+        <activity android:name=".view.activity.SwitchActivity" />
+        <activity android:name=".view.activity.LocationActivity"></activity>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="a4ce40016aa478c7cb4f024f1b086c92">
+            //开发者申请的key
+        </meta-data>
+
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name=".view.activity.DateActivity" />
+        <activity android:name=".view.activity.RebatesThatActivity" />
+        <activity android:name=".view.activity.RecordsQueryActivity" />
+        <activity android:name=".view.activity.AerbyItemBaiDuMessageActivity"></activity>
 
         <activity android:name=".view.activity.ConsumptionActivity"/>
         <activity android:name=".view.activity.SecuritySettingActivity"/>
