@@ -59,6 +59,8 @@
         <activity android:name=".view.activity.CityActivity" />
         <activity android:name=".view.activity.TwoDimensionalCodeActivity" />
         <activity android:name=".view.activity.SwitchActivity"></activity>
+        <activity android:name=".view.activity.RecordsQueryActivity" />
+        <activity android:name=".view.activity.AerbyItemBaiDuMessageActivity"></activity>
     </application>
 
 </manifest>
