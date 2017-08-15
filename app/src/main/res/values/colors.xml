@@ -22,5 +22,6 @@
     <color name="textcolortexta">#88000000</color>
     <color name="backwhite">#00f2f4f5</color>
     <color name="colorRed">#c20000</color>
+    <color name="topcolor">#beffffff</color>
 
 </resources>

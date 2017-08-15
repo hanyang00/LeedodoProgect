@@ -1,243 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/backgrounds"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgrounds">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/backgrounds">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp195"
-            android:background="@color/colorRebateHead"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp15"
-                android:layout_marginTop="@dimen/dp30"
-                android:text="累计返利金额 (元)"
-                android:textColor="@color/colorRebateHeadText"
-                android:textSize="@dimen/dp14" />
-
-            <TextView
-                android:id="@+id/The_rebate_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="@dimen/dp22"
-                android:text="2000.00"
-                android:textColor="@color/colorRebateHeadText"
-                android:textSize="@dimen/dp40" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:layout_marginTop="@dimen/dp43"
-                    android:text="待反期数 (笔)"
-                    android:textColor="@color/colorRebateHeadText"
-                    android:textSize="@dimen/dp14" />
-
-                <TextView
-                    android:id="@+id/rebate_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp30"
-                    android:layout_marginTop="@dimen/dp43"
-                    android:text="5"
-                    android:textColor="@color/colorRebateHeadText"
-                    android:textSize="@dimen/dp16" />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/records_query"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp43"
-                    android:text="记录查询"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/dp15"
-                    android:textColor="@color/colorRebateHeadText"
-                    android:textSize="@dimen/dp14" />
-                </RelativeLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp44"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:text="已绑定"
-                    android:textSize="@dimen/dp14" />
-
-                <TextView
-                    android:id="@+id/binding_wechat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp5"
-                    android:drawableLeft="@mipmap/weixin"
-                    android:gravity="center"
-                    android:text="微信"
-                    android:textSize="@dimen/dp14" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp27"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:text="已绑定"
-                    android:textSize="@dimen/dp14" />
-
-                <TextView
-                    android:id="@+id/binding_alipay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp5"
-                    android:drawableLeft="@mipmap/zhifubao"
-                    android:gravity="center"
-                    android:text="支付宝"
-                    android:textColor="@color/colorzhifubhaoText"
-                    android:textSize="@dimen/dp14" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/dp15"
-                    android:src="@mipmap/gengduo" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/rebate_program"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp15"
-                android:layout_marginTop="@dimen/dp15"
-                android:text="返利计划 (共 9 档)"
-                android:textSize="@dimen/dp14" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_margin="@dimen/dp15"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/dp17"
-                android:layout_marginRight="@dimen/dp15"
-                android:layout_height="match_parent">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rebate_program_recyclerview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </android.support.v7.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/show_more"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp25"
-                    android:text="显示更多"
-                    android:textSize="@dimen/dp11"
-                    android:gravity="center"
-                    />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp65"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/dp10"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp15"
-                android:layout_marginTop="@dimen/dp19"
-                android:src="@mipmap/rili" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp35"
-                android:layout_marginTop="@dimen/dp19"
+                android:layout_height="@dimen/dp195"
+                android:background="@color/colorRebateHead"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="近7天有2笔返利"
-                    android:textColor="@color/colorlightText"
-                    android:textSize="@dimen/dp12" />
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:text="累计返利金额 (元)"
+                    android:textColor="@color/colorRebateHeadText"
+                    android:textSize="@dimen/dp14" />
 
                 <TextView
+                    android:id="@+id/The_rebate_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp5"
-                    android:text="5月25日(明天)  返利230元"
-                    android:textColor="@color/colorlightTimeText"
-                    android:textSize="@dimen/dp12" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="@dimen/dp22"
+                    android:text="2000.00"
+                    android:textColor="@color/colorRebateHeadText"
+                    android:textSize="@dimen/dp40" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp43"
+                        android:text="待反期数 (笔)"
+                        android:textColor="@color/colorRebateHeadText"
+                        android:textSize="@dimen/dp14" />
+
+                    <TextView
+                        android:id="@+id/rebate_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp43"
+                        android:text="5"
+                        android:textColor="@color/colorRebateHeadText"
+                        android:textSize="@dimen/dp16" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/records_query"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp43"
+                            android:text="记录查询"
+                            android:textColor="@color/colorRebateHeadText"
+                            android:textSize="@dimen/dp14" />
+                    </RelativeLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical">
+                android:layout_height="@dimen/dp44"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:text="已绑定"
+                        android:textSize="@dimen/dp14" />
+
+                    <TextView
+                        android:id="@+id/binding_wechat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:drawableLeft="@mipmap/weixin"
+                        android:gravity="center"
+                        android:text="微信"
+                        android:textSize="@dimen/dp14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp27"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:text="已绑定"
+                        android:textSize="@dimen/dp14" />
+
+                    <TextView
+                        android:id="@+id/binding_alipay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:drawableLeft="@mipmap/zhifubao"
+                        android:gravity="center"
+                        android:text="支付宝"
+                        android:textColor="@color/colorzhifubhaoText"
+                        android:textSize="@dimen/dp14" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:src="@mipmap/gengduo" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/rebate_program"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="返利计划 (共 9 档)"
+                    android:textSize="@dimen/dp14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp17"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rebate_program_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+                    <TextView
+                        android:id="@+id/show_more"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp25"
+                        android:gravity="center"
+                        android:text="显示更多"
+                        android:textSize="@dimen/dp11" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp65"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/white"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/dp15"
-                    android:src="@mipmap/gengduo" />
-            </RelativeLayout>
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp19"
+                    android:src="@mipmap/rili" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp35"
+                    android:layout_marginTop="@dimen/dp19"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="近7天有2笔返利"
+                        android:textColor="@color/colorlightText"
+                        android:textSize="@dimen/dp12" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:text="5月25日(明天)  返利230元"
+                        android:textColor="@color/colorlightTimeText"
+                        android:textSize="@dimen/dp12" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:src="@mipmap/gengduo" />
+                </RelativeLayout>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/back_to_the_top"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        android:background="@drawable/top_background"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginBottom="@dimen/dp20"
+        android:src="@mipmap/back_to_the_top" />
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_height="@dimen/dp44">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="美食"
+            android:textSize="@dimen/dp14"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/tabbagroud"
+            android:textColor="@drawable/textcolor_select"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="休闲娱乐"
+            android:textSize="@dimen/dp14"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/tabbagroud"
+            android:textColor="@drawable/textcolor_select"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="生活服务"
+            android:textSize="@dimen/dp14"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/tabbagroud"
+            android:textColor="@drawable/textcolor_select"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="酒店"
+            android:button="@null"
+            android:background="@drawable/tabbagroud"
+            android:gravity="center"
+            android:textSize="@dimen/dp14"
+            android:textColor="@drawable/textcolor_select"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="全部"
+            android:button="@null"
+            android:gravity="center"
+            android:textSize="@dimen/dp14"
+            android:background="@drawable/tabbagroud"
+            android:textColor="@drawable/textcolor_select"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+
+
+
+</RelativeLayout>
