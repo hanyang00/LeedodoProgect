@@ -131,7 +131,6 @@
                     android:layout_marginLeft="@dimen/dp15"
                     android:layout_weight="1"
                     android:orientation="vertical"
-
                     >
 
                     <ImageView

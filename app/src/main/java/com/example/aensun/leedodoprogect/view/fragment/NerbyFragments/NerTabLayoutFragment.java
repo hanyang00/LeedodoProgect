@@ -18,6 +18,7 @@ import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragm
  * 创建时间：2017/8/12 17:36
  */
 public class NerTabLayoutFragment extends Fragment {
+
     /**
      * 全局静态常量
      */
