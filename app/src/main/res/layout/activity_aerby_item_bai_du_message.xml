@@ -1,65 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RadioGroup
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"/>
+
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
         android:background="@color/white"
-        android:layout_height="@dimen/dp44">
+        android:orientation="horizontal">
+
         <RadioButton
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/radiobutton_select"
+            android:button="@null"
+            android:gravity="center"
             android:text="美食"
-            android:textSize="@dimen/dp14"
-            android:gravity="center"
-            android:button="@null"
-            android:background="@drawable/tabbagroud"
             android:textColor="@drawable/textcolor_select"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/dp14"/>
+
         <RadioButton
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/radiobutton_select"
+            android:button="@null"
+            android:gravity="center"
             android:text="休闲娱乐"
-            android:textSize="@dimen/dp14"
-            android:button="@null"
-            android:gravity="center"
-            android:background="@drawable/tabbagroud"
             android:textColor="@drawable/textcolor_select"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/dp14"/>
+
         <RadioButton
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/radiobutton_select"
+            android:button="@null"
+            android:gravity="center"
             android:text="生活服务"
-            android:textSize="@dimen/dp14"
-            android:button="@null"
-            android:gravity="center"
-            android:background="@drawable/tabbagroud"
             android:textColor="@drawable/textcolor_select"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/dp14"/>
+
         <RadioButton
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/radiobutton_select"
+            android:button="@null"
+            android:gravity="center"
             android:text="酒店"
-            android:button="@null"
-            android:background="@drawable/tabbagroud"
-            android:gravity="center"
-            android:textSize="@dimen/dp14"
             android:textColor="@drawable/textcolor_select"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/dp14"/>
+
         <RadioButton
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="全部"
+            android:background="@drawable/radiobutton_select"
             android:button="@null"
             android:gravity="center"
-            android:textSize="@dimen/dp14"
-            android:background="@drawable/tabbagroud"
+            android:text="全部"
             android:textColor="@drawable/textcolor_select"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/dp14"/>
     </RadioGroup>
 
+    <!--item-->
+<LinearLayout
+    android:layout_marginLeft="@dimen/dp5"
+    android:layout_marginRight="@dimen/dp5"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#ffffff"
+    android:orientation="vertical"
 
+    >
+  <ListView
+      android:id="@+id/oneselflist"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginBottom="20dp"
+      />
+
+</LinearLayout>
+    <ListView
+        android:layout_below="@+id/radiogroup"
+        android:id="@+id/alllistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/radiogroup"
+        android:id="@+id/all_fragment_lin"
+        android:background="#966969"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

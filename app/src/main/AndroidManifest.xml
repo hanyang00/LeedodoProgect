@@ -42,7 +42,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -68,9 +67,7 @@
         <activity android:name=".view.activity.SwitchActivity" />
         <activity android:name=".view.activity.LocationActivity"></activity>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="a4ce40016aa478c7cb4f024f1b086c92">
-            //开发者申请的key
         </meta-data>
-
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.RegisterActivity" />
         <activity android:name=".view.activity.DateActivity" />

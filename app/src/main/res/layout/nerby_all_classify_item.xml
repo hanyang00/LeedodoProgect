@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-
-    >
+             >
 
     <TextView
         android:id="@+id/all_classify_text"
@@ -12,6 +11,8 @@
         android:gravity="center"
         android:textColor="#333333"
         android:textSize="@dimen/dp14"
+        android:layout_marginLeft="@dimen/dp3"
+        android:layout_marginRight="@dimen/dp3"
         android:background="#ffffff"
         android:layout_marginTop="@dimen/dp6"
         />

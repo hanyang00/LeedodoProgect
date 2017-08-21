@@ -132,6 +132,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/dp10"
     >
+
     <ImageView
         android:id="@+id/nerby_item_favorable_one_imv"
         android:layout_width="20dp"

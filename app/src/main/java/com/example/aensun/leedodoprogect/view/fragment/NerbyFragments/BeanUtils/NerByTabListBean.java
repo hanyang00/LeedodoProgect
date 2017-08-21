@@ -2,6 +2,7 @@ package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils
 
 import com.example.aensun.leedodoprogect.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * 创建人：yekh
  * 创建时间：2017/8/14 8:43
  */
-public class NerByTabListBean {
+public class NerByTabListBean implements Serializable{
     private String imv;
     private String name;
     private float price;

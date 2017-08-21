@@ -1,14 +1,17 @@
 package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.view.activity.AerbyItemBaiDuMessageActivity;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByTabListAdapter;
 
@@ -42,16 +45,32 @@ public class NerTabLayoutFragment extends Fragment {
         Bundle arguments = getArguments();
         String name = arguments.getString(KEY1);
 
-            view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
-            listview=(ListView)view.findViewById(R.id.nerby_tab_listview);
-            listview.setAdapter(new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(),getActivity()));
+        view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
+        listview = (ListView) view.findViewById(R.id.nerby_tab_listview);
+        final NerByTabListAdapter adapter = new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(), getActivity());
+        listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Object item1 = adapter.getItem(position);
+                NerByTabListBean bean = (NerByTabListBean) item1;
+                Bundle b = new Bundle();
+                b.putSerializable("bean", bean);
+                //设置跳转页面
+                Intent it = new Intent(getActivity(), AerbyItemBaiDuMessageActivity.class);
+                it.putExtras(b);
+                //跳转
+                startActivity(it);
+            }
+        });
         return view;
     }
 
     /**
-     *静态方法  供外界调用
+     * 静态方法  供外界调用
      */
-    public static Fragment getFragment(String url,String title) {
+    public static Fragment getFragment(String url, String title) {
         /**
          * 实例化Fragment
          * 进行赋值

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
+
     <!--整体的滑动布局-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlayout"
@@ -12,6 +13,8 @@
         android:background="#FFFFFF"
         android:orientation="vertical"
         >
+<!--     app:layout_scrollFlags="scroll|enterAlways"
+-->
         <!--整体的布局 才开始-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,6 +26,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp150">
+                <com.amap.api.maps.MapView
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
             <!--附近旺铺-->
             <RelativeLayout
@@ -201,6 +208,7 @@
             </LinearLayout>
             <!--推荐与分类的分割线-->
             <LinearLayout
+                android:orientation="horizontal"
                 android:id="@+id/nerby_linlay_line"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp11"
@@ -216,11 +224,23 @@
             app:tabBackground="@drawable/tabbagroud"
             app:tabMode="fixed"
             />
+
+    </android.support.design.widget.AppBarLayout>
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/netstedscrodview"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <android.support.v4.view.ViewPager
             android:id="@+id/berbay_vp"
             android:layout_width="match_parent"
             android:background="#ffffff"
-            android:layout_height="800dp"/>
-    </android.support.design.widget.AppBarLayout>
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
+</android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

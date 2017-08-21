@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,16 +94,7 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
 
     //小圆点
     List<View> dotList = new ArrayList<>();
-    @Bind(R.id.radio_goodFood)
-    RadioButton radioGoodFood;
-    @Bind(R.id.radio_LeisurepPlay)
-    RadioButton radioLeisurepPlay;
-    @Bind(R.id.radio_lifeService)
-    RadioButton radioLifeService;
-    @Bind(R.id.radio_hotel)
-    RadioButton radioHotel;
-    @Bind(R.id.radio_All)
-    RadioButton radioAll;
+
 
     //轮播图片
     private List<String> roundList;
@@ -231,7 +221,7 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
 
     //点击事件
     @OnClick({R.id.home_saoyisao, R.id.home_city_text, R.id.home_Location, R.id.switch_editText
-    ,R.id.radio_goodFood, R.id.radio_LeisurepPlay, R.id.radio_lifeService, R.id.radio_hotel, R.id.radio_All})
+   })
     public void onViewClicked(View view) {
         switch (view.getId()) {
             //PopuWindow按钮
@@ -254,18 +244,6 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
                 Intent it2 = new Intent(getActivity(), SwitchActivity.class);
                 startActivity(it2);
                 break;
-            case R.id.radio_goodFood:
-
-                break;
-            case R.id.radio_LeisurepPlay:
-                break;
-            case R.id.radio_lifeService:
-                break;
-            case R.id.radio_hotel:
-                break;
-            case R.id.radio_All:
-                break;
-
         }
 
     }

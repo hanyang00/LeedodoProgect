@@ -129,11 +129,7 @@
                             android:layout_weight="1"
                             android:src="@mipmap/ic_launcher" />
                     </LinearLayout>
-
-
                 </LinearLayout>
-
-
             </LinearLayout>
 
             <TextView
@@ -150,14 +146,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp44"
                     android:layout_marginTop="@dimen/dp10">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:text="附近旺铺" />
-
+                       android:text="附近旺铺" />
                     <RelativeLayout
                         android:id="@+id/home_Location"
                         android:layout_width="@dimen/dp44"
@@ -171,13 +165,13 @@
                             android:layout_centerVertical="true"
                             android:src="@mipmap/fujindingwei" />
                     </RelativeLayout>
-
                 </RelativeLayout>
-
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/home_Horizontal_Recycle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
 
@@ -186,60 +180,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp10" />
             <!--RadioGroup-->
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp44"
-                android:background="@drawable/groupselect"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_goodFood"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="美食" />
-
-                <RadioButton
-                    android:id="@+id/radio_LeisurepPlay"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="休闲娱乐" />
-
-                <RadioButton
-                    android:id="@+id/radio_lifeService"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="生活服务" />
-
-                <RadioButton
-                    android:id="@+id/radio_hotel"
-                    android:background="@drawable/groupselect"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="酒店" />
-
-                <RadioButton
-                    android:id="@+id/radio_All"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="全部" />
-
-            </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp1"
                 android:textColor="#dddddd" />
-
-
         </LinearLayout>
     </ScrollView>
 
