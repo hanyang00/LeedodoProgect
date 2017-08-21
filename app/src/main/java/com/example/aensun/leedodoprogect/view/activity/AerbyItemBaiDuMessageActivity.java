@@ -3,6 +3,8 @@ package com.example.aensun.leedodoprogect.view.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +20,7 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByAllFragment;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByTabListAdapter;
 
 import java.util.ArrayList;
@@ -98,31 +101,31 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId) {
-                    case 5:
+                    case R.id.rb_all:
                         allfragmentlin.setVisibility(View.VISIBLE);
-//                        alllist.setVisibility(View.VISIBLE);
-//                        FragmentManager f = getFragmentManager();
-//                        FragmentTransaction t = f.beginTransaction();
-//                        FragmentTransaction replace;
-//                        replace = t.add(R.id.all_fragment_lin, new NerByAllFragment());
-//                        replace.commit();
+                        alllist.setVisibility(View.VISIBLE);
+                        FragmentManager f = getSupportFragmentManager();
+                        FragmentTransaction t = f.beginTransaction();
+                        FragmentTransaction replace;
+                        replace = t.add(R.id.all_fragment_lin, new NerByAllFragment());
+                        replace.commit();
 
                         break;
-                    case 1:
+                    case R.id.rb_delicious_food:
                         Log.e("11111111111111", "onCheckedChanged: "+"走");
                         tabNum4();
                         allfragmentlin.setVisibility(View.GONE);
                         break;
-                    case 2:
+                    case R.id.rb_entertrain:
                         tabNum4();
                         allfragmentlin.setVisibility(View.GONE);
                         break;
-                    case 3:
+                    case R.id.rb_life_service:
                         allfragmentlin.setVisibility(View.GONE);
                         tabNum4();
 
                         break;
-                    case 4:
+                    case R.id.rb_hotel:
                         tabNum4();
                         allfragmentlin.setVisibility(View.GONE);
                         break;
@@ -149,6 +152,7 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         mMapView.onDestroy();
+        ButterKnife.unbind(this);
     }
 
     @Override

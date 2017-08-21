@@ -19,6 +19,7 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/rb_delicious_food"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -30,6 +31,7 @@
             android:textSize="@dimen/dp14"/>
 
         <RadioButton
+            android:id="@+id/rb_entertrain"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -41,6 +43,7 @@
             android:textSize="@dimen/dp14"/>
 
         <RadioButton
+            android:id="@+id/rb_life_service"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -52,6 +55,7 @@
             android:textSize="@dimen/dp14"/>
 
         <RadioButton
+            android:id="@+id/rb_hotel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -63,6 +67,7 @@
             android:textSize="@dimen/dp14"/>
 
         <RadioButton
+            android:id="@+id/rb_all"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
