@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:background="@color/colorBule">
+
+        <ImageView
+            android:id="@+id/balance_break"
+            android:layout_width="@dimen/dp34"
+            android:layout_height="@dimen/dp34"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp5"
+            android:background="@mipmap/backss" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="余额"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp18"
+            android:id="@+id/textView" />
+
+
+        <TextView
+            android:id="@+id/balance_detailed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:text="余额明细"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="@color/colorBule"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp151">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp47"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+        <TextView
+            android:text="冻结金额："
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/freeze_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+
+                android:textColor="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp35"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp18"
+                android:text="可用余额："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/available_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="0.00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp40" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/balance_looks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/password_select"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/balance_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp80"
+        android:background="@drawable/shapro_login"
+        android:text="提现"
+        android:textColor="@color/textcolortrue" />
+</LinearLayout>
