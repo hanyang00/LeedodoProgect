@@ -6,4 +6,5 @@ package com.example.aensun.leedodoprogect.modle.net;
 
 public class ConstantPool {
     public static final String BASE_URL = "http://123.57.33.185:8088/";
+    public static final String TOKEN = "5588aa2f751c990f121ca4c6ae89de17";
 }

@@ -72,6 +72,11 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
         loginStatus();
         loginLooks.setOnCheckedChangeListener(this);
         loginLooks.setChecked(true);
+        Intent intent =getIntent();
+        String phone = intent.getStringExtra("phone");
+        if(phone!=null){
+            edLoginPhone.setText(phone);
+        }
         /**
          * 输入框监听事件
          */
@@ -89,6 +94,11 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
                     loginCheck.setText("");
                 }else{
                     loginCheck.setText("请输入正确的手机格式");
+                }
+                if(checkPhone&&checkPassWord){
+                    loginBtn.setEnabled(true);
+                }else{
+                    loginBtn.setEnabled(false);
                 }
 
             }
@@ -113,17 +123,29 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
 
                 checkPassWord = CheckUtils.checkUsername(s.toString());
                 if(checkPassWord){
+
                     loginCheck.setText("");
                 }else{
                     loginCheck.setText("请输入6-12位字母或数字,不可以有？#* 等特殊符号");
                 }
+                if(checkPhone&&checkPassWord){
+                    loginBtn.setEnabled(true);
+                }else{
+                    loginBtn.setEnabled(false);
+                }
+
             }
+
+
 
             @Override
             public void afterTextChanged(Editable s) {
 
+
             }
         });
+
+
 
     }
 
@@ -147,7 +169,7 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
                 break;
             case R.id.login_register:
                 //跳转注册
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent registerIntent = new Intent(LoginActivity.this, ReginstersActivity.class);
                 startActivityForResult(registerIntent,2);
                 break;
             case R.id.login_looks:
@@ -159,6 +181,10 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
                 break;
             case R.id.login_forget_password:
                 //忘记密码
+                //重置登录密码
+                Intent replacePassWordIntent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(replacePassWordIntent);
+                finish();
                 break;
         }
     }
@@ -193,6 +219,7 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
             @Override
             public void onComplete() {
 
+
             }
         }, phone, passWord, 0);
     }
@@ -211,6 +238,8 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
         editor.putBoolean("login",true);
         editor.putString("name",loginPhoneBean.getObject().getNickName());
         editor.putString("phone",loginPhoneBean.getObject().getPhone());
+        editor.putString("token",loginPhoneBean.getObject().getToken());
+        Log.e(TAG,"/***"+loginPhoneBean.getObject().getToken());
         editor.commit();
         EventBus.getDefault().post("0");
         setResult(2, intent);

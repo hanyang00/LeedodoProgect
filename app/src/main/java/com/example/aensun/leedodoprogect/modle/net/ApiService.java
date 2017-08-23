@@ -39,7 +39,6 @@ public interface ApiService {
     Observable<PhoneCodeBean> registerPhone(@Query("phone") String phone, @Query("password") String password, @Query("code") String code, @Query("merchant") int merchant);
 
     /**
-     * 登录
      * @param phone
      * @param password
      * @param merchant
@@ -48,4 +47,15 @@ public interface ApiService {
     @POST("user/login")
     Observable<LoginPhoneBean> loginPhone(@Query("phone") String phone, @Query("password")String password, @Query("merchant") int merchant);
 
+
+    /**
+     * 忘记密码
+     * @param phone
+     * @param code
+     * @param token
+     * @param password
+     * @return
+     */
+    @POST("user/resetPassword")
+    Observable<PhoneCodeBean> forgtoPassWord(@Query("phone") String phone,@Query("code") String code,@Query("token") String token,@Query("password") String password);
 }

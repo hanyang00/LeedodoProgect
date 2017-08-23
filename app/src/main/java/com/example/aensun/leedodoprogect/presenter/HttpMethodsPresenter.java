@@ -66,6 +66,7 @@ public class HttpMethodsPresenter {
 
     }
 
+
     public void loginPhone(Observer<LoginPhoneBean> observer,String phone,String passWord,int merchant){
         apiService.loginPhone(phone,passWord,merchant)
                 .subscribeOn(Schedulers.io())
@@ -73,6 +74,14 @@ public class HttpMethodsPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
 
+    }
+
+    public void forgotPassWord(Observer<PhoneCodeBean> observer,String phone,String code,String token,String passWord){
+        apiService.forgtoPassWord(phone,code,token,passWord)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
 

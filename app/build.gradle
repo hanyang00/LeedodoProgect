@@ -14,7 +14,7 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('E:/studio_daima/LiduoduoBaudu.jks')
+            storeFile file('D:/studio_daima/LiduoduoBaudu.jks')
             storePassword '123456'
         }
     }
