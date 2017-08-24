@@ -109,7 +109,7 @@
         android:orientation="vertical"
         android:layout_below="@+id/radiogroup"
         android:id="@+id/all_fragment_lin"
-        android:background="#966969"
+        android:background="#352424"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

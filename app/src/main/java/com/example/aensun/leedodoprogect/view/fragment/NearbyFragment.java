@@ -42,11 +42,14 @@ public class NearbyFragment extends BaseFragment {
     private View view;
     @Override
     protected View setConnectViews() {
+
         view = View.inflate(getActivity(), R.layout.nearby_fragment, null);
 
         /**
          * 初始化的方法
-         */initView();
+         */
+
+        initView();
 
         initData();
         return view;
@@ -78,9 +81,7 @@ public class NearbyFragment extends BaseFragment {
         address1.setText(recommendList.get(0).getAddress());
         address2.setText(recommendList.get(1).getAddress());
         address3.setText(recommendList.get(2).getAddress());
-
         mMapView= (MapView) view.findViewById(R.id.map);
-
 
 
         /**
@@ -88,15 +89,18 @@ public class NearbyFragment extends BaseFragment {
          * 指示器颜色
          * 模式
          */
+
         tab.setupWithViewPager(vp);
+
         tab.setTabTextColors(getResources().getColor(R.color.textcolortexta), getResources().getColor(R.color.colorRed));
         tab.setSelectedTabIndicatorColor(getResources().getColor(R.color.backwhite));
         tab.setTabMode(TabLayout.MODE_FIXED);
+
         /**
          * 设置适配器
          */
         vp.setAdapter(new NerByTabLayoutFragmentPageAdapter(getFragmentManager()));
-
+        vp.setPageTransformer(false,null);
         if (aMap == null) {
             aMap = mMapView.getMap();
         }

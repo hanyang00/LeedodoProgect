@@ -21,6 +21,9 @@ import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragm
  * 创建时间：2017/8/12 17:36
  */
 public class NerTabLayoutFragment extends Fragment {
+//    Thread a;
+//    Handler s;
+//    TimerTask l;
 
     /**
      * 全局静态常量
@@ -33,26 +36,32 @@ public class NerTabLayoutFragment extends Fragment {
     ListView listview;
     private View view;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         /**
          * 视图和控件
          */
+
         /**
          * 接收传过来的信息  操作
          */
         Bundle arguments = getArguments();
         String name = arguments.getString(KEY1);
-
         view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
         listview = (ListView) view.findViewById(R.id.nerby_tab_listview);
         final NerByTabListAdapter adapter = new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(), getActivity());
         listview.setAdapter(adapter);
+
+        /**
+         * ViewPager+ViewPager  的 条目点击事件
+         */
+
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Object item1 = adapter.getItem(position);
                 NerByTabListBean bean = (NerByTabListBean) item1;
                 Bundle b = new Bundle();
@@ -68,7 +77,7 @@ public class NerTabLayoutFragment extends Fragment {
     }
 
     /**
-     * 静态方法  供外界调用
+     * 静态方法  供外界调用  进行不同 Fragment 的使用
      */
     public static Fragment getFragment(String url, String title) {
         /**
@@ -80,6 +89,7 @@ public class NerTabLayoutFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString(KEY1, title);
         fragment.setArguments(bundle);
+
         return fragment;
     }
 

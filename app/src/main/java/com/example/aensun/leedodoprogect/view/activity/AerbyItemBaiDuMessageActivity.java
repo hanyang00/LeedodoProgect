@@ -29,7 +29,14 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+/**
+ * 类描述： 跳转到大地图页面
+ * 创建人：yangyongli
+ * 创建时间：2017/8/21
+ */
+
 public class AerbyItemBaiDuMessageActivity extends BaseActivity {
+
     @Bind(R.id.map)
     MapView mMapView;
     AMap aMap;
@@ -47,16 +54,24 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
     @Bind(R.id.all_fragment_lin)
     LinearLayout allfragmentlin;
 
+    /**
+     * 载入视图
+     */
     @Override
     protected int setContentViews() {
         return R.layout.activity_aerby_item_bai_du_message;
     }
 
+    /**
+     * 初始化视图
+     */
     @Override
     protected void initData() {
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
+
+
         //定位
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
@@ -88,7 +103,9 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
         ButterKnife.bind(this);
         mMapView.onCreate(savedInstanceState);
         /**
-         * 接收传过来的值
+         * 接收传过来的值 使用适配器 展示一条item
+         * 将多条item隐藏
+         *
          */
         allfragmentlin.setVisibility(View.GONE);
         Intent it = this.getIntent();
@@ -97,22 +114,16 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
         list.add(baen);
         adqapter = new NerByTabListAdapter(list, this);
         onelist.setAdapter(adqapter);
+        /**
+         * RedioButton  的点击事件
+         * 前四个调用 统一适配器
+         * 全部  显示Fragment
+         */
         ridaogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId) {
-                    case R.id.rb_all:
-                        allfragmentlin.setVisibility(View.VISIBLE);
-                        alllist.setVisibility(View.VISIBLE);
-                        FragmentManager f = getSupportFragmentManager();
-                        FragmentTransaction t = f.beginTransaction();
-                        FragmentTransaction replace;
-                        replace = t.add(R.id.all_fragment_lin, new NerByAllFragment());
-                        replace.commit();
-
-                        break;
                     case R.id.rb_delicious_food:
-                        Log.e("11111111111111", "onCheckedChanged: "+"走");
                         tabNum4();
                         allfragmentlin.setVisibility(View.GONE);
                         break;
@@ -123,15 +134,15 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
                     case R.id.rb_life_service:
                         allfragmentlin.setVisibility(View.GONE);
                         tabNum4();
-
                         break;
                     case R.id.rb_hotel:
                         tabNum4();
                         allfragmentlin.setVisibility(View.GONE);
                         break;
-
+                    case R.id.rb_all:
+                    allFragmentShow();
+                        break;
                 }
-
             }
         });
         alllist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -174,7 +185,7 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("onStop", "onStop: "+"-----------");
+        Log.e("onStop", "onStop: " + "-----------");
 //                onDestroy();
     }
 
@@ -185,10 +196,26 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
         mMapView.onSaveInstanceState(outState);
     }
 
+    /**
+     * 前四个展示条目的 方法
+     */
     public void tabNum4() {
         alllist.setVisibility(View.VISIBLE);
         adqapter = new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(), AerbyItemBaiDuMessageActivity.this);
         alllist.setAdapter(adqapter);
+    }
+
+    /**
+     * 全部的展示
+     */
+    public void allFragmentShow(){
+        allfragmentlin.setVisibility(View.VISIBLE);
+        alllist.setVisibility(View.VISIBLE);
+        FragmentManager f = getSupportFragmentManager();
+        FragmentTransaction t = f.beginTransaction();
+        FragmentTransaction replace;
+        replace = t.add(R.id.all_fragment_lin, new NerByAllFragment());
+        replace.commit();
     }
 
 }
