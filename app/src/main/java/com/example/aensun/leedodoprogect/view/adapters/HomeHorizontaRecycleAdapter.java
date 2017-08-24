@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aensun.leedodoprogect.R;
@@ -37,7 +38,9 @@ public class HomeHorizontaRecycleAdapter extends RecyclerView.Adapter<HomeHorizo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvt.setText(sList.get(position));
+        holder.title.setText(sList.get(position));
+        holder.img.setImageResource(R.mipmap.ic_launcher);
+        holder.near.setText(sList.get(position));
     }
 
     @Override
@@ -47,11 +50,15 @@ public class HomeHorizontaRecycleAdapter extends RecyclerView.Adapter<HomeHorizo
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvt;
+        TextView title,near;
+        ImageView img;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvt = (TextView) itemView.findViewById(R.id.recycle_text);
+            title= (TextView) itemView.findViewById(R.id.recycle_title);
+            near = (TextView) itemView.findViewById(R.id.recycle_near);
+            img= (ImageView) itemView.findViewById(R.id.recycle_item_img);
+
         }
     }
 }

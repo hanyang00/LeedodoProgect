@@ -17,6 +17,15 @@ public class PhoneCodeBean {
     private String descirption;
     private String object;
 
+    @Override
+    public String toString() {
+        return "PhoneCodeBean{" +
+                "code='" + code + '\'' +
+                ", descirption='" + descirption + '\'' +
+                ", object='" + object + '\'' +
+                '}';
+    }
+
     public String getCode() {
         return code;
     }

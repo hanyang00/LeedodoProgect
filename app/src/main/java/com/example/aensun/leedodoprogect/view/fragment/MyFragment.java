@@ -9,8 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.view.activity.AboutUsActivity;
+import com.example.aensun.leedodoprogect.view.activity.BalanceActivity;
 import com.example.aensun.leedodoprogect.view.activity.ConsumptionActivity;
 import com.example.aensun.leedodoprogect.view.activity.LoginActivity;
+import com.example.aensun.leedodoprogect.view.activity.MessageUserActivity;
 import com.example.aensun.leedodoprogect.view.activity.SecuritySettingActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -70,12 +73,17 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        //创建保存登录的状态
         getLoginStatus();
+        //显示隐藏用户 手机号
         operationUserNamePhone();
 
     }
 
+    /**
+     * 显示隐藏用户名 手机号，
+     * 赋值
+     */
     private void operationUserNamePhone() {
         login = sharedPreferences.getBoolean("login", false);
         if (login) {
@@ -92,6 +100,12 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+    /**
+     *
+     * 显示隐藏的方法
+     * @param name
+     * @param maskNumber
+     */
     private void addUser(String name, String maskNumber) {
         userNowLogin.setVisibility(View.GONE);
         nowUserName.setVisibility(View.VISIBLE);
@@ -126,6 +140,8 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.user_balance:
                 //余额
+                Intent balanceIntent = new Intent(getActivity(), BalanceActivity.class);
+                startActivity(balanceIntent);
                 break;
             case R.id.user_card_package:
                 //卡包
@@ -144,13 +160,16 @@ public class MyFragment extends BaseFragment {
             case R.id.user_message:
                 //消息
                 if (login) {
-
+                    Intent messgeIntent = new Intent(getActivity(), MessageUserActivity.class);
+                    startActivity(messgeIntent);
                 } else {
                     Toast.makeText(getActivity(), "您还没有登录", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.user_about_us:
                 //关于我们
+                Intent aboutUsIntent = new Intent(getActivity(), AboutUsActivity.class);
+                startActivity(aboutUsIntent);
                 break;
             case R.id.user_pecords_of_consumption:
                 //消费记录跳转详情页
@@ -164,6 +183,12 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 接收回传过来的用户名密码
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -177,12 +202,18 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 创建sharedPreferences
+     */
     public void getLoginStatus() {
         sharedPreferences = getActivity().getSharedPreferences("user", MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
 
 
+    /**
+     * 绑定EventBus
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -192,6 +223,9 @@ public class MyFragment extends BaseFragment {
 
     }
 
+    /**
+     * 解绑EventBus
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -200,7 +234,10 @@ public class MyFragment extends BaseFragment {
         }
     }
 
-
+    /**
+     * 接收传过来的值
+     * @param str
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(String str) {
         getLoginStatus();

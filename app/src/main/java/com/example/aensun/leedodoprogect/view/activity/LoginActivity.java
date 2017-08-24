@@ -2,8 +2,8 @@ package com.example.aensun.leedodoprogect.view.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.annotation.IdRes;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -13,18 +13,17 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.modle.bean.LoginPhoneBean;
 import com.example.aensun.leedodoprogect.presenter.HttpMethodsPresenter;
+import com.example.aensun.leedodoprogect.utils.CheckUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -55,8 +54,12 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
     Button loginBtn;
     @Bind(R.id.login_forget_password)
     TextView loginForgetPassword;
+    @Bind(R.id.login_check)
+    TextView loginCheck;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private boolean checkPhone;
+    private boolean checkPassWord;
 
     @Override
     protected int setContentViews() {
@@ -65,9 +68,84 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
 
     @Override
     protected void initData() {
+        //创建sharedPreferences
         loginStatus();
         loginLooks.setOnCheckedChangeListener(this);
         loginLooks.setChecked(true);
+        Intent intent =getIntent();
+        String phone = intent.getStringExtra("phone");
+        if(phone!=null){
+            edLoginPhone.setText(phone);
+        }
+        /**
+         * 输入框监听事件
+         */
+        edLoginPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               //正则表达式
+                checkPhone = CheckUtils.checkPhoneNumber(s.toString());
+                if(checkPhone){
+                    loginCheck.setText("");
+                }else{
+                    loginCheck.setText("请输入正确的手机格式");
+                }
+                if(checkPhone&&checkPassWord){
+                    loginBtn.setEnabled(true);
+                }else{
+                    loginBtn.setEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        /**
+         * 输入框监听事件
+         */
+        edLoginPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //正则表达式
+
+                checkPassWord = CheckUtils.checkUsername(s.toString());
+                if(checkPassWord){
+
+                    loginCheck.setText("");
+                }else{
+                    loginCheck.setText("请输入6-12位字母或数字,不可以有？#* 等特殊符号");
+                }
+                if(checkPhone&&checkPassWord){
+                    loginBtn.setEnabled(true);
+                }else{
+                    loginBtn.setEnabled(false);
+                }
+
+            }
+
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
+
+
 
     }
 
@@ -91,7 +169,7 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
                 break;
             case R.id.login_register:
                 //跳转注册
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent registerIntent = new Intent(LoginActivity.this, ReginstersActivity.class);
                 startActivityForResult(registerIntent,2);
                 break;
             case R.id.login_looks:
@@ -103,10 +181,17 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
                 break;
             case R.id.login_forget_password:
                 //忘记密码
+                //重置登录密码
+                Intent replacePassWordIntent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(replacePassWordIntent);
+                finish();
                 break;
         }
     }
 
+    /**
+     * 网络请求登录
+     */
     private void loginAsPhone() {
         String phone = edLoginPhone.getText().toString().trim();
         String passWord = edLoginPassword.getText().toString().trim();
@@ -134,6 +219,7 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
             @Override
             public void onComplete() {
 
+
             }
         }, phone, passWord, 0);
     }
@@ -152,6 +238,8 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
         editor.putBoolean("login",true);
         editor.putString("name",loginPhoneBean.getObject().getNickName());
         editor.putString("phone",loginPhoneBean.getObject().getPhone());
+        editor.putString("token",loginPhoneBean.getObject().getToken());
+        Log.e(TAG,"/***"+loginPhoneBean.getObject().getToken());
         editor.commit();
         EventBus.getDefault().post("0");
         setResult(2, intent);
@@ -159,6 +247,12 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
 
     }
 
+    /**
+     * 返回用户信息
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

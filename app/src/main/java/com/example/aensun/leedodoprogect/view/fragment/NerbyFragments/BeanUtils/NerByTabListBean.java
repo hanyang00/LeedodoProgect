@@ -43,6 +43,14 @@ public class NerByTabListBean {
         this.favorable_num = favorable_num;
     }
 
+    public int getFavorable2_imv() {
+        return favorable2_imv;
+    }
+
+    public void setFavorable2_imv(int favorable2_imv) {
+        this.favorable2_imv = favorable2_imv;
+    }
+
     public String getName() {
         return name;
     }
@@ -124,6 +132,13 @@ public class NerByTabListBean {
         list.add(new NerByTabListBean("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3040139092,3657109362&fm=26&gp=0.jpg","舌尖上的美食",188.8f,10,"[安贞] 距您 <100m",null,0,null,0,0));
         list.add(new NerByTabListBean("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2233964642,154908485&fm=26&gp=0.jpg","小可爱的西点",166.8f,10,"[安贞] 距您 <100m","每满100减12", R.mipmap.youhui1,null,0,1));
         list.add(new NerByTabListBean("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1828792014,1451556483&fm=26&gp=0.jpg","给力给力给力餐",366.8f,10,"[安贞] 距您 <100m","每满100减12", R.mipmap.youhui1,"情侣半价",R.mipmap.youhui2,2));
+        list.add(new NerByTabListBean("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4223335775,1063260400&fm=200&gp=0.jpg","舌尖上的美食",188.8f,10,"[安贞] 距您 <100m",null,0,null,0,0));
+        list.add(new NerByTabListBean("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1402439043,629126993&fm=26&gp=0.jpg","小可爱的西点",166.8f,10,"[安贞] 距您 <100m","每满100减12", R.mipmap.youhui1,null,0,1));
+        list.add(new NerByTabListBean("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3243087890,437030400&fm=26&gp=0.jpg","给力给力给力餐",366.8f,10,"[安贞] 距您 <100m","每满100减12", R.mipmap.youhui1,"情侣半价",R.mipmap.youhui2,2));
+        list.add(new NerByTabListBean("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3040139092,3657109362&fm=26&gp=0.jpg","舌尖上的美食",188.8f,10,"[安贞] 距您 <100m",null,0,null,0,0));
+        list.add(new NerByTabListBean("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2233964642,154908485&fm=26&gp=0.jpg","小可爱的西点",166.8f,10,"[安贞] 距您 <100m","每满100减12", R.mipmap.youhui1,null,0,1));
+        list.add(new NerByTabListBean("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1828792014,1451556483&fm=26&gp=0.jpg","给力给力给力餐",366.8f,10,"[安贞] 距您 <100m","每满100减12", R.mipmap.youhui1,"情侣半价",R.mipmap.youhui2,2));
+
         return list;
 
     }
