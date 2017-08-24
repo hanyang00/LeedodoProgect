@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp90"
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/shop_name"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -18,27 +17,25 @@
             android:textColor="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/shop_name"
+            android:layout_alignLeft="@+id/textView2"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/shop_name"
+            android:layout_alignStart="@+id/textView2"
             android:layout_marginBottom="10dp"
             android:text="今天  12:05"
             android:textColor="@color/colorMyEditHint"
             android:textSize="@dimen/sp11" />
 
         <TextView
-            android:id="@+id/consump_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="58.00 元"
+            android:text="退款中"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/sp14"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/shop_name"
-            android:layout_toEndOf="@+id/shop_name"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2"
             android:layout_marginLeft="72dp"
             android:layout_marginStart="72dp" />
 
@@ -50,15 +47,16 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true">
-        <TextView
-            android:id="@+id/integral"
-            android:text="+40.00"
-            android:textColor="@color/colorRed"
-            android:textSize="@dimen/sp18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-            <ImageView
-                android:src="@mipmap/xianyou"
+            <TextView
+                android:text="58.00"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/sp14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text=" 元"
+                android:textColor="@color/existingtextcolor"
+                android:textSize="@dimen/sp14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -1,10 +1,10 @@
 package com.example.aensun.leedodoprogect.view.activity;
 
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
 import com.example.aensun.leedodoprogect.R;
-
 import butterknife.Bind;
 import butterknife.OnClick;
 
@@ -23,6 +23,12 @@ public class RebatesThatActivity extends BaseActivity {
     TextView particularsAvailableAmount;
     @Bind(R.id.slogan)
     TextView slogan;
+    @Bind(R.id.picture)
+    ImageView picture;
+
+    private String recordCoding;
+    private String integral;
+    private String integralStyle;
 
     @Override
     protected int setContentViews() {
@@ -31,7 +37,14 @@ public class RebatesThatActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        Intent intent = getIntent();
+        recordCoding = intent.getStringExtra("recordCoding");
+        integral = intent.getStringExtra("integral");
+        integralStyle = intent.getStringExtra("integralStyle");
 
+        particularsIssue.setText(recordCoding);
+        Glide.with(this).load(integralStyle).into(picture);
+        particularsAvailableAmount.setText(integral);
     }
 
 

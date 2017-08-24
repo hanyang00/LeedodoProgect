@@ -4,9 +4,12 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.modle.bean.RebateProgramBean;
 import com.example.aensun.leedodoprogect.view.adapter.clickontheeventcallbackinterface.MyOnItemclicklistener;
 
 import java.util.ArrayList;
@@ -24,14 +27,14 @@ import butterknife.ButterKnife;
 
 public class RebateRecyclerViewAdapter extends RecyclerView.Adapter implements View.OnClickListener {
 
-    private ArrayList<String> mlist;
+    private ArrayList<RebateProgramBean.ObjectBean> mlist;
     private Context mcontext;
     private MyOnItemclicklistener onItemclicklistener;
     public void setOnItemclicklistener(MyOnItemclicklistener onItemclicklistener){
         this.onItemclicklistener=onItemclicklistener;
     }
 
-    public RebateRecyclerViewAdapter(ArrayList<String> mlist, Context mcontext) {
+    public RebateRecyclerViewAdapter(ArrayList<RebateProgramBean.ObjectBean> mlist, Context mcontext) {
         this.mlist = mlist;
         this.mcontext = mcontext;
     }
@@ -41,26 +44,28 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter implements V
         View view = View.inflate(mcontext, R.layout.rebate_item, null);
         view.setOnClickListener(this);
         viewholder viewholder = new viewholder(view);
-
         return viewholder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         viewholder viewholder = (RebateRecyclerViewAdapter.viewholder) holder;
-        viewholder.issue.setText(mlist.get(position));
+        viewholder.issue.setText(mlist.get(position).getRecordCoding());
+        viewholder.availableAmount.setText(mlist.get(position).getIntegral()+"");
+        Glide.with(mcontext).load(mlist.get(position).getIntegralStyle()).into(viewholder.existing);
         viewholder.itemView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
-        if (mlist.size() < 3) {
-            return 3;
-        } else if (mlist.size() > 3) {
-            return mlist.size();
-        } else {
-            return 3;
-        }
+//        if (mlist.size() < 3) {
+//            return 2;
+//        } else if (mlist.size() > 3) {
+//            return mlist.size();
+//        } else {
+//            return 3;
+//        }
+        return mlist.size();
     }
 
     @Override
@@ -76,7 +81,7 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter implements V
         @Bind(R.id.change_the_date)
         TextView changeTheDate;
         @Bind(R.id.existing)
-        TextView existing;
+        ImageView existing;
         @Bind(R.id.available_amount)
         TextView availableAmount;
         @Bind(R.id.slogan)

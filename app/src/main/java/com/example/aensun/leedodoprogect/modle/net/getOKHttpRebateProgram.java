@@ -3,7 +3,7 @@ package com.example.aensun.leedodoprogect.modle.net;
 import android.os.Handler;
 import android.os.Message;
 
-import com.example.aensun.leedodoprogect.modle.bean.RebateBean;
+import com.example.aensun.leedodoprogect.modle.bean.RebateProgramBean;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -24,36 +24,34 @@ import okhttp3.Response;
  * 创建时间 $date$
  */
 
-public class getOkHttpRequest {
-    private TransmitDataPort transmitDataPort;
-
+public class getOKHttpRebateProgram {
+    private RebateProgramPort rebateProgramPort;
        private  Handler handler = new  Handler() {
                @Override
                public void handleMessage(Message msg) {
                    switch (msg.what){
                        case 0:
-                           RebateBean bean=(RebateBean) msg.obj;
-                           transmitDataPort.succeed(bean);
+                           RebateProgramBean bean=(RebateProgramBean) msg.obj;
+                           rebateProgramPort.succeed(bean);
                            break;
                        case 1:
                            String error=msg.obj.toString();
                            int Code = msg.arg1;
-                           transmitDataPort.error(error,Code);
-                       break;
+                           rebateProgramPort.error(error,Code);
+                           break;
 
                    }
 
                }
            };
 
-    public void getNetworkRequest(String url,TransmitDataPort transmitDataPort) {
-        this.transmitDataPort=transmitDataPort;
+    public void getNetworkRequest(String url,RebateProgramPort rebateProgramPort) {
+        this.rebateProgramPort=rebateProgramPort;
         OkHttpClient client=new OkHttpClient();
-        RequestBody  body = new FormBody.Builder()
-                .add("status","1")
-                .add("token","2dbae1f3fda438301a33e1d0cfd97a34")
+        RequestBody body = new FormBody.Builder()
+                .add("token","faf9105720d000f7bcea972fabb4b518")
                 .build();
-        Request  request=new Request.Builder()
+        Request request=new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
@@ -71,9 +69,11 @@ public class getOkHttpRequest {
             }
 
             @Override
+
             public void onResponse(Call call, Response response) throws IOException {
                 Gson gson=new Gson();
-                RebateBean bean = gson.fromJson(response.body().string(), RebateBean.class);
+                RebateProgramBean bean = gson.fromJson(response.body().string(), RebateProgramBean.class);
+              
                 Message message=Message.obtain();
                 message.what=0;
                 message.obj=bean;
@@ -82,4 +82,7 @@ public class getOkHttpRequest {
             }
         });
     }
+
+
+
 }

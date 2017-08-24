@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.modle.bean.RebateBean;
+import com.example.aensun.leedodoprogect.modle.bean.RebateProgramBean;
 import com.example.aensun.leedodoprogect.presenter.RebateFragmentPresenter;
+import com.example.aensun.leedodoprogect.presenter.RebateProgramPresenter;
 import com.example.aensun.leedodoprogect.utils.ScrollViewUtils;
 import com.example.aensun.leedodoprogect.view.activity.DateActivity;
 import com.example.aensun.leedodoprogect.view.activity.RebatesThatActivity;
@@ -20,6 +23,7 @@ import com.example.aensun.leedodoprogect.view.activity.RecordsQueryActivity;
 import com.example.aensun.leedodoprogect.view.adapter.RebateRecyclerViewAdapter;
 import com.example.aensun.leedodoprogect.view.adapter.clickontheeventcallbackinterface.MyOnItemclicklistener;
 import com.example.aensun.leedodoprogect.view.callback.RebateCallback;
+import com.example.aensun.leedodoprogect.view.callback.RebateProgramCallback;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,7 @@ import butterknife.OnClick;
  * Created by aensun on 2017-08-10.
  */
 
-public class RebateFragment extends BaseFragment implements RebateCallback, MyOnItemclicklistener {
+public class RebateFragment extends BaseFragment implements RebateCallback,RebateProgramCallback, MyOnItemclicklistener {
     @Bind(R.id.The_rebate_amount)
     TextView theRebateAmount;
     @Bind(R.id.rebate_score)
@@ -54,7 +58,7 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
     LinearLayout date;
     @Bind(R.id.back_to_the_top)
     ImageView backtothetop;
-    private ArrayList<String> list = new ArrayList<>();
+    private ArrayList<RebateProgramBean.ObjectBean> list;
     private View view;
     private RebateRecyclerViewAdapter adapter;
     private static final String TAG = "RebateFragment";
@@ -70,9 +74,8 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
 
     @Override
     public void initView() {
-        for (int i = 0; i < 3; i++) {
-            list.add(i + "");
-        }
+        list = new ArrayList<>();
+
     }
 
     @Override
@@ -83,6 +86,7 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
         rebateProgramRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rebateScore.setText(waitCashback + "");
         theRebateAmount.setText(countReally + "");
+        rebateProgram.setText("返利计划  (共 " +list.size()+ " 档)");
         adapter.setOnItemclicklistener(this);
         ScrollViewUtils scrollViewUtils=new ScrollViewUtils();
         scrollViewUtils.getscrollview(scrollView,backtothetop);
@@ -93,6 +97,8 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
     protected void initDataFromServer() {
         RebateFragmentPresenter presenter = new RebateFragmentPresenter(this);
         presenter.RebatePresenter("http://123.57.33.185:8088/cashback/countCashback");
+        RebateProgramPresenter  rebateProgramPresenter=new RebateProgramPresenter(this);
+        rebateProgramPresenter.RebateProgramFragmentPresenter("http://123.57.33.185:8088///user/cashback/plan");
     }
 
     @Override
@@ -124,8 +130,8 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
 
                 break;
             case R.id.show_more:
-                initView();
-                adapter.notifyDataSetChanged();
+//                initView();
+//                adapter.notifyDataSetChanged();
                 break;
             case R.id.date:
                 Intent jumpcalendar= new Intent(getActivity(), DateActivity.class);
@@ -158,6 +164,23 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
     }
 
     @Override
+    public void succeed(RebateProgramBean clazz) {
+        list.addAll(clazz.getObject());
+        Log.i(TAG, "succeed: "+list.size());
+        rebateProgramRecyclerview.post(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    @Override
+    public void errors(String str, int code) {
+
+    }
+
+    @Override
     public void error(String str, int code) {
 
     }
@@ -166,6 +189,9 @@ public class RebateFragment extends BaseFragment implements RebateCallback, MyOn
     @Override
     public void OnItemclicklistener(View view, int position) {
        Intent intent=new Intent(getActivity(), RebatesThatActivity.class);
+        intent.putExtra("recordCoding",list.get(position).getRecordCoding());
+        intent.putExtra("integral",list.get(position).getIntegral()+"");
+        intent.putExtra("integralStyle",list.get(position).getIntegralStyle());
         startActivity(intent);
 
     }

@@ -83,18 +83,25 @@
                 android:layout_height="@dimen/dp65"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-
+                <ImageView
+                    android:id="@+id/picture"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:src="@mipmap/xianyou"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_height="wrap_content"
+                    />
                 <TextView
                     android:id="@+id/particulars_existing"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:drawableLeft="@mipmap/xianyou"
-                    android:drawablePadding="@dimen/dp5"
-                    android:gravity="center_vertical"
                     android:text="现有"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/dp14"
+                    android:layout_marginLeft="@dimen/dp5"
                     android:textColor="@color/existingtextcolor"
-                    android:textSize="@dimen/dp14" />
+                    android:layout_height="wrap_content"/>
+
+
 
                 <TextView
                     android:id="@+id/particulars_available_amount"
