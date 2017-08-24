@@ -18,7 +18,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp15"
                 android:text="A2017023"
-                android:textColor="@color/colorRebateHeadText"
+                android:textColor="@color/topcolor"
                 android:textSize="@dimen/dp11"/>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -28,7 +28,8 @@
                     android:id="@+id/change_the_date"
                     android:layout_width="wrap_content"
                     android:text="2017年6月12日兑换"
-                    android:textColor="@color/colorRebateHeadText"
+                    android:textColor="@color/topcolor"
+                    android:textSize="@dimen/dp11"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/dp15"
                     android:layout_height="wrap_content" />
@@ -42,11 +43,11 @@
             android:layout_height="@dimen/dp65">
             <ImageView
                 android:id="@+id/existing"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp25"
                 android:gravity="center_vertical"
                 android:src="@mipmap/xianyou"
                 android:layout_marginLeft="@dimen/dp15"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp25"
                 />
             <TextView
                 android:layout_width="wrap_content"

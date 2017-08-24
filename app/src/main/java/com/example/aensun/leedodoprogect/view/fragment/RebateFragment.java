@@ -1,6 +1,8 @@
 package com.example.aensun.leedodoprogect.view.fragment;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +27,9 @@ import com.example.aensun.leedodoprogect.view.adapter.clickontheeventcallbackint
 import com.example.aensun.leedodoprogect.view.callback.RebateCallback;
 import com.example.aensun.leedodoprogect.view.callback.RebateProgramCallback;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,7 +39,7 @@ import butterknife.OnClick;
  * Created by aensun on 2017-08-10.
  */
 
-public class RebateFragment extends BaseFragment implements RebateCallback,RebateProgramCallback, MyOnItemclicklistener {
+public class RebateFragment extends BaseFragment implements RebateCallback, RebateProgramCallback, MyOnItemclicklistener {
     @Bind(R.id.The_rebate_amount)
     TextView theRebateAmount;
     @Bind(R.id.rebate_score)
@@ -64,7 +68,14 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
     private static final String TAG = "RebateFragment";
     private int waitCashback;
     private int countReally;
-
+    private int rebatecount;
+       private  Handler handler = new  Handler() {
+               @Override
+               public void handleMessage(Message msg) {
+                   int arg1 = msg.arg1;
+                   rebateProgram.setText("返利计划  (共 " + arg1 + " 档)");
+               }
+           };
     @Override
     protected View setConnectViews() {
         view = View.inflate(getActivity(), R.layout.rebate_fragment, null);
@@ -86,10 +97,11 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
         rebateProgramRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rebateScore.setText(waitCashback + "");
         theRebateAmount.setText(countReally + "");
-        rebateProgram.setText("返利计划  (共 " +list.size()+ " 档)");
+
         adapter.setOnItemclicklistener(this);
-        ScrollViewUtils scrollViewUtils=new ScrollViewUtils();
-        scrollViewUtils.getscrollview(scrollView,backtothetop);
+        ScrollViewUtils scrollViewUtils = new ScrollViewUtils();
+        scrollViewUtils.getscrollview(scrollView, backtothetop);
+
 
     }
 
@@ -97,8 +109,9 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
     protected void initDataFromServer() {
         RebateFragmentPresenter presenter = new RebateFragmentPresenter(this);
         presenter.RebatePresenter("http://123.57.33.185:8088/cashback/countCashback");
-        RebateProgramPresenter  rebateProgramPresenter=new RebateProgramPresenter(this);
+        RebateProgramPresenter rebateProgramPresenter = new RebateProgramPresenter(this);
         rebateProgramPresenter.RebateProgramFragmentPresenter("http://123.57.33.185:8088///user/cashback/plan");
+
     }
 
     @Override
@@ -107,7 +120,7 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.back_to_the_top,R.id.The_rebate_amount, R.id.rebate_score, R.id.records_query, R.id.binding_wechat, R.id.binding_alipay, R.id.rebate_program, R.id.show_more, R.id.date})
+    @OnClick({R.id.back_to_the_top, R.id.The_rebate_amount, R.id.rebate_score, R.id.records_query, R.id.binding_wechat, R.id.binding_alipay, R.id.rebate_program, R.id.show_more, R.id.date})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.The_rebate_amount:
@@ -117,7 +130,7 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
 
                 break;
             case R.id.records_query:
-               Intent  jumprecordquery=new Intent(getActivity(), RecordsQueryActivity.class);
+                Intent jumprecordquery = new Intent(getActivity(), RecordsQueryActivity.class);
                 startActivity(jumprecordquery);
                 break;
             case R.id.binding_wechat:
@@ -134,13 +147,14 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
 //                adapter.notifyDataSetChanged();
                 break;
             case R.id.date:
-                Intent jumpcalendar= new Intent(getActivity(), DateActivity.class);
+                Intent jumpcalendar = new Intent(getActivity(), DateActivity.class);
                 startActivity(jumpcalendar);
                 break;
-            case  R.id.back_to_the_top:
-                scrollView.post(new Runnable() {
-                    @Override
-                    public void run() {
+            case R.id.back_to_the_top:
+                if (list.size() > 10) {
+                    scrollView.post(new Runnable() {
+                        @Override
+                        public void run() {
 //                        scrollView.fullScroll(ScrollView.FOCUS_DOWN);滚动到底部
 //                        scrollView.fullScroll(ScrollView.FOCUS_UP);滚动到顶部
 //
@@ -148,10 +162,12 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
 //                        因为Android很多函数都是基于消息队列来同步，所以需要一部操作，
 //                        addView完之后，不等于马上就会显示，而是在队列中等待处理，虽然很快，但是如果立即调用fullScroll， view可能还没有显示出来，所以会失败
 //                                应该通过handler在新线程中更新
-                        scrollView.fullScroll(ScrollView.FOCUS_UP);
-                    }
-                });
-                backtothetop.setVisibility(View.GONE);
+                            scrollView.fullScroll(ScrollView.FOCUS_UP);
+                        }
+                    });
+                }
+                    backtothetop.setVisibility(View.GONE);
+
                 break;
         }
     }
@@ -166,7 +182,13 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
     @Override
     public void succeed(RebateProgramBean clazz) {
         list.addAll(clazz.getObject());
-        Log.i(TAG, "succeed: "+list.size());
+        rebatecount=list.size();
+        Message message=Message.obtain();
+        message.arg1=rebatecount;
+        handler.sendMessage(message);
+        Log.i(TAG, "succeed: " + list.size());
+
+
         rebateProgramRecyclerview.post(new Runnable() {
             @Override
             public void run() {
@@ -188,11 +210,21 @@ public class RebateFragment extends BaseFragment implements RebateCallback,Rebat
     //recyclerview点击事件
     @Override
     public void OnItemclicklistener(View view, int position) {
-       Intent intent=new Intent(getActivity(), RebatesThatActivity.class);
-        intent.putExtra("recordCoding",list.get(position).getRecordCoding());
-        intent.putExtra("integral",list.get(position).getIntegral()+"");
-        intent.putExtra("integralStyle",list.get(position).getIntegralStyle());
+        Intent intent = new Intent(getActivity(), RebatesThatActivity.class);
+        intent.putExtra("recordCoding", list.get(position).getRecordCoding());
+        intent.putExtra("integral", list.get(position).getIntegral() + "");
+        intent.putExtra("integralStyle", list.get(position).getIntegralStyle());
+        SimpleDateFormat format=new SimpleDateFormat("yyyy 年 MM 月 dd 日");
+        Date d1=new Date(list.get(position).getCashbackSpecificDate());
+        String t1=format.format(d1);
+        intent.putExtra("date", t1);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler=null;
     }
 }

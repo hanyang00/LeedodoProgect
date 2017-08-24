@@ -101,6 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp15"
                         android:text="已绑定"
+                        android:textColor="@color/colorlightText"
                         android:textSize="@dimen/dp14" />
 
                     <TextView
@@ -111,6 +112,7 @@
                         android:drawableLeft="@mipmap/weixin"
                         android:gravity="center"
                         android:text="微信"
+                        android:textColor="@color/colorlightText"
                         android:textSize="@dimen/dp14" />
                 </LinearLayout>
 
@@ -126,6 +128,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp15"
                         android:text="已绑定"
+                        android:textColor="@color/colorlightText"
                         android:textSize="@dimen/dp14" />
 
                     <TextView
@@ -136,7 +139,7 @@
                         android:drawableLeft="@mipmap/zhifubao"
                         android:gravity="center"
                         android:text="支付宝"
-                        android:textColor="@color/colorzhifubhaoText"
+                        android:textColor="@color/colorlightText"
                         android:textSize="@dimen/dp14" />
                 </LinearLayout>
 
@@ -167,7 +170,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp15"
                     android:layout_marginTop="@dimen/dp15"
-                    android:text="返利计划 (共 9 档)"
+                    android:textColor="@color/colorlightText"
+                    android:text="返利计划 (共 2 档)"
                     android:textSize="@dimen/dp14" />
 
                 <LinearLayout
@@ -189,6 +193,7 @@
                         android:layout_height="@dimen/dp25"
                         android:gravity="center"
                         android:text="显示更多"
+                        android:textColor="@color/colorlightText"
                         android:textSize="@dimen/dp11" />
 
                 </LinearLayout>

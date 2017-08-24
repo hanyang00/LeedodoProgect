@@ -73,7 +73,6 @@ public class getOKHttpRebateProgram {
             public void onResponse(Call call, Response response) throws IOException {
                 Gson gson=new Gson();
                 RebateProgramBean bean = gson.fromJson(response.body().string(), RebateProgramBean.class);
-              
                 Message message=Message.obtain();
                 message.what=0;
                 message.obj=bean;

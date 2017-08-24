@@ -41,10 +41,12 @@ public class RebatesThatActivity extends BaseActivity {
         recordCoding = intent.getStringExtra("recordCoding");
         integral = intent.getStringExtra("integral");
         integralStyle = intent.getStringExtra("integralStyle");
+        String date = intent.getStringExtra("date");
 
         particularsIssue.setText(recordCoding);
         Glide.with(this).load(integralStyle).into(picture);
         particularsAvailableAmount.setText(integral);
+        particularsChangeTheDate.setText(date+"兑换");
     }
 
 

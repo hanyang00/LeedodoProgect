@@ -12,7 +12,9 @@ import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.modle.bean.RebateProgramBean;
 import com.example.aensun.leedodoprogect.view.adapter.clickontheeventcallbackinterface.MyOnItemclicklistener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -53,6 +55,10 @@ public class RebateRecyclerViewAdapter extends RecyclerView.Adapter implements V
         viewholder.issue.setText(mlist.get(position).getRecordCoding());
         viewholder.availableAmount.setText(mlist.get(position).getIntegral()+"");
         Glide.with(mcontext).load(mlist.get(position).getIntegralStyle()).into(viewholder.existing);
+        SimpleDateFormat format=new SimpleDateFormat("yyyy 年 MM 月 dd 日");
+        Date d1=new Date(mlist.get(position).getCashbackSpecificDate());
+        String t1=format.format(d1);
+        viewholder.changeTheDate.setText(t1+"兑换");
         viewholder.itemView.setTag(position);
     }
 

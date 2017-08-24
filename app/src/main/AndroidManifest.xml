@@ -50,7 +50,6 @@
         <activity android:name=".view.activity.RebatesThatActivity" />
         <activity android:name=".view.activity.RecordsQueryActivity"></activity>
         <activity android:name=".view.activity.ReginstersActivity"></activity>
-        <activity android:name=".view.activity.RecordsQueryActivity" />
         <activity android:name=".view.activity.AerbyItemBaiDuMessageActivity"></activity>
 
         <meta-data
