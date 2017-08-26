@@ -1,5 +1,7 @@
 package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils;
 
+import com.google.gson.Gson;
+
 import java.util.Map;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Map;
  * 创建人：yekh
  * 创建时间：2017/8/19 15:09
  */
-public class NerPrensenter {
+public class NerPrensenter<T> {
      IView iview;
 
     private static NerPrensenter netp;
@@ -20,12 +22,14 @@ public class NerPrensenter {
         return netp;
     }
 
-    public void PgetDate(String url, Map<String, String> map, final IView iview) {
+    public void PgetDate(String url, Map<String, String> map, final IView iview ,final Class<T> t) {
         this.iview = iview;
         NetUtils.getNertUtiles().getLaddeDate(url, map, new NetCall() {
             @Override
             public void Succeed(String str) {
-                iview.Successes(str);
+                Gson gson=new Gson();
+                T t1 = gson.fromJson(str, t);
+                iview.Successes(t1);
             }
 
             @Override

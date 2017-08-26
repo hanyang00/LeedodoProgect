@@ -19,12 +19,16 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.example.aensun.leedodoprogect.R;
-import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.CommodityListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.IView;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerPrensenter;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByAllFragment;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByTabListAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,14 +39,14 @@ import butterknife.ButterKnife;
  * 创建时间：2017/8/21
  */
 
-public class AerbyItemBaiDuMessageActivity extends BaseActivity {
+public class AerbyItemBaiDuMessageActivity extends BaseActivity implements IView<CommodityListBean>{
 
     @Bind(R.id.map)
     MapView mMapView;
     AMap aMap;
     @Bind(R.id.oneselflist)
     ListView onelist;
-    private List<NerByTabListBean> list = new ArrayList<>();
+     List<CommodityListBean> list = new ArrayList<>();
     NerByTabListAdapter adqapter;
 
     @Bind(R.id.radiogroup)
@@ -107,9 +111,10 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
          * 将多条item隐藏
          *
          */
+
         allfragmentlin.setVisibility(View.GONE);
         Intent it = this.getIntent();
-        NerByTabListBean baen = (NerByTabListBean) it.getSerializableExtra("bean");
+        CommodityListBean  baen = (CommodityListBean) it.getSerializableExtra("bean");
         list.clear();
         list.add(baen);
         adqapter = new NerByTabListAdapter(list, this);
@@ -122,6 +127,9 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
         ridaogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                Map<String,String> map=new HashMap<>();
+                map.put("shopId","8");
+                NerPrensenter.getP().PgetDate("findShopById",map,AerbyItemBaiDuMessageActivity.this,CommodityListBean.class);
                 switch (checkedId) {
                     case R.id.rb_delicious_food:
                         tabNum4();
@@ -149,7 +157,7 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 alllist.setVisibility(View.GONE);
-                NerByTabListBean item = (NerByTabListBean) adqapter.getItem(position);
+                CommodityListBean item = (CommodityListBean) adqapter.getItem(position);
                 list.clear();
                 list.add(item);
                 adqapter = new NerByTabListAdapter(list, AerbyItemBaiDuMessageActivity.this);
@@ -201,7 +209,7 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
      */
     public void tabNum4() {
         alllist.setVisibility(View.VISIBLE);
-        adqapter = new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(), AerbyItemBaiDuMessageActivity.this);
+        adqapter = new NerByTabListAdapter(list, AerbyItemBaiDuMessageActivity.this);
         alllist.setAdapter(adqapter);
     }
 
@@ -218,4 +226,13 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity {
         replace.commit();
     }
 
+    @Override
+    public void Successes(CommodityListBean bean) {
+        list.add(bean);
+    }
+
+    @Override
+    public void Errer(String str) {
+
+    }
 }

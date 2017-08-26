@@ -34,7 +34,7 @@ public class NerByTabLayoutFragmentPageAdapter extends FragmentPagerAdapter {
         if(strs[position].equals("全部")){
             return new NerByAllFragment();
         }else{
-            return NerTabLayoutFragment.getFragment(null,strs[position]);
+            return NerTabLayoutFragment.getFragment("findShopById",strs[position]);
         }
 
     }

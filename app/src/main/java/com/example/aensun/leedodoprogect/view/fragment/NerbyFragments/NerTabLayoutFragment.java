@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +13,42 @@ import android.widget.ListView;
 
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.activity.AerbyItemBaiDuMessageActivity;
-import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.CommodityListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.IView;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerPrensenter;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByTabListAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 类描述：NerTabLayoutFragment
  * 创建人：yangyongli
  * 创建时间：2017/8/12 17:36
  */
-public class NerTabLayoutFragment extends Fragment {
-//    Thread a;
-//    Handler s;
-//    TimerTask l;
+public class NerTabLayoutFragment extends Fragment implements IView<CommodityListBean> {
+    List<CommodityListBean> beanlist=new ArrayList<>();
+    private  NerByTabListAdapter adapter;
+
+    @Override
+    public void Successes(CommodityListBean bean) {
+        beanlist.add(bean);
+          adapter = new NerByTabListAdapter(beanlist, getActivity());
+        listview.setAdapter(adapter);
+    }
+
+    @Override
+    public void Errer(String str) {
+
+    }
 
     /**
      * 全局静态常量
      */
     public static final String KEY1 = "arg";
+    public static final String KEY0 = "arg0";
 
     /**
      * 控件和视图
@@ -40,19 +60,24 @@ public class NerTabLayoutFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        /**
-         * 视图和控件
-         */
 
         /**
          * 接收传过来的信息  操作
          */
         Bundle arguments = getArguments();
         String name = arguments.getString(KEY1);
+        String url = arguments.getString(KEY0);
         view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
         listview = (ListView) view.findViewById(R.id.nerby_tab_listview);
-        final NerByTabListAdapter adapter = new NerByTabListAdapter(NerByTabListBean.getNerByTabListBeanList(), getActivity());
-        listview.setAdapter(adapter);
+
+
+        /**
+         * 请求网络
+         */
+        Map<String,String> map=new HashMap<>();
+        map.put("shopId","8");
+        NerPrensenter.getP().PgetDate(url,map,this,CommodityListBean.class);
+
 
         /**
          * ViewPager+ViewPager  的 条目点击事件
@@ -63,14 +88,14 @@ public class NerTabLayoutFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object item1 = adapter.getItem(position);
-                NerByTabListBean bean = (NerByTabListBean) item1;
+                CommodityListBean bean = (CommodityListBean) item1;
                 Bundle b = new Bundle();
                 b.putSerializable("bean", bean);
                 //设置跳转页面
                 Intent it = new Intent(getActivity(), AerbyItemBaiDuMessageActivity.class);
                 it.putExtras(b);
                 //跳转
-                startActivity(it);
+                getActivity().startActivity(it);
             }
         });
         return view;
@@ -88,6 +113,7 @@ public class NerTabLayoutFragment extends Fragment {
         NerTabLayoutFragment fragment = new NerTabLayoutFragment();
         Bundle bundle = new Bundle();
         bundle.putString(KEY1, title);
+        bundle.putString(KEY0, url);
         fragment.setArguments(bundle);
 
         return fragment;

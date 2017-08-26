@@ -37,7 +37,7 @@ public class NetUtils {
     public void getLaddeDate(String url, Map<String, String> map, final NetCall netCall) {
         this.netCall = netCall;
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.yulin520.com/")
+                .baseUrl("http://123.57.33.185:8088/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();

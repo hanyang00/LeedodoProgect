@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.aensun.leedodoprogect.R;
-import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
+import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.CommodityListBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +22,10 @@ import java.util.List;
  */
 public class NerByTabListAdapter extends BaseAdapter {
 
-    private List<NerByTabListBean> list = new ArrayList<>();
+    private List<CommodityListBean> list = new ArrayList<>();
     private Context conext;
 
-    public NerByTabListAdapter(List<NerByTabListBean> list, Context conext) {
+    public NerByTabListAdapter(List<CommodityListBean> list, Context conext) {
         this.list = list;
         this.conext = conext;
     }
@@ -77,27 +77,27 @@ public class NerByTabListAdapter extends BaseAdapter {
         /**
          * 判断几个优惠
          */
-        int num_f = list.get(position).getFavorable_num();
+//        int num_f = list.get(position).getFavorable_num();
 
-        holder.price.setText(list.get(position).getPrice() + "");
-        holder.name.setText(list.get(position).getName() + "");
-        holder.address.setText(list.get(position).getAddre_distance() + "");
-        holder.integral.setText(list.get(position).getIntegral() + "");
-        Glide.with(conext).load(list.get(position).getImv()).into(holder.imv);
+        holder.price.setText(list.get(position).getObject().getPerCapitaConsumption()+"");
+        holder.name.setText(list.get(position).getObject().getShopName()+"");
+        holder.address.setText(list.get(position).getObject().getAddress()+"");
+        holder.integral.setText(list.get(position).getObject().getCommissionRate()+"%");
+        Glide.with(conext).load(list.get(position).getObject().getPicture()).into(holder.imv);
         holder.lin1.setVisibility(View.GONE);
         holder.lin2.setVisibility(View.GONE);
-        if (num_f == 1) {
-            holder.f_text1.setText(list.get(position).getFavorable1() + "");
-            Glide.with(conext).load(list.get(position).getFavorable1_imv()).into(holder.imv_01);
-            holder.lin1.setVisibility(View.VISIBLE);
-        } else if (num_f == 2) {
-            holder.f_text1.setText(list.get(position).getFavorable1() + "");
-            Glide.with(conext).load(list.get(position).getFavorable1_imv()).into(holder.imv_01);
-            holder.f_text2.setText(list.get(position).getFavorable2() + "");
-            Glide.with(conext).load(list.get(position).getFavorable2_imv()).into(holder.imv_02);
-            holder.lin1.setVisibility(View.VISIBLE);
-            holder.lin2.setVisibility(View.VISIBLE);
-        }
+//        if (num_f == 1) {
+//            holder.f_text1.setText(list.get(position).getFavorable1() + "");
+//            Glide.with(conext).load(list.get(position).getFavorable1_imv()).into(holder.imv_01);
+//            holder.lin1.setVisibility(View.VISIBLE);
+//        } else if (num_f == 2) {
+//            holder.f_text1.setText(list.get(position).getFavorable1() + "");
+//            Glide.with(conext).load(list.get(position).getFavorable1_imv()).into(holder.imv_01);
+//            holder.f_text2.setText(list.get(position).getFavorable2() + "");
+//            Glide.with(conext).load(list.get(position).getFavorable2_imv()).into(holder.imv_02);
+//            holder.lin1.setVisibility(View.VISIBLE);
+//            holder.lin2.setVisibility(View.VISIBLE);
+//        }
         return convertView;
     }
 
