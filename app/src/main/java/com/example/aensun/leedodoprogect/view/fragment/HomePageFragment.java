@@ -245,6 +245,7 @@ public class HomePageFragment extends BaseFragment implements ISuccessView, ISuc
             case R.id.switch_editText:
                 Intent it2 = new Intent(getActivity(), SwitchActivity.class);
                 startActivity(it2);
+
                 break;
         }
 
