@@ -23,7 +23,7 @@ public class AboutUsActivity extends BaseActivity {
 
     @Override
     protected int setContentViews() {
-        return R.layout.aboutus_activity;
+        return R.layout.aboutus_activitys;
     }
 
     @Override

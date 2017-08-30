@@ -47,7 +47,6 @@ public class NerByTabListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-<<<<<<< HEAD
         //优化
         ViewHolder holder;
         //判断当前视图是否为空
@@ -107,18 +106,7 @@ public class NerByTabListAdapter extends BaseAdapter {
         ImageView imv, imv_01, imv_02;
         TextView name, price, address, f_text1, f_text2, integral;
         LinearLayout lin1, lin2;
-=======
 
 
-        return convertView;
-    }
-    class ViewHolder{
-        // public NerByTabListBean(String imv, String name, float price, int integral, String addre_distance, String favorable1, int favorable1_imv, String favorable2,int favorable2_imv, int favorable_num) {
-
-        ImageView imv;
-        TextView name,price;
-
-
->>>>>>> 主分支更新最新功能
     }
 }

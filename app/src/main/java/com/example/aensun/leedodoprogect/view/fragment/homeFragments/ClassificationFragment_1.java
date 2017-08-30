@@ -2,8 +2,10 @@ package com.example.aensun.leedodoprogect.view.fragment.homeFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,11 @@ import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.adapters.HomeClassificationRecycleAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.BaseFragment;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.ClassificBean;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.BaseService;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetClassificationResults;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.IResponesView;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.utils.GridSpacingItemDecoration;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.utils.UrlUtils;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -30,6 +34,8 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+import static android.R.attr.duration;
 
 /**
  * date:2017/8/11

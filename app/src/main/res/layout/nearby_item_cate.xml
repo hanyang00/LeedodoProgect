@@ -115,7 +115,6 @@
 
                 <TextView
                     android:id="@+id/newby_item_product_address"
-                    android:id="@+id/newby_item_product_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp60"
@@ -135,8 +134,6 @@
     >
     <ImageView
         android:id="@+id/nerby_item_favorable_one_imv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="@dimen/dp80"
@@ -159,8 +156,6 @@
         >
         <ImageView
             android:id="@+id/nerby_item_favorable_two_imv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="@dimen/dp80"

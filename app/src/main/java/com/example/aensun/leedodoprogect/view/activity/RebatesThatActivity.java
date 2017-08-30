@@ -17,10 +17,6 @@ public class RebatesThatActivity extends BaseActivity {
     TextView particularsIssue;
     @Bind(R.id.particulars_change_the_date)
     TextView particularsChangeTheDate;
-    @Bind(R.id.particulars_existing)
-    TextView particularsExisting;
-    @Bind(R.id.particulars_available_amount)
-    TextView particularsAvailableAmount;
     @Bind(R.id.slogan)
     TextView slogan;
 

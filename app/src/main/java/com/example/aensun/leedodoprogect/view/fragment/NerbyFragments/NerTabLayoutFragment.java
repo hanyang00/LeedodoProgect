@@ -12,6 +12,7 @@ import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerByTabListBean;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByAdapters.NerByTabListAdapter;
 
+
 /**
  * 类描述：NerTabLayoutFragment
  * 创建人：yangyongli
@@ -27,7 +28,7 @@ public class NerTabLayoutFragment extends Fragment {
      * 控件和视图
      */
     ListView listview;
-    private View view;
+    private static View view;
 
     @Nullable
     @Override
@@ -35,19 +36,6 @@ public class NerTabLayoutFragment extends Fragment {
         /**
          * 视图和控件
          */
-        view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
-
-        /**
-         * 接收传过来的信息  操作
-         */
-//        Bundle arguments = getArguments();
-//
-//        String name = arguments.getString(KEY1);
-
-        return view;
-    }
-
-    public static Fragment getFragment(String url) {
         /**
          * 接收传过来的信息  操作
          */
@@ -64,10 +52,9 @@ public class NerTabLayoutFragment extends Fragment {
         return view;
     }
 
-    /**
-     *静态方法  供外界调用
-     */
-    public static Fragment getFragment(String url,String title) {
+
+
+    public static Fragment getFragment(String url) {
         /**
          * 实例化Fragment
          * 进行赋值
@@ -76,6 +63,7 @@ public class NerTabLayoutFragment extends Fragment {
         NerTabLayoutFragment fragment = new NerTabLayoutFragment();
 
         Bundle bundle = new Bundle();
+
 
         bundle.putString(KEY1, url);
 
