@@ -33,7 +33,7 @@ public class TwoDimensionalCodeActivity extends BaseActivity {
     //生成二维码
     public void createTwoDimensionalCode() {
         Bitmap qrCodeBitmap;
-        String contentString = "22222";
+        String contentString = "王志龙不靠谱";
         if (!contentString.equals("")) {
             qrCodeBitmap = null;
             try {

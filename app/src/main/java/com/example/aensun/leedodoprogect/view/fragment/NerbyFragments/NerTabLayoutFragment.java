@@ -74,6 +74,7 @@ public class NerTabLayoutFragment extends Fragment implements IView<CommodityLis
         NerPrensenter.getP().PgetDate(url,map,this,CommodityListBean.class);
 
 
+
         /**
          * ViewPager+ViewPager  的 条目点击事件
          */

@@ -1,9 +1,14 @@
 package com.example.aensun.leedodoprogect.view.fragment;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,19 +32,21 @@ import com.amap.api.location.AMapLocationListener;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.utils.GlideImageLoader;
 import com.example.aensun.leedodoprogect.view.activity.CityActivity;
+import com.example.aensun.leedodoprogect.view.activity.DetailsPageActivity;
 import com.example.aensun.leedodoprogect.view.activity.LocationActivity;
 import com.example.aensun.leedodoprogect.view.activity.SwitchActivity;
 import com.example.aensun.leedodoprogect.view.activity.TwoDimensionalCodeActivity;
 import com.example.aensun.leedodoprogect.view.adapters.HomeClassificationViewPagerAdapter;
 import com.example.aensun.leedodoprogect.view.adapters.HomeHorizontaRecycleAdapter;
+import com.example.aensun.leedodoprogect.view.adapters.NerByTabLayoutFragmentPageAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.ClassificationFragment_1;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.ClassificationFragment_2;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.TabLayoutFragment;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.NearShops;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.RoundPicBean;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetNearShopsResults;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetRoundPicResults;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.INearShopsView;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.IRoundPicView;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetRespones;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetResponesNearShops;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.ISuccessNearShops;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.ISuccessView;
 import com.google.gson.Gson;
 import com.google.zxing.activity.CaptureActivity;
 import com.youth.banner.Banner;
@@ -59,22 +67,18 @@ import static android.app.Activity.RESULT_OK;
  * Created by aensun on 2017-08-10.
  */
 
-public class HomePageFragment extends BaseFragment implements INearShopsView, IRoundPicView, AMapLocationListener {
+public class HomePageFragment extends BaseFragment implements ISuccessView, ISuccessNearShops, AMapLocationListener {
     @Bind(R.id.home_banner)
     Banner homeBanner;
     @Bind(R.id.home_viewPager)
     ViewPager homeViewPager;
 
-    /*  @Bind(R.id.home_tablelayout_ViewPager)
-      ViewPager homeTablelayoutViewPager;
-      @Bind(R.id.home_tablayou)
-      TabLayout homeTablayou;*/
     //扫一扫
     @Bind(R.id.home_saoyisao)
     ImageView homeSaoyisao;
     //城市列表
-    @Bind(R.id.home_city_text)
-    TextView homeCityText;
+    @Bind(R.id.home_city)
+    LinearLayout homeCity;
     //消息
     @Bind(R.id.home_naozhong)
     ImageView homeNaozhong;
@@ -88,16 +92,29 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
     EditText switchEditText;
     List<Fragment> fList;
 
-    //TabLayou
-    List<String> tabList;
-    List<Fragment> tabviewpagerList = new ArrayList<>();
-
     //小圆点
     List<View> dotList = new ArrayList<>();
 
+    //TabLayout
+    @Bind(R.id.home_tablayout)
+    TabLayout homeTablayout;
+    @Bind(R.id.home_vp)
+    ViewPager homeVp;
+    @Bind(R.id.img_one)
+    ImageView imgOne;
+    @Bind(R.id.ime_three)
+    ImageView imeThree;
+    @Bind(R.id.ime_five)
+    ImageView imeFive;
+    @Bind(R.id.cityText)
+    TextView cityText;
 
     //轮播图片
     private List<String> roundList;
+    private double longitude;
+    private double latitude;
+    private GetResponesNearShops getResponesNearShops;
+    private GetRespones getRespones;
 
 
     @Override
@@ -148,44 +165,203 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
 
             }
         });
+        /**
+         * 记得在该Activity中加android:theme="@style/Base.Theme.AppCompat"权限绑定
+         * 指示器颜色
+         * 模式
+         */
+        homeTablayout.setupWithViewPager(homeVp);
+        homeTablayout.setTabTextColors(getResources().getColor(R.color.textcolortexta), getResources().getColor(R.color.colorRed));
+        homeTablayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.backwhite));
+        homeTablayout.setTabMode(TabLayout.MODE_FIXED);
+        /**
+         * 设置适配器
+         */
+        NerByTabLayoutFragmentPageAdapter adapter1 = new NerByTabLayoutFragmentPageAdapter(getFragmentManager());
+        homeVp.setAdapter(adapter1);
 
-
-        //TabLayout+ViewPager
-        tabList = new ArrayList<>();
-        tabList.add("美食");
-        tabList.add("休闲娱乐");
-        tabList.add("生活服务");
-        tabList.add("酒店");
-        tabList.add("全部");
-        //动态添加TabLayou的Fragment
-        for (int i = 0; i < tabList.size(); i++) {
-            TabLayoutFragment fragment = new TabLayoutFragment();
-            tabviewpagerList.add(fragment);
-        }
-  /*      homeTablayou.setupWithViewPager(homeTablelayoutViewPager);
-        HomeTabLayouViewPagerAdapter adapter1 = new HomeTabLayouViewPagerAdapter(getFragmentManager(), getActivity(), tabviewpagerList, tabList);
-        homeTablelayoutViewPager.setAdapter(adapter1);
-*/
         //附近商铺
+        Log.e("Longitude", "116.4192930000");
+        Log.e("latitude", "39.9768360000");
         Map<String, String> map = new HashMap<>();
-        map.put("longitude", "116.4192930000");
-        map.put("latitude", "39.9768360000");
-        GetNearShopsResults getNearShopsResults = new GetNearShopsResults(this);
-        getNearShopsResults.getData(map);
+        map.put("longitude", "116.4192930000" + longitude);
+        map.put("latitude", "39.9768360000" + latitude);
+        getResponesNearShops = new GetResponesNearShops(this);
+        getResponesNearShops.getNearData("/near/shops", map);
+
         //轮播图
         Map<String, String> map2 = new HashMap<>();
         map2.put("type", "0");
-        GetRoundPicResults getRoundPicResults = new GetRoundPicResults(this);
-        getRoundPicResults.getRoundPic(map2);
+        getRespones = new GetRespones(this);
+        getRespones.getData("/listRecommendPositions", map);
+
 
     }
 
     @Override
     protected void initDataFromServer() {
+        locationGaoDe();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+        getRespones.deasd();
+        getResponesNearShops.deasd();
+        dotList.clear();
+    }
+
+    //点击事件
+    @OnClick({R.id.home_saoyisao, R.id.home_city, R.id.home_Location, R.id.switch_editText
+   })
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            //PopuWindow按钮
+            case R.id.home_saoyisao:
+                createPopuWindow();
+                break;
+            //城市列表按钮
+            case R.id.home_city:
+                Intent it = new Intent(getActivity(), CityActivity.class);
+                startActivity(it);
+                break;
+            //定位
+            case R.id.home_Location:
+                Intent itLocation = new Intent(getActivity(), LocationActivity.class);
+                startActivity(itLocation);
+                Snackbar.make(getView(), "定位", Snackbar.LENGTH_SHORT).show();
+                break;
+            //搜索
+            case R.id.switch_editText:
+                Intent it2 = new Intent(getActivity(), SwitchActivity.class);
+                startActivity(it2);
+                break;
+        }
+
+    }
+
+    //扫描回传
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String result = bundle.getString("qrcode_result");
+        }
+    }
+
+    //创建popuWindow
+    public void createPopuWindow() {
+        final View popView = getActivity().getLayoutInflater().inflate(R.layout.popuwindow_view, null);
+
+        final PopupWindow window = new PopupWindow(popView, (int) getResources().getDimension(R.dimen.sp135), (int) getResources().getDimension(R.dimen.dp106));
+        // TODO: 2016/5/17 设置可以获取焦点
+        window.setFocusable(true);
+        // TODO: 2016/5/17 设置背景颜色
+        window.setBackgroundDrawable(new ColorDrawable());
+        // TODO: 2016/5/17 设置可以触摸弹出框以外的区域
+        window.setOutsideTouchable(true);
+        // TODO：更新popupwindow的状态
+        window.update();
+        // TODO: 2016/5/17 以下拉的方式显示，并且可以设置显示的位置
+        window.showAsDropDown(homeSaoyisao, 5, 20);
+        //扫描二维码
+        popView.findViewById(R.id.pop_SaoyiSao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //6.0权限
+                //是否授权
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                        // 请求授权
+//                                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, 1);
+
+                    } else {
+                        // 请求授权
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
+                    }
+                } else {
+                    camer();
+                    Toast.makeText(getActivity(), "已授权", Toast.LENGTH_SHORT).show();
+                }
+                if (window != null) {
+                    window.dismiss();
+                }
+            }
+
+        });
+        //付款码
+        popView.findViewById(R.id.pop_PayMa).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent it = new Intent(getActivity(), TwoDimensionalCodeActivity.class);
+
+                startActivity(it);
+            }
+        });
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getActivity(), "用户授权", Toast.LENGTH_SHORT).show();
+                camer();
+            } else {
+                Toast.makeText(getActivity(), "用户拒绝", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    //启动相机
+    private void camer() {
+        Intent it = new Intent(getActivity(), CaptureActivity.class);
+        startActivityForResult(it, 1);
+    }
+
+
+    //地图返回参数
+    @Override
+    public void onLocationChanged(AMapLocation aMapLocation) {
+        if (aMapLocation != null) {
+            if (aMapLocation.getErrorCode() == 0) {
+
+                longitude = aMapLocation.getLongitude();
+                latitude = aMapLocation.getLatitude();
+
+//                Log.e("位置：", aMapLocation.getAddress());
+//                Toast.makeText(getActivity(), "" + aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
+                //定位城市
+                cityText.setText(aMapLocation.getCity());
+            } else {
+                //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                Log.e("AmapError", "location Error, ErrCode:"
+                        + aMapLocation.getErrorCode() + ", errInfo:"
+                        + aMapLocation.getErrorInfo());
+            }
+        }
+    }
+
+
+    public void locationGaoDe() {
 
         AMapLocationClient mlocationClient;
         //声明mLocationOption对象
-        AMapLocationClientOption mLocationOption = null;
+        AMapLocationClientOption mLocationOption;
         mlocationClient = new AMapLocationClient(getActivity());
         //初始化定位参数
         mLocationOption = new AMapLocationClientOption();
@@ -206,120 +382,7 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
-    //点击事件
-    @OnClick({R.id.home_saoyisao, R.id.home_city_text, R.id.home_Location, R.id.switch_editText
-   })
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            //PopuWindow按钮
-            case R.id.home_saoyisao:
-                createPopuWindow();
-                break;
-            //城市列表按钮
-            case R.id.home_city_text:
-                Intent it = new Intent(getActivity(), CityActivity.class);
-                startActivity(it);
-                break;
-            //定位
-            case R.id.home_Location:
-                Intent itLocation = new Intent(getActivity(), LocationActivity.class);
-                startActivityForResult(itLocation, 0);
-                Snackbar.make(getView(), "定位", Snackbar.LENGTH_SHORT).show();
-                break;
-            //搜索
-            case R.id.switch_editText:
-                Intent it2 = new Intent(getActivity(), SwitchActivity.class);
-                startActivity(it2);
-                break;
-        }
-
-    }
-
-    //扫描回传
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            String result = bundle.getString("result");
-        }
-    }
-
-    //创建popuWindow
-    public void createPopuWindow() {
-        final View popView = getActivity().getLayoutInflater().inflate(R.layout.popuwindow_view, null);
-
-        final PopupWindow window = new PopupWindow(popView, 270, 212);
-        // TODO: 2016/5/17 设置可以获取焦点
-        window.setFocusable(true);
-        // TODO: 2016/5/17 设置背景颜色
-        window.setBackgroundDrawable(new ColorDrawable());
-        // TODO: 2016/5/17 设置可以触摸弹出框以外的区域
-        window.setOutsideTouchable(true);
-        // TODO：更新popupwindow的状态
-        window.update();
-        // TODO: 2016/5/17 以下拉的方式显示，并且可以设置显示的位置
-        window.showAsDropDown(homeSaoyisao, 5, 20);
-        //扫描二维码
-        popView.findViewById(R.id.pop_SaoyiSao).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openCamera = new Intent(getActivity(), CaptureActivity.class);
-                startActivityForResult(openCamera, 0);
-                if (window != null) {
-                    window.dismiss();
-                }
-            }
-        });
-        //付款码
-        popView.findViewById(R.id.pop_PayMa).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent it = new Intent(getActivity(), TwoDimensionalCodeActivity.class);
-
-                startActivity(it);
-            }
-        });
-    }
-
-    //请求结果
-    @Override
-    public void requestSuccess(String results) {
-        Log.d("NearShops", results.toString());
-
-
-        //横向RecycleView适配
-        List<String> slist = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            slist.add("" + i);
-        }
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        homeHorizontalRecycle.setLayoutManager(layoutManager);
-        HomeHorizontaRecycleAdapter adapter2 = new HomeHorizontaRecycleAdapter(getActivity(), slist);
-        homeHorizontalRecycle.setAdapter(adapter2);
-
-    }
-
-
-    @Override
-    public void roundResults(String results) {
-//        Snackbar.make(getView(), results.toString(),Snackbar.LENGTH_LONG);
-        Log.e("sssssssss", results.toString());
+    public void requestSuccessI(String results) {
 
         Gson gson = new Gson();
         RoundPicBean roundPicBean = gson.fromJson(results, RoundPicBean.class);
@@ -335,26 +398,30 @@ public class HomePageFragment extends BaseFragment implements INearShopsView, IR
         homeBanner.setIndicatorGravity(BannerConfig.CENTER);
         homeBanner.start();
 
-    }
 
+    }
 
     @Override
-    public void onLocationChanged(AMapLocation aMapLocation) {
-        if (aMapLocation != null) {
-            if (aMapLocation.getErrorCode() == 0) {
-//                Log.e("位置：", aMapLocation.getAddress());
-                Toast.makeText(getActivity(), "" + aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
-                //定位城市
-                homeCityText.setText(aMapLocation.getCity());
-            } else {
-                //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-                Log.e("AmapError", "location Error, ErrCode:"
-                        + aMapLocation.getErrorCode() + ", errInfo:"
-                        + aMapLocation.getErrorInfo());
-            }
-        }
-    }
+    public void requestSuccessNear(String results) {
+        Gson gson1 = new Gson();
+        NearShops nearShops = gson1.fromJson(results, NearShops.class);
+        List<NearShops.ObjectBean.ListBean> nearList = nearShops.object.list;
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        homeHorizontalRecycle.setLayoutManager(layoutManager);
+        HomeHorizontaRecycleAdapter adapter2 = new HomeHorizontaRecycleAdapter(getActivity(), nearList);
+        homeHorizontalRecycle.setAdapter(adapter2);
+        adapter2.HomeHorizontaRecycleAdapter(new HomeHorizontaRecycleAdapter.onClickItem() {
+            @Override
+            public void setOnClick(int position, int shopId) {
+                Intent it = new Intent(getActivity(), DetailsPageActivity.class);
+                Log.d("ID------------", shopId + "");
+                it.putExtra("shopId", shopId + "");
+                startActivity(it);
+            }
+        });
+    }
 }
 
 

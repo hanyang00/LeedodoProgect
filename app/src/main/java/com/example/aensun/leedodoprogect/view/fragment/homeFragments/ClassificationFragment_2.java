@@ -12,8 +12,8 @@ import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.adapters.HomeClassificationRecycleAdapter;
 import com.example.aensun.leedodoprogect.view.fragment.BaseFragment;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.ClassificBean;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetClassificationResults;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.IResponesView;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.presenter.GetRespones;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view.ISuccessView;
 import com.example.aensun.leedodoprogect.view.fragment.homeFragments.utils.GridSpacingItemDecoration;
 import com.google.gson.Gson;
 
@@ -32,11 +32,12 @@ import static android.R.attr.duration;
  * function:
  */
 
-public class ClassificationFragment_2 extends BaseFragment implements IResponesView {
+public class ClassificationFragment_2<T> extends BaseFragment implements ISuccessView{
 
 
     @Bind(R.id.home_Classification_Recycle_2)
     RecyclerView homeClassificationRecycle2;
+    private GetRespones getRespones;
 
     @Override
     protected View setConnectViews() {
@@ -49,8 +50,9 @@ public class ClassificationFragment_2 extends BaseFragment implements IResponesV
         Map<String, String> map = new HashMap<>();
         map.put("pageSize", "10");
         map.put("pageNum", "2");
-        GetClassificationResults classificationResults = new GetClassificationResults(this);
-        classificationResults.getData(map);
+
+        getRespones = new GetRespones(this);
+        getRespones.getData("listCategories",map);
     }
 
     @Override
@@ -58,28 +60,6 @@ public class ClassificationFragment_2 extends BaseFragment implements IResponesV
 
     }
 
-    @Override
-    public void requestSuccess(String results) {
-        if (results != null) {
-            Gson gson = new Gson();
-            ClassificBean classificBean = gson.fromJson(results, ClassificBean.class);
-            List<ClassificBean.ObjectBean.ListBean> classificList = classificBean.object.list;
-
-
-            homeClassificationRecycle2.setLayoutManager(new GridLayoutManager(getActivity(), 5, GridLayoutManager.VERTICAL, false));
-            homeClassificationRecycle2.addItemDecoration(new GridSpacingItemDecoration(5, getResources().getDimensionPixelSize(R.dimen.padding_middle), true));
-            homeClassificationRecycle2.setHasFixedSize(true);
-            HomeClassificationRecycleAdapter classifAdapter = new HomeClassificationRecycleAdapter(getActivity(), classificList);
-            homeClassificationRecycle2.setAdapter(classifAdapter);
-
-            classifAdapter.HomeClassificationRecycleAdapter(new HomeClassificationRecycleAdapter.RecyclesetOnItemClick() {
-                @Override
-                public void itemClick(int position) {
-                    Snackbar.make(getView(),""+position, duration).show();
-                }
-            });
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,5 +73,31 @@ public class ClassificationFragment_2 extends BaseFragment implements IResponesV
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        getRespones.deasd();
+    }
+
+
+    @Override
+    public void requestSuccessI(String results) {
+        if (results!=null){
+
+            Gson gson = new Gson();
+            ClassificBean classificBean = gson.fromJson(results, ClassificBean.class);
+            List<ClassificBean.ObjectBean.ListBean> classificList = classificBean.object.list;
+            homeClassificationRecycle2.setLayoutManager(new GridLayoutManager(getActivity(), 5, GridLayoutManager.VERTICAL, false));
+            homeClassificationRecycle2.addItemDecoration(new GridSpacingItemDecoration(5, getResources().getDimensionPixelSize(R.dimen.padding_middle), true));
+            homeClassificationRecycle2.setHasFixedSize(true);
+            HomeClassificationRecycleAdapter classifAdapter = new HomeClassificationRecycleAdapter(getActivity(), classificList);
+            homeClassificationRecycle2.setAdapter(classifAdapter);
+
+            classifAdapter.HomeClassificationRecycleAdapter(new HomeClassificationRecycleAdapter.RecyclesetOnItemClick() {
+                @Override
+                public void itemClick(int position) {
+                    Snackbar.make(getView(), "" + position, duration).show();
+                }
+            });
+        }
+
     }
 }
+

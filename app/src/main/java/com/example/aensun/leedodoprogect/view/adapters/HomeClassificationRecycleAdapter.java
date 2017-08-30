@@ -56,6 +56,7 @@ public class HomeClassificationRecycleAdapter extends RecyclerView.Adapter<HomeC
         });
     }
 
+
     @Override
     public int getItemCount() {
         return list != null ? list.size() : 0;
