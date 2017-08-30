@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -76,59 +77,107 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp183">
-
-                <ImageView
-                    android:id="@+id/img_one"
+                <LinearLayout
                     android:layout_width="@dimen/dp187"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/img_one"
+                        android:layout_width="@dimen/dp187"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/one" />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
 
-                        <ImageView
-                            android:id="@+id/img_two"
-                            android:layout_width="match_parent"
+
+                        <RelativeLayout
+                            android:id="@+id/text_two"
+                            android:layout_width="@dimen/dp118"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="@dimen/dp1"
-                            android:layout_weight="1"
-                            android:src="@mipmap/ic_launcher" />
+                          >
+                            <TextView
+                                android:id="@+id/nuanxin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="暖 心 福 利"
+                                android:textSize="@dimen/sp18"
+                                android:layout_marginTop="@dimen/dp20"
+                                android:textColor="#333333"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/nuanxin"
+                                android:text="新用户优惠"
+                                android:textColor="#999999"
+                                android:textSize="@dimen/sp11"
+                                android:layout_marginTop="@dimen/dp10"
+                                android:layout_centerHorizontal="true"/>
+
+
+                        </RelativeLayout>
 
                         <ImageView
                             android:id="@+id/ime_three"
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/dp75"
                             android:layout_height="match_parent"
-                            android:layout_toRightOf="@id/img_two"
-                            android:layout_weight="1"
-                            android:src="@mipmap/ic_launcher" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                            android:src="@mipmap/two"
+                            android:layout_alignParentRight="true"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="@dimen/dp187"
+                        android:layout_height="@dimen/dp1"
+                        android:textColor="#f2f4f5"/>
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
 
-                        <ImageView
+                        <RelativeLayout
                             android:id="@+id/img_four"
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/dp118"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@mipmap/ic_launcher" >
+                            <TextView
+                                android:id="@+id/dadao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="大 道 时 刻"
+                                android:textSize="@dimen/sp18"
+                                android:layout_marginTop="@dimen/dp20"
+                                android:textColor="#333333"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/dadao"
+                                android:text="新功能上线"
+                                android:textColor="#999999"
+                                android:textSize="@dimen/sp11"
+                                android:layout_marginTop="@dimen/dp10"
+                                android:layout_centerHorizontal="true"/>
+
+
+                        </RelativeLayout>
 
                         <ImageView
                             android:id="@+id/ime_five"
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/dp75"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@mipmap/ic_launcher" />
-                    </LinearLayout>
+                            android:src="@mipmap/three"
+                            android:layout_alignParentRight="true"/>
+                    </RelativeLayout>
 
 
                 </LinearLayout>
@@ -156,7 +205,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:text="附近旺铺" />
+                        android:text="附近旺铺"
+                        android:textColor="#333333" />
 
                     <RelativeLayout
                         android:id="@+id/home_Location"
@@ -185,54 +235,6 @@
                 style="@style/Textbackground"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp10" />
-            <!--RadioGroup-->
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp44"
-                android:background="@drawable/groupselect"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_goodFood"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="美食" />
-
-                <RadioButton
-                    android:id="@+id/radio_LeisurepPlay"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="休闲娱乐" />
-
-                <RadioButton
-                    android:id="@+id/radio_lifeService"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="生活服务" />
-
-                <RadioButton
-                    android:id="@+id/radio_hotel"
-                    android:background="@drawable/groupselect"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="酒店" />
-
-                <RadioButton
-                    android:id="@+id/radio_All"
-                    style="@style/RedioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/groupselect"
-                    android:text="全部" />
-
-            </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
@@ -240,6 +242,19 @@
                 android:textColor="#dddddd" />
 
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/home_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/tabbagroud"
+                android:background="#fff"
+                app:tabMode="fixed" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/home_vp"
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:background="#ffffff" />
         </LinearLayout>
     </ScrollView>
 
@@ -250,23 +265,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp10">
 
-        <LinearLayout
-            android:id="@+id/home_city"
-            android:layout_width="@dimen/dp53"
-            android:layout_height="@dimen/dp19"
-            android:layout_marginLeft="@dimen/dp15"
-            android:layout_marginRight="@dimen/dp27"
-            android:orientation="horizontal">
-
-
             <LinearLayout
+                android:id="@+id/home_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:background="@mipmap/beijingyuanjiao">
+                android:gravity="center"
+                android:layout_marginTop="@dimen/dp5"
+                android:background="@mipmap/beijingyuanjiao"
+                android:layout_marginLeft="@dimen/dp15">
 
                 <TextView
-                    android:id="@+id/home_city_text"
+                    android:id="@+id/cityText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
@@ -279,11 +289,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:alpha="0.7"
-                    android:src="@mipmap/down_jiantou" />
+                    android:src="@mipmap/more_unf" />
             </LinearLayout>
 
 
-        </LinearLayout>
+
 
         <LinearLayout
 
@@ -292,6 +302,7 @@
             android:layout_centerHorizontal="true"
             android:alpha="0.7"
             android:background="@mipmap/sousuo"
+            android:layout_marginTop="@dimen/dp5"
             android:gravity="center">
 
             <EditText
@@ -311,6 +322,7 @@
             android:id="@+id/home_saoyisao"
             android:layout_width="@dimen/dp30"
             android:layout_height="@dimen/dp30"
+            android:padding="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/dp15"
             android:alpha="0.7"
@@ -318,6 +330,7 @@
             android:src="@mipmap/saoyisaoo" />
 
         <ImageView
+            android:padding="5dp"
             android:id="@+id/home_naozhong"
             android:layout_width="@dimen/dp30"
             android:layout_height="@dimen/dp30"

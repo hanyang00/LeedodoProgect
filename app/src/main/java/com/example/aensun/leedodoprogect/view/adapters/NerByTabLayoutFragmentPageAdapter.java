@@ -13,7 +13,7 @@ import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerTabLayo
  */
 public class NerByTabLayoutFragmentPageAdapter extends FragmentPagerAdapter {
 
-    String[] strs={"美食","休闲娱乐","生活服务","酒店","全部"};
+        String[] strs={"美食","休闲娱乐","生活服务","酒店","全部"};
 
     public NerByTabLayoutFragmentPageAdapter(FragmentManager fm) {
         super(fm);

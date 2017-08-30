@@ -17,5 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dp5"
+        android:textColor="#635e5e"
+        android:textSize="@dimen/sp11"
         android:text="111" />
 </LinearLayout>

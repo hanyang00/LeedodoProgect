@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.aensun.leedodoprogect.R;
+import com.example.aensun.leedodoprogect.view.fragment.homeFragments.beans.NearShops;
 
 import java.util.List;
 
@@ -21,11 +23,11 @@ import java.util.List;
 public class HomeHorizontaRecycleAdapter extends RecyclerView.Adapter<HomeHorizontaRecycleAdapter.ViewHolder> {
 
     Context context;
-    List<String> sList;
+    List<NearShops.ObjectBean.ListBean> nearList;
 
-    public HomeHorizontaRecycleAdapter(Context context, List<String> sList) {
+    public HomeHorizontaRecycleAdapter(Context context,   List<NearShops.ObjectBean.ListBean> nearList) {
         this.context = context;
-        this.sList = sList;
+        this.nearList = nearList;
     }
 
     @Override
@@ -37,15 +39,22 @@ public class HomeHorizontaRecycleAdapter extends RecyclerView.Adapter<HomeHorizo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(sList.get(position));
-        holder.img.setImageResource(R.mipmap.ic_launcher);
-        holder.near.setText(sList.get(position));
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        holder.title.setText(nearList.get(position).shopName);
+        Glide.with(context).load(nearList.get(position).picture).into(holder.img);
+        holder.near.setText(nearList.get(position).address);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              onClickItem.setOnClick(position,nearList.get(position).shopId);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return sList != null ? sList.size() : 0;
+        return nearList != null ? nearList.size() : 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,5 +69,13 @@ public class HomeHorizontaRecycleAdapter extends RecyclerView.Adapter<HomeHorizo
             img= (ImageView) itemView.findViewById(R.id.recycle_item_img);
 
         }
+    }
+    public interface onClickItem{
+        void setOnClick(int position,int shopId);
+    }
+    onClickItem onClickItem;
+
+    public void HomeHorizontaRecycleAdapter(HomeHorizontaRecycleAdapter.onClickItem onClickItem) {
+        this.onClickItem = onClickItem;
     }
 }

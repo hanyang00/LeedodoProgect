@@ -46,7 +46,8 @@ public class NerByAllFragment extends BaseFragment {
     protected void initData() {
         imv2.setImageResource(R.mipmap.liren);
         imv1.setImageResource(R.mipmap.meishi);
-
+        liststr1.clear();
+        liststr2.clear();
         for (int i = 0; i < 3; i++) {
             liststr1.add("火锅");
             liststr1.add("烧烤");

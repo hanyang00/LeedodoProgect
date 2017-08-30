@@ -1,13 +1,12 @@
 package com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.view;
 
 /**
- * date:2017/8/12
+ * date:2017/8/17
  * author:张毛第
  * function:
  */
 
-public interface IResponesView {
-
-    public abstract void requestSuccess(String results);
+public interface ISuccessView {
+    void requestSuccessI(String results);
 
 }

@@ -17,12 +17,12 @@ import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragm
  * 创建人：yangyongli
  * 创建时间：2017/8/12 17:36
  */
-public class NerTabLayoutFragment extends Fragment {
+public class  NerTabLayoutFragment extends Fragment {
     /**
      * 全局静态常量
      */
     public static final String KEY1 = "arg";
-
+    public static final String KEY0 = "arg1";
     /**
      * 控件和视图
      */
@@ -40,6 +40,9 @@ public class NerTabLayoutFragment extends Fragment {
          */
         Bundle arguments = getArguments();
         String name = arguments.getString(KEY1);
+        String url = arguments.getString(KEY0);
+
+
 
             view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
             listview=(ListView)view.findViewById(R.id.nerby_tab_listview);
@@ -59,6 +62,7 @@ public class NerTabLayoutFragment extends Fragment {
         NerTabLayoutFragment fragment = new NerTabLayoutFragment();
         Bundle bundle = new Bundle();
         bundle.putString(KEY1, title);
+        bundle.putString(KEY0,url);
         fragment.setArguments(bundle);
         return fragment;
     }

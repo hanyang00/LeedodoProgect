@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.aensun.leedodoprogect.view.activity.DetailsPageActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--详情图-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp180">
+
+                <ImageView
+                    android:id="@+id/detailsImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/back_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:background="@mipmap/beijingyuan"
+                        android:src="@mipmap/backss" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:background="@mipmap/beijingyuan"
+                        android:src="@mipmap/fenxiang" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+            <!---->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp91">
+
+                <TextView
+                    android:id="@+id/details_shopsName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="粗陶罐"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp14" />
+
+                <RatingBar
+                    android:id="@+id/details_ratingbar"
+                    style="@style/fiveRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/details_shopsName"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:numStars="5"
+                    android:rating="2.5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/details_shopsName"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:layout_toRightOf="@id/details_ratingbar"
+                    android:text="￥45/人"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp12" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:text="积分率"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:text="15%"
+                        android:textColor="#C20000"
+                        android:textSize="@dimen/sp18" />
+                </LinearLayout>
+
+            </RelativeLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="#CFCFCF" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40">
+
+                <RelativeLayout
+                    android:id="@+id/details_location"
+                    android:layout_width="@dimen/dp21"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp15">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/fujindingwei" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/details_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_toRightOf="@id/details_location"
+                    android:text="粗陶馆（安贞桥东店）"
+                    android:textColor="#999999" />
+            </RelativeLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="#CFCFCF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp140"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40">
+
+                    <RelativeLayout
+                        android:id="@+id/details_location2"
+                        android:layout_width="@dimen/dp21"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/fujindingwei" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/shop_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_toRightOf="@id/details_location2"
+                        android:text="1351513165"
+                        android:textColor="#999999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40">
+
+                    <RelativeLayout
+                        android:id="@+id/details_youhui"
+                        android:layout_width="@dimen/dp21"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/youhui1" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_toRightOf="@id/details_youhui"
+                        android:text="每满100元减15元，周一至周日10:00-21:00可用"
+                        android:textColor="#999999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40">
+
+                    <RelativeLayout
+                        android:id="@+id/details_youhui2"
+                        android:layout_width="@dimen/dp21"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/youhui2" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_toRightOf="@id/details_youhui2"
+                        android:text="120元双人情侣套餐（限一份"
+                        android:textColor="#999999" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:text="商户信息"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp14" />
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="#CFCFCF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/shopDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp13"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:lineSpacingExtra="@dimen/dp10"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp14" />
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="#CFCFCF" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30">
+
+                <TextView
+                    android:id="@+id/details_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:text="营业时间：" />
+                <TextView
+                    android:id="@+id/details_startTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/details_time"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:text="111111" />
+
+                <TextView
+                    android:id="@+id/gang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="—"
+                    android:layout_toRightOf="@id/details_startTime"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/details_endTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/gang"
+                    android:text="11111" />
+            </RelativeLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="#CFCFCF" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/wuxianwang"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp15"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WIFI"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:layout_gravity="center"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/tingche"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp30"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="停车"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="#CFCFCF" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

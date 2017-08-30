@@ -1,8 +1,5 @@
 package com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.model;
 
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.net.BaseService;
-import com.example.aensun.leedodoprogect.view.fragment.homeFragments.utils.UrlUtils;
-
 import java.util.Map;
 
 import io.reactivex.Observer;
@@ -10,26 +7,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
- * date:2017/8/14
+ * date:2017/8/17
  * author:张毛第
  * function:
  */
 
-public class GetNearShopRequest implements IGetNearShopRequest {
-    @Override
-    public void getNearShops(Map<String, String> map) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(UrlUtils.baseUrl)
-                .build();
-        BaseService service = retrofit.create(BaseService.class);
-        service.getClassificationRequst(map)
+public class GetNetApi {
+
+    public void getRespones(String url,Map<String,String> map){
+
+        GetApiService.getInstance().getObservableClassif(map,url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<String>() {
@@ -40,11 +29,7 @@ public class GetNearShopRequest implements IGetNearShopRequest {
 
                     @Override
                     public void onNext(@NonNull String s) {
-                        if (s != null) {
-                            callBack.requestSuccess(s.toString());
-                        }
-
-
+                        callBack.requestSuccess(s.toString());
                     }
 
                     @Override
@@ -57,16 +42,15 @@ public class GetNearShopRequest implements IGetNearShopRequest {
 
                     }
                 });
-    }
 
-
+        }
     public interface CallBack {
-        void requestSuccess(String resutls);
+        void requestSuccess(String s);
     }
 
     CallBack callBack;
 
-    public GetNearShopRequest(CallBack callBack) {
+    public GetNetApi(CallBack callBack) {
         this.callBack = callBack;
     }
 }
