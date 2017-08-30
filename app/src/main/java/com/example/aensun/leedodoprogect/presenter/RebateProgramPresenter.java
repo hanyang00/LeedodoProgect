@@ -21,6 +21,9 @@ public class RebateProgramPresenter {
         this.rebateProgramCallback = rebateProgramCallback;
         getOKHttpRebateProgram=new getOKHttpRebateProgram();
     }
+    public  void  getMpty(){
+        rebateProgramCallback=null;
+    }
     public  void  RebateProgramFragmentPresenter(String url){
         getOKHttpRebateProgram.getNetworkRequest(url, new RebateProgramPort() {
             @Override

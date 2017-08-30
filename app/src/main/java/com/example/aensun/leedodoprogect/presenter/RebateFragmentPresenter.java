@@ -22,6 +22,9 @@ public class RebateFragmentPresenter {
         this.rebateCallback = rebateCallback;
         getOkHttpRequest=new getOkHttpRequest();
     }
+    public  void  getMpty(){
+        rebateCallback=null;
+    }
     public void  RebatePresenter(String url){
         getOkHttpRequest.getNetworkRequest(url,new TransmitDataPort() {
             @Override
@@ -34,7 +37,5 @@ public class RebateFragmentPresenter {
                 rebateCallback.error(str,code);
             }
         });
-
-
     }
 }

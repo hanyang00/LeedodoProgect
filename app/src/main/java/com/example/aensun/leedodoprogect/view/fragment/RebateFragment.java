@@ -18,6 +18,7 @@ import com.example.aensun.leedodoprogect.modle.bean.RebateBean;
 import com.example.aensun.leedodoprogect.modle.bean.RebateProgramBean;
 import com.example.aensun.leedodoprogect.presenter.RebateFragmentPresenter;
 import com.example.aensun.leedodoprogect.presenter.RebateProgramPresenter;
+import com.example.aensun.leedodoprogect.utils.AliPay;
 import com.example.aensun.leedodoprogect.utils.ScrollViewUtils;
 import com.example.aensun.leedodoprogect.view.activity.DateActivity;
 import com.example.aensun.leedodoprogect.view.activity.RebatesThatActivity;
@@ -34,6 +35,8 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+
 
 /**
  * Created by aensun on 2017-08-10.
@@ -76,6 +79,26 @@ public class RebateFragment extends BaseFragment implements RebateCallback, Reba
                    rebateProgram.setText("返利计划  (共 " + arg1 + " 档)");
                }
            };
+    private RebateFragmentPresenter presenter;
+    private RebateProgramPresenter rebateProgramPresenter;
+    // 商户私钥，pkcs8格式
+    public static final String RSA_PRIVATE = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAM" +
+            "/KCxg/OIj6er2GEig0DOkHqBSzEPHGigMbTXP1k2nrxEHeE59xOOuy" +
+            "ovQH/A1LgbuVKyOac3uAN4GXIBEoozRVzDhu5dobeNm48BPcpYSAfvN3K" +
+            "/5GLacvJeENqsiBx8KufM/9inlHaDRQV7WhX1Oe2ckat1EkdHwxxQgc" +
+            "36NhAgMBAAECgYEAwn3sWpq6cUR65LD8h9MIjopTImTlpFjgz72bhsHD" +
+            "ZK6A+eJDXcddrwh7DI34t/0IBqu+QEoOc/f0fIEXS9hMwTvFY59XG7M8" +
+            "M6SdeaAbemrGmZ1IdD6YDmpbQFHn2ishaYF0YDZIkBS3WLDFrtk/efaar" +
+            "BCpGAVXeEiVQE4LewECQQD5W1rpkq+dHDRzzdtdi1bJ479wun5CfmVDV" +
+            "b2CJH7Iz0t8zyp/iEVV2QELnxZMphmoSzKaLXutTTj2OImpzCtRAkEA1" +
+            "VMxG6nQq9NkU51H1+I3mlUXRZ0XeFA1GFJ7xWpNRAVhEWlDz2zy9v/g" +
+            "X+RFpNC3f5uznycas70Xp78ew43TEQJAZFFqi9mlqTF1sLk67bFnIyX" +
+            "rGPEOZrXvC13tNfR0xVkQZ4/46wHp0xXQo9pG4GNaoyhNnVV7EkelCPn" +
+            "J+HPZYQJAQh6T9QgQZoGR8hyovPAf3dUL7oa/VIo/urcuJ8VIB5JHQNdI" +
+            "rk0NjaNHj1E4iNosVgATj3vWWel9IIArb99QkQJAKvfm78lwnImtg5IM6" +
+            "04hdn/Wu1XF8tpxsKLWcnfchMr0bM9rCmKmhAY+wdmqSyPZRiNb1QaaaD" +
+            "TqJxLy6AnQ+Q==";
+
     @Override
     protected View setConnectViews() {
         view = View.inflate(getActivity(), R.layout.rebate_fragment, null);
@@ -107,9 +130,9 @@ public class RebateFragment extends BaseFragment implements RebateCallback, Reba
 
     @Override
     protected void initDataFromServer() {
-        RebateFragmentPresenter presenter = new RebateFragmentPresenter(this);
+        presenter = new RebateFragmentPresenter(this);
         presenter.RebatePresenter("http://123.57.33.185:8088/cashback/countCashback");
-        RebateProgramPresenter rebateProgramPresenter = new RebateProgramPresenter(this);
+        rebateProgramPresenter = new RebateProgramPresenter(this);
         rebateProgramPresenter.RebateProgramFragmentPresenter("http://123.57.33.185:8088///user/cashback/plan");
 
     }
@@ -137,6 +160,24 @@ public class RebateFragment extends BaseFragment implements RebateCallback, Reba
 
                 break;
             case R.id.binding_alipay:
+                AliPay.Builder alipay=new  AliPay.Builder(getActivity())
+                        .setSELLER("8@qdbaiu.com")
+                        .setPARTNER("2088901305856832")
+                        .setRSA_PRIVATE(RSA_PRIVATE)
+                        .setNotifyURL("http://notify.msp.hk/notify.htm")
+                        .setOrderTitle("测试商品")
+                        .setSubTitle("详情内容")
+                        .setPrice("0.01").pay();
+//                        .setPayCallBackListener(new AliPay.Builder.PayCallBackListener() {
+//                            @Override
+//                            public void onPayCallBack(int status, String resultStatus, String progress) {
+//                                Toast.makeText(getActivity(),progress,Toast.LENGTH_SHORT).show();
+//                                Log.d(TAG, "onPayCallBack: "+progress);
+//                            }
+//                        });
+
+
+
 
                 break;
             case R.id.rebate_program:
@@ -226,5 +267,7 @@ public class RebateFragment extends BaseFragment implements RebateCallback, Reba
     public void onDestroy() {
         super.onDestroy();
         handler=null;
+        presenter.getMpty();
+        rebateProgramPresenter.getMpty();
     }
 }

@@ -49,8 +49,8 @@ public class ScrollViewUtils {
 
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-//                    handler.sendMessageDelayed(
-//                            handler.obtainMessage(touchEventId, v), 5);
+                    handler.sendMessageDelayed(
+                            handler.obtainMessage(touchEventId, v), 5);
                 }
                 return false;
             }
@@ -90,7 +90,7 @@ public class ScrollViewUtils {
         else if (scrollView.getScrollY() == 0) {
 
             Log.i(TAG, "top");
-        } else if (scrollView.getScrollY() > 30) {
+        } else if (scrollView.getScrollY() > 300) {
             toTopBtn.setVisibility(View.VISIBLE);
             Log.i(TAG, "test");
         }
