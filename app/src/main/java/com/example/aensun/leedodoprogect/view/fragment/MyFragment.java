@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.activity.AboutUsActivity;
 import com.example.aensun.leedodoprogect.view.activity.BalanceActivity;
+import com.example.aensun.leedodoprogect.view.activity.CardPackageActivity;
 import com.example.aensun.leedodoprogect.view.activity.ConsumptionActivity;
 import com.example.aensun.leedodoprogect.view.activity.LoginActivity;
 import com.example.aensun.leedodoprogect.view.activity.MessageUserActivity;
@@ -145,6 +146,8 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.user_card_package:
                 //卡包
+                Intent cardPageIntent = new Intent(getActivity(), CardPackageActivity.class);
+                startActivity(cardPageIntent);
                 break;
             case R.id.user_security_setting:
                 //安全设置

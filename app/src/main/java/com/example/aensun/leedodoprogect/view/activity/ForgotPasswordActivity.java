@@ -98,6 +98,7 @@ public class ForgotPasswordActivity extends BaseActivity implements CompoundButt
                 getPhoneCode();
                 break;
             case R.id.forgot_btn:
+                //确定修改
                 forgotPassWords();
                 break;
         }

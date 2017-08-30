@@ -204,16 +204,21 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
             @Override
             public void onNext(@NonNull LoginPhoneBean loginPhoneBean) {
                 //回传用户信息
-                codeIntentUser(loginPhoneBean);
-                Toast.makeText(LoginActivity.this, loginPhoneBean.getDescirption(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG,loginPhoneBean.toString());
+                if(loginPhoneBean.getCode().equals("1000")){
+                    codeIntentUser(loginPhoneBean);
+                    Toast.makeText(LoginActivity.this, loginPhoneBean.getDescirption(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG,loginPhoneBean.getObject().getToken());
+                }else{
+                    Toast.makeText(LoginActivity.this, loginPhoneBean.getDescirption(), Toast.LENGTH_SHORT).show();
+                }
+
             }
 
 
             @Override
             public void onError(@NonNull Throwable e) {
                 Log.d(TAG, e.getMessage());
-                Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "请检查用户名或密码", Toast.LENGTH_SHORT).show();
             }
 
             @Override

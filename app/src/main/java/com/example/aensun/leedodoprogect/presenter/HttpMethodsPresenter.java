@@ -47,6 +47,13 @@ public class HttpMethodsPresenter {
         return SingletonHolder.INSTANCE;
     }
 
+    /**
+     * 短信验证码
+     * @param Observer
+     * @param phone
+     * @param merchant
+     * @param type
+     */
     public void getPhoneCode(Observer<PhoneCodeBean> Observer , String phone , int merchant, int type ){
 
         apiService.getPhoneBean(phone,merchant,type)
@@ -57,6 +64,14 @@ public class HttpMethodsPresenter {
 
     }
 
+    /**
+     * 注册
+     * @param observer
+     * @param phone
+     * @param passWord
+     * @param code
+     * @param merchant
+     */
     public void getRegisterPhone(Observer<PhoneCodeBean> observer, String phone,String passWord,String code,int merchant){
         apiService.registerPhone(phone,passWord,code,merchant)
                 .subscribeOn(Schedulers.io())
@@ -67,6 +82,13 @@ public class HttpMethodsPresenter {
     }
 
 
+    /**
+     * 登录
+     * @param observer
+     * @param phone
+     * @param passWord
+     * @param merchant
+     */
     public void loginPhone(Observer<LoginPhoneBean> observer,String phone,String passWord,int merchant){
         apiService.loginPhone(phone,passWord,merchant)
                 .subscribeOn(Schedulers.io())
@@ -76,12 +98,39 @@ public class HttpMethodsPresenter {
 
     }
 
+    /**
+     * 忘记密码
+     * 重置密码
+     * @param observer
+     * @param phone
+     * @param code
+     * @param token
+     * @param passWord
+     */
+
     public void forgotPassWord(Observer<PhoneCodeBean> observer,String phone,String code,String token,String passWord){
         apiService.forgtoPassWord(phone,code,token,passWord)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
+    }
+
+    /**
+     * 更换手机号
+     * @param observer
+     * @param phone
+     * @param code
+     * @param token
+     */
+
+    public void  replacePhone(Observer<PhoneCodeBean> observer,String phone,String code,String token){
+        apiService.replacePhone(phone,code,token)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+
     }
 
 

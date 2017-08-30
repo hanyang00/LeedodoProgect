@@ -21,8 +21,10 @@
     <color name="colorlightTimeTextlin">#22666666</color>
     <color name="colorBlack">#000000</color>
     <color name="colorRadioButton">#c20000</color>
-    <color name="textcolortexta">#88000000</color>
     <color name="colorRed">#c20000</color>
-    <color name="backwhite">#00f2f4f5</color>
+    <color name="backwhite">#00F2F4F5</color>
+
+    <color name="textcolortexta" >#88000000</color>
+    <color name="topcolor">#beffffff</color>
 
 </resources>

@@ -65,6 +65,9 @@ public class SecuritySettingActivity extends BaseActivity {
                 startActivity(replacePassWordIntent);
                 break;
             case R.id.security_payment:
+                //重置支付密码
+                Intent secuityIntent = new Intent(SecuritySettingActivity.this,ResetActivity.class);
+                startActivity(secuityIntent);
                 break;
             case R.id.security_gesture:
                 break;

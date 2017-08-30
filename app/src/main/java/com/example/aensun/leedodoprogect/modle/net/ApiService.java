@@ -58,4 +58,16 @@ public interface ApiService {
      */
     @POST("user/resetPassword")
     Observable<PhoneCodeBean> forgtoPassWord(@Query("phone") String phone,@Query("code") String code,@Query("token") String token,@Query("password") String password);
+
+
+    /**
+     * 修改手机号
+     * @param phone
+     * @param code
+     * @param token
+     * @return
+     */
+    @POST("user/updatePhone")
+    Observable<PhoneCodeBean> replacePhone(@Query("phone") String phone,@Query("code") String code,@Query("token") String token);
+
 }
