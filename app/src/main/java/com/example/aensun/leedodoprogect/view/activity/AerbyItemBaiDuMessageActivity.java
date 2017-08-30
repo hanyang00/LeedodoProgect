@@ -84,7 +84,9 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity implements IView
         //aMap.getUiSettings().setMyLocationButtonEnabled(true);设置默认定位按钮是否显示，非必需设置。
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_MAP_ROTATE_NO_CENTER);//连续定位、蓝点不会移动到地图中心点，地图依照设备方向旋转，并且蓝点会跟随设备移动。
-        LatLng latLng = new LatLng(39.906901, 116.397972);
+//        * longitude : 116.4236920843
+//                * latitude : 39.9085650983
+        LatLng latLng = new LatLng(39.9085650983, 116.4236920843);
      /*   MarkerOptions markerOption = new MarkerOptions();
         markerOption.title("西安市").snippet("西安市：34.341568, 108.940174");
 

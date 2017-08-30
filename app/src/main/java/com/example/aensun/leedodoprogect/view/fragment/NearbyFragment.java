@@ -121,9 +121,10 @@ public class NearbyFragment extends BaseFragment {
                 .decodeResource(getResources(),R.mipmap.location)));
         // 将Marker设置为贴地显示，可以双指下拉地图查看效果
         markerOption.setFlat(true);//设置marker平贴地图效果*/
-
+//   * longitude : 116.4236920843
+//         * latitude : 39.9085650983
         Marker marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("点击为北京"));
-        LatLng latLng2 = new LatLng(30.341568,116.940174);
+        LatLng latLng2 = new LatLng( 39.9085650983,116.4236920843);
         aMap.addMarker(new MarkerOptions().position(latLng2).title("西安").snippet("点击为西安"));
 
     }

@@ -1,23 +1,19 @@
 package com.example.aensun.leedodoprogect.view.fragment.NerbyFragments;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.example.aensun.leedodoprogect.R;
 import com.example.aensun.leedodoprogect.view.activity.AerbyItemBaiDuMessageActivity;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.CommodityListBean;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.IView;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.BeanUtils.NerPrensenter;
 import com.example.aensun.leedodoprogect.view.fragment.NerbyFragments.NerByFragments.NerByTabListAdapter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +30,7 @@ public class NerTabLayoutFragment extends Fragment implements IView<CommodityLis
 
     @Override
     public void Successes(CommodityListBean bean) {
+        beanlist.clear();
         beanlist.add(bean);
           adapter = new NerByTabListAdapter(beanlist, getActivity());
         listview.setAdapter(adapter);
@@ -56,7 +53,6 @@ public class NerTabLayoutFragment extends Fragment implements IView<CommodityLis
     ListView listview;
     private View view;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,7 +65,6 @@ public class NerTabLayoutFragment extends Fragment implements IView<CommodityLis
         String url = arguments.getString(KEY0);
         view = View.inflate(getActivity(), R.layout.nerby_fragment_tabfragment, null);
         listview = (ListView) view.findViewById(R.id.nerby_tab_listview);
-
 
         /**
          * 请求网络
