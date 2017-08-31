@@ -30,6 +30,12 @@ public class NerByTabListAdapter extends BaseAdapter {
         this.conext = conext;
     }
 
+    public void setList(List<CommodityListBean> list) {
+        this.list.clear();
+        this.list=list;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return list.size();

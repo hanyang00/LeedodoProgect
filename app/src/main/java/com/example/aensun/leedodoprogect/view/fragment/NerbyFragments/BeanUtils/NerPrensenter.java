@@ -39,4 +39,7 @@ public class NerPrensenter<T> {
         });
 
     }
+    public void setIviewNull(){
+        iview=null;
+    }
 }

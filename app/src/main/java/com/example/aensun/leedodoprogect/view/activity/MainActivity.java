@@ -36,7 +36,10 @@ public class MainActivity extends BaseActivity {
     private MyFragment myFragment;
     private MainActivityPresenter mainActivityPresenter;
     //    private MainActivityPresenter mainActivityPresenter;
-    int flag = 1;
+    /**
+     * 设置默认保存状态
+     */
+    int flag = -1;
 
     @Override
     protected int setContentViews() {
@@ -54,7 +57,6 @@ public class MainActivity extends BaseActivity {
         nearbyFragment = new NearbyFragment();
         rebateFragment = new RebateFragment();
         myFragment = new MyFragment();
-
         mainActivityPresenter = new MainActivityPresenter(MainActivity.this);
         mainActivityPresenter.dataFragment(homePageFragment);
         rbHome.setChecked(true);

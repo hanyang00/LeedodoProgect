@@ -119,6 +119,7 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity implements IView
         CommodityListBean  baen = (CommodityListBean) it.getSerializableExtra("bean");
         list.clear();
         list.add(baen);
+
         adqapter = new NerByTabListAdapter(list, this);
         onelist.setAdapter(adqapter);
         /**
@@ -211,6 +212,7 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity implements IView
      */
     public void tabNum4() {
         alllist.setVisibility(View.VISIBLE);
+        alllist.requestLayout();
         adqapter = new NerByTabListAdapter(list, AerbyItemBaiDuMessageActivity.this);
         alllist.setAdapter(adqapter);
     }
@@ -223,13 +225,13 @@ public class AerbyItemBaiDuMessageActivity extends BaseActivity implements IView
         alllist.setVisibility(View.VISIBLE);
         FragmentManager f = getSupportFragmentManager();
         FragmentTransaction t = f.beginTransaction();
-        FragmentTransaction replace;
-        replace = t.add(R.id.all_fragment_lin, new NerByAllFragment());
-        replace.commit();
+        t.replace(R.id.all_fragment_lin, new NerByAllFragment());
+        t.commit();
     }
 
     @Override
     public void Successes(CommodityListBean bean) {
+        list.clear();
         list.add(bean);
     }
 

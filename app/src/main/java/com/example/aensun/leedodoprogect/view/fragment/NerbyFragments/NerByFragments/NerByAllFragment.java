@@ -15,7 +15,6 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import retrofit2.http.HEAD;
 
 
 /**

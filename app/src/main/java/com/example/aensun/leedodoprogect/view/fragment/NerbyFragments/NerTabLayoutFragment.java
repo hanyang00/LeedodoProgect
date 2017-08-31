@@ -73,8 +73,6 @@ public class NerTabLayoutFragment extends Fragment implements IView<CommodityLis
         map.put("shopId","8");
         NerPrensenter.getP().PgetDate(url,map,this,CommodityListBean.class);
 
-
-
         /**
          * ViewPager+ViewPager  的 条目点击事件
          */
@@ -115,4 +113,9 @@ public class NerTabLayoutFragment extends Fragment implements IView<CommodityLis
         return fragment;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        NerPrensenter.getP().setIviewNull();
+    }
 }
